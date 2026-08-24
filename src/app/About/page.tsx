@@ -1,10 +1,10 @@
-import HomePage from '@/components/home/HomePage'
+import AboutPage from '@/components/about/AboutPage'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <HomePage />
+        <AboutPage />
     </div>
   )
 }
