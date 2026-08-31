@@ -9,8 +9,9 @@ const AboutPage = () => {
     <div>
         <AboutHero />
         <WhoWeAre />
-        <MissionVision />
         <CoreValues />
+        <MissionVision />
+        
     </div>
   )
 }
