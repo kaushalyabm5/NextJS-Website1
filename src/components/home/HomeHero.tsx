@@ -4,7 +4,7 @@ import { ArrowRight, Terminal } from 'lucide-react';
 
 export default function HomeHero() {
   return (
-    <section className="relative w-full min-h-[90vh] bg-white dark:bg-black text-neutral-900 dark:text-white flex flex-col justify-center items-center px-6 py-24 overflow-hidden border-b border-neutral-200 dark:border-neutral-900 transition-colors duration-300">
+    <section className="relative w-full min-h-[90vh] bg-white dark:bg-black text-neutral-900 dark:text-white flex flex-col justify-center items-center px-6 py-24 overflow-hidden transition-colors duration-300">
       {/* Background Micro-Gradients & Radial Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.04)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-neutral-200/50 dark:from-neutral-800/20 to-transparent blur-3xl opacity-60 dark:opacity-50 pointer-events-none rounded-full" />

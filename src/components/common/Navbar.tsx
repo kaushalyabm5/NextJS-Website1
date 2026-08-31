@@ -48,7 +48,7 @@ export default function Navbar() {
         </a>
 
         {/* Center: Nav Links */}
-        <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 bg-neutral-100/80 dark:bg-neutral-950/60 border border-neutral-200 dark:border-neutral-800 px-4 py-1.5 rounded-full backdrop-blur-sm z-10">
+        <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 bg-neutral-100/80 dark:bg-black/90 px-4 py-1.5 rounded-full backdrop-blur-sm z-10">
           {navLinks.map((link) => (
             <a
               key={link.name}

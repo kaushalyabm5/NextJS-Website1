@@ -125,7 +125,7 @@ export default function WhatWeDo() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300 border-b border-neutral-200 dark:border-neutral-900"
+      className="relative w-full h-screen bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300"
     >
       <div className="relative z-10 max-w-7xl mx-auto h-full px-6 sm:px-12 flex items-center justify-center">
         

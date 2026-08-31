@@ -198,7 +198,7 @@ export default function MetricsSection() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full py-24 sm:py-32 bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300 border-b border-neutral-200 dark:border-neutral-900 overflow-hidden perspective-1000"
+      className="relative w-full py-24 sm:py-32 bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300 overflow-hidden perspective-1000"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
         

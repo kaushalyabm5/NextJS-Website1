@@ -4,6 +4,12 @@ import WhatWeDo from './WhatWeDo'
 import Services from './Services'
 import OurEdge from './OurEdge'
 import MetricsSection from './MetricsSection'
+import Process from './Process'
+import TechStack from './TechStack'
+import Testimonials from './Testimonials'
+import ProjectShowcase from './ProjectShowcase'
+import CTASection from './CTASection'
+import ProjectsAndCTA from './ProjectsAndCTA'
 
 const HomePage = () => {
   return (
@@ -13,6 +19,12 @@ const HomePage = () => {
         <Services />
         <OurEdge />
         <MetricsSection />
+        <Process />
+        <TechStack />
+        <Testimonials />
+        <ProjectShowcase />
+        <CTASection />
+      
     </div>
   )
 }

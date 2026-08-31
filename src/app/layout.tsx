@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import SmoothScroll from "@/components/SmoothScroll";
+import Footer from "@/components/common/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SmoothScroll>
             <Navbar />
             <main className="flex-1">{children}</main>
+            <Footer />
           </SmoothScroll>
         </ThemeProvider>
       </body>
