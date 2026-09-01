@@ -6,7 +6,56 @@
   --font-sans: var(--font-poppins), system-ui, sans-serif;
 }
 
-/* Lenis Global Smooth Scroll Overrides */
+/* ==========================================================================
+   Modern Minimalist Scrollbar (Theme Responsive)
+   ========================================================================== */
+
+/* Webkit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Light Mode Track & Thumb */
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+/* Dark Mode Track & Thumb */
+.dark ::-webkit-scrollbar-thumb,
+html.dark ::-webkit-scrollbar-thumb {
+  background: #262626;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
+}
+
+.dark *,
+html.dark * {
+  scrollbar-color: #262626 transparent;
+}
+
+/* ==========================================================================
+   Lenis Global Smooth Scroll Overrides
+   ========================================================================== */
 html {
   scroll-behavior: auto !important;
 }

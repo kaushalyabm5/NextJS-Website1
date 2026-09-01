@@ -10,7 +10,6 @@ export default function WhatWeDo() {
   const textContainerRef = useRef<HTMLDivElement>(null);
   const leftImgRef = useRef<HTMLDivElement>(null);
   const rightImgRef = useRef<HTMLDivElement>(null);
-  const largeImgRef = useRef<HTMLDivElement>(null);
   const tagRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
@@ -23,12 +22,11 @@ export default function WhatWeDo() {
     const textContainer = textContainerRef.current;
     const leftImg = leftImgRef.current;
     const rightImg = rightImgRef.current;
-    const largeImg = largeImgRef.current;
 
-    if (!section || !textContainer || !leftImg || !rightImg || !largeImg) return;
+    if (!section || !textContainer || !leftImg || !rightImg) return;
 
     const ctx = gsap.context(() => {
-      // Calculate dynamic stack offset for left image onto right image
+      // Calculate dynamic stack offset for left image onto right image position
       const getStackDistance = () => {
         const leftRect = leftImg.getBoundingClientRect();
         const rightRect = rightImg.getBoundingClientRect();
@@ -40,13 +38,13 @@ export default function WhatWeDo() {
           trigger: section,
           pin: true,
           start: 'top top',
-          end: '+=400%',
+          end: '+=250%',
           scrub: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      // 1. Initial Reveal (Centered Text + Flanking Corner Images)
+      // 1. Initial Reveal (Centered Text + Flanking Side Images)
       tl.fromTo(
         [leftImg, rightImg],
         { opacity: 0, scale: 0.88 },
@@ -60,11 +58,11 @@ export default function WhatWeDo() {
         'start+=0.2'
       )
 
-      // 2. Choreographed Separation: Text shifts to Left, Left Image glides to Right Stack
+      // 2. Final Choreography: Text shifts to Left, Left Image glides to stack over Right Image
       .to(
         textContainer,
         {
-          x: '-25vw', // Smoothly glides text to the left side
+          x: '-25vw',
           ease: 'power2.inOut',
           duration: 2.5,
         },
@@ -84,37 +82,12 @@ export default function WhatWeDo() {
       .to(
         rightImg,
         {
-          rotate: 3,
-          scale: 0.95,
+          rotate: 4,
+          scale: 0.94,
           ease: 'power2.inOut',
           duration: 2.5,
         },
         'split'
-      )
-
-      // 3. Merge & Blur: Dual Images dissolve into the Large Showcase Card
-      .to(
-        [leftImg, rightImg],
-        {
-          scale: 0.8,
-          opacity: 0,
-          filter: 'blur(16px)',
-          duration: 1.2,
-          ease: 'power3.in',
-        },
-        'synthesize'
-      )
-      .fromTo(
-        largeImg,
-        { opacity: 0, scale: 0.88, filter: 'blur(12px)' },
-        { 
-          opacity: 1, 
-          scale: 1, 
-          filter: 'blur(0px)', 
-          duration: 1.6, 
-          ease: 'power3.out' 
-        },
-        'synthesize+=0.3'
       );
 
     }, section);
@@ -173,10 +146,10 @@ export default function WhatWeDo() {
           </a>
         </div>
 
-        {/* Far Left Flanking Image */}
+        {/* Far Left Flanking Image (Slides to stack on top) */}
         <div
           ref={leftImgRef}
-          className="absolute left-6 sm:left-12 top-1/2 -translate-y-1/2 w-[220px] sm:w-[260px] aspect-[3/4] rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-2xl z-20 bg-neutral-900 opacity-0 will-change-transform"
+          className="absolute left-6 sm:left-12 top-1/2 -translate-y-1/2 w-[220px] sm:w-[280px] aspect-[3/4] rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-2xl z-20 bg-neutral-900 opacity-0 will-change-transform"
         >
           <img
             src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=800&q=80"
@@ -185,32 +158,16 @@ export default function WhatWeDo() {
           />
         </div>
 
-        {/* Far Right Flanking Image (Stack Destination) */}
+        {/* Far Right Flanking Image (Stack Base) */}
         <div
           ref={rightImgRef}
-          className="absolute right-6 sm:right-12 top-1/2 -translate-y-1/2 w-[220px] sm:w-[260px] aspect-[3/4] rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-2xl z-10 bg-neutral-900 opacity-0"
+          className="absolute right-6 sm:right-12 top-1/2 -translate-y-1/2 w-[220px] sm:w-[280px] aspect-[3/4] rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-2xl z-10 bg-neutral-900 opacity-0"
         >
           <img
             src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
             alt="Execution Framework"
             className="w-full h-full object-cover"
           />
-        </div>
-
-        {/* Large Primary Image Reveal */}
-        <div
-          ref={largeImgRef}
-          className="absolute right-6 sm:right-12 top-1/2 -translate-y-1/2 w-[340px] sm:w-[500px] aspect-[16/11] rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-2xl z-30 bg-neutral-900 opacity-0 pointer-events-none"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-            alt="Unified Architectural Platform"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 px-4 py-1.5 bg-white/10 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full text-white font-mono text-xs uppercase tracking-widest">
-            Axstar // Unified Architecture
-          </div>
         </div>
 
       </div>

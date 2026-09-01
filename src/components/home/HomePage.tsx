@@ -10,11 +10,13 @@ import Testimonials from './Testimonials'
 import ProjectShowcase from './ProjectShowcase'
 import CTASection from './CTASection'
 import ProjectsAndCTA from './ProjectsAndCTA'
+import TechMarquee from './TechMarquee'
 
 const HomePage = () => {
   return (
     <div>
         <HomeHero />
+        <TechMarquee />
         <WhatWeDo />
         <Services />
         <OurEdge />
