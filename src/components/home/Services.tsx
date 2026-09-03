@@ -347,7 +347,7 @@ export default function Services() {
                   <div className="p-8 sm:p-12 flex flex-col flex-grow justify-between">
                     <div>
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 flex items-center justify-center text-[#00c29e] transition-colors duration-300">
+                        <div className="w-12 h-12 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 flex items-center justify-center text-[#5dc192] transition-colors duration-300">
                           <Grid className="w-6 h-6" />
                         </div>
                         <h3 className="text-2xl sm:text-3xl font-medium tracking-tight text-black dark:text-white transition-colors duration-300">
@@ -364,7 +364,7 @@ export default function Services() {
                     <div>
                       <a
                         href="#contact"
-                        className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#00c29e] hover:bg-[#00a889] text-white dark:text-black font-semibold text-sm tracking-wide transition-all hover:scale-105"
+                        className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#5dc192] hover:bg-[#5dc192] text-white dark:text-black font-semibold text-sm tracking-wide transition-all hover:scale-105"
                       >
                         <span>Explore</span>
                         <ArrowUpRight className="w-5 h-5" />
@@ -385,7 +385,7 @@ export default function Services() {
                         onClick={() => handleSelectSubService(category.id, service)}
                         className={`group cursor-pointer border-b py-6 sm:py-7 transition-all duration-200 ${
                           isSelected
-                            ? 'border-[#00c29e]'
+                            ? 'border-[#5dc192]'
                             : 'border-neutral-200 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-700'
                         }`}
                       >
@@ -393,7 +393,7 @@ export default function Services() {
                           <h4
                             className={`text-xl sm:text-3xl font-normal tracking-tight transition-all duration-200 ${
                               isSelected
-                                ? 'text-[#00c29e] font-medium translate-x-1'
+                                ? 'text-[#5dc192] font-medium translate-x-1'
                                 : 'text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white'
                             }`}
                           >
@@ -403,7 +403,7 @@ export default function Services() {
                           <ArrowUpRight
                             className={`w-6 h-6 transition-all duration-200 ${
                               isSelected
-                                ? 'text-[#00c29e] opacity-100 translate-x-0'
+                                ? 'text-[#5dc192] opacity-100 translate-x-0'
                                 : 'text-neutral-400 dark:text-neutral-600 opacity-0 group-hover:opacity-100 group-hover:text-neutral-600 dark:group-hover:text-neutral-400'
                             }`}
                           />
