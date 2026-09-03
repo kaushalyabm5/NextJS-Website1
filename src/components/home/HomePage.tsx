@@ -11,6 +11,8 @@ import ProjectShowcase from './ProjectShowcase'
 import CTASection from './CTASection'
 import ProjectsAndCTA from './ProjectsAndCTA'
 import TechMarquee from './TechMarquee'
+import BusinessImpactSection from './BusinessImpactSection'
+import ElephantCrewStorySection from './ElephantCrewStorySection'
 
 const HomePage = () => {
   return (
@@ -18,6 +20,8 @@ const HomePage = () => {
         <HomeHero />
         <TechMarquee />
         <WhatWeDo />
+        <BusinessImpactSection />
+        <ElephantCrewStorySection />
         <Services />
         <OurEdge />
         <MetricsSection />

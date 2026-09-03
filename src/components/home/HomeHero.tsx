@@ -20,8 +20,8 @@ export default function HomeHero() {
     <section className="relative w-full min-h-[90vh] bg-white dark:bg-black text-neutral-900 dark:text-white flex flex-col justify-center items-center px-6 py-24 overflow-hidden transition-colors duration-300">
       
       {/* ------------------------------------------------------------------- */}
-      {/* AMBIENT GLOWS (#00d9aa) */}
-      {/* ------------------------------------------------------------------- */}
+      {/* SINGLE COLOR (#00d9aa) AMBIENT GLOWS */}
+      {/* ------------------------------------------------------------------- 
       <div 
         className="absolute top-10 left-10 w-80 h-80 blur-[120px] pointer-events-none rounded-full opacity-25 dark:opacity-30"
         style={{ backgroundColor: '#00d9aa' }}
@@ -29,18 +29,18 @@ export default function HomeHero() {
       <div 
         className="absolute bottom-10 right-10 w-80 h-80 blur-[120px] pointer-events-none rounded-full opacity-25 dark:opacity-30"
         style={{ backgroundColor: '#00d9aa' }}
-      />
+      />*/}
 
-      {/* Grid Pattern Overlay */}
+      {/* Grid Pattern Overlay 
       <div 
         className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#121212_1px,transparent_1px),linear-gradient(to_bottom,#121212_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-60 dark:opacity-40" 
       />
-
+*/}
       {/* ------------------------------------------------------------------- */}
       {/* FLOATING WIDGETS AROUND CONTENT (#00d9aa THEMED) */}
       {/* ------------------------------------------------------------------- */}
 
-      {/* 1. TOP LEFT: SYSTEM STATUS */}
+      {/* 1. TOP LEFT: SYSTEM STATUS 
       <div 
         className="hidden lg:flex absolute top-24 left-10 xl:left-20 z-20 items-center gap-3.5 bg-white/90 dark:bg-neutral-950/90 px-4 py-3 rounded-2xl shadow-xl backdrop-blur-md transition-all hover:scale-105 duration-300"
         style={{ border: '1px solid rgba(0, 217, 170, 0.3)' }}
@@ -59,9 +59,9 @@ export default function HomeHero() {
             <span style={{ color: '#00d9aa' }}>99.99%</span> Operational
           </p>
         </div>
-      </div>
+      </div>*/}
 
-      {/* 2. TOP RIGHT: LIVE NETWORK BADGE */}
+      {/* 2. TOP RIGHT: LIVE NETWORK BADGE 
       <div 
         className="hidden lg:flex absolute top-20 right-10 xl:right-20 z-20 items-center gap-3 bg-white/90 dark:bg-neutral-950/90 px-4 py-3 rounded-2xl shadow-xl backdrop-blur-md transition-all hover:scale-105 duration-300"
         style={{ border: '1px solid rgba(0, 217, 170, 0.3)' }}
@@ -82,9 +82,9 @@ export default function HomeHero() {
           </p>
           <p className="text-xs font-semibold text-neutral-900 dark:text-white">Global Deployment</p>
         </div>
-      </div>
+      </div>*/}
 
-      {/* 3. BOTTOM LEFT: SPEED & LATENCY CHIP */}
+      {/* 3. BOTTOM LEFT: SPEED & LATENCY CHIP 
       <div 
         className="hidden xl:flex absolute bottom-24 left-12 z-20 items-center gap-3.5 bg-white/90 dark:bg-neutral-950/90 px-4.5 py-3 rounded-2xl shadow-xl backdrop-blur-md transition-all hover:scale-105 duration-300"
         style={{ border: '1px solid rgba(0, 217, 170, 0.3)' }}
@@ -101,9 +101,9 @@ export default function HomeHero() {
           </p>
           <p className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400">High Speed Engine</p>
         </div>
-      </div>
+      </div>*/}
 
-      {/* 4. BOTTOM RIGHT: SECURITY BADGE */}
+      {/* 4. BOTTOM RIGHT: SECURITY BADGE 
       <div 
         className="hidden lg:flex absolute bottom-24 right-12 z-20 items-center gap-3 bg-white/90 dark:bg-neutral-950/90 px-4 py-3 rounded-2xl shadow-xl backdrop-blur-md transition-all hover:scale-105 duration-300"
         style={{ border: '1px solid rgba(0, 217, 170, 0.3)' }}
@@ -118,7 +118,7 @@ export default function HomeHero() {
           <p className="text-xs font-bold text-neutral-900 dark:text-white">Enterprise Ready</p>
           <p className="text-[10px]" style={{ color: '#00d9aa' }}>Zero-trust security</p>
         </div>
-      </div>
+      </div>*/}
 
       {/* ------------------------------------------------------------------- */}
       {/* MAIN HERO CONTENT */}
@@ -127,7 +127,7 @@ export default function HomeHero() {
         
         {/* TRUSTED PARTNERS PILL (ABOVE TITLE) */}
         <div 
-          className="mb-8 inline-flex items-center gap-3 bg-white/90 dark:bg-neutral-950/90 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105"
+          className="mb-8 inline-flex items-center gap-3 bg-white/90 dark:bg-neutral-950/90 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-md transition-all duration-300"
           style={{ border: '1px solid rgba(0, 217, 170, 0.3)' }}
         >
           <div className="flex -space-x-2">
@@ -139,7 +139,7 @@ export default function HomeHero() {
             </div>
             <div 
               className="w-6 h-6 rounded-full text-black border-2 border-white dark:border-black flex items-center justify-center text-[8px] font-extrabold"
-              style={{ backgroundColor: '#00d9aa' }}
+              style={{ backgroundColor: '#5dc192' }}
             >
               +50
             </div>
@@ -149,7 +149,7 @@ export default function HomeHero() {
           </span>
         </div>
 
-        {/* Main Title - Original Font Styles Kept */}
+        {/* Main Title */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6">
           Architecting the future of <br className="hidden sm:inline" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:from-white dark:via-neutral-300 dark:to-neutral-500">
@@ -157,7 +157,7 @@ export default function HomeHero() {
           </span>
         </h1>
 
-        {/* Small Description - Original Font Styles Kept */}
+        {/* Small Description */}
         <p className="max-w-2xl text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal mb-10 transition-colors duration-300">
           We engineer high-performance digital platforms and enterprise-grade software engines designed for scale, speed, and absolute reliability.
         </p>
@@ -167,7 +167,7 @@ export default function HomeHero() {
           {/* Primary CTA */}
           <a
             href="#explore"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00d9aa] hover:bg-[#00c29e] text-black font-semibold text-sm tracking-wide transition-all active:scale-95 rounded-xl shadow-[0_0_25px_rgba(0,217,170,0.35)] hover:shadow-[0_0_35px_rgba(0,217,170,0.5)]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#5dc192] hover:bg-neutral-800 dark:bg-[#5dc192] dark:hover:bg-neutral-200 text-white dark:text-black font-semibold text-sm tracking-wide transition-all active:scale-95 rounded-xl shadow-lg"
           >
             <span>Explore Platform</span>
             <ArrowRight className="w-4 h-4" />

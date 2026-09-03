@@ -304,21 +304,22 @@ export default function Services() {
 
   return (
     <section className="relative w-full py-24 bg-white dark:bg-black text-black dark:text-white font-sans selection:bg-[#00c29e] selection:text-white dark:selection:text-black transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 sm:px-12">
+      {/* Full-width container across the screen with responsive horizontal padding */}
+      <div className="w-full px-4 sm:px-8 lg:px-12">
         
         {/* Short Hero Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-4xl sm:text-6xl font-normal tracking-tight leading-tight mb-4">
+        <div className="text-center max-w-4xl mx-auto mb-24">
+          <h2 className="text-5xl sm:text-7xl font-normal tracking-tight leading-tight mb-6">
             Digital Systems for <span className="font-normal text-black dark:text-white">High Growth</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto leading-relaxed transition-colors duration-300">
+          <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
             End-to-end engineering, UI systems, and AI infrastructure designed to scale your enterprise.
           </p>
         </div>
 
         {/* Categories Stack */}
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-24">
           {categoriesData.map((category) => {
             const activeSubService = selectedSubServices[category.id] || category.services[0];
 
@@ -326,14 +327,14 @@ export default function Services() {
               <div
                 key={category.id}
                 id={`cat-${category.categoryName.toLowerCase().replace(/\s+/g, '-')}`}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-8 border-t border-neutral-200 dark:border-neutral-900 transition-colors duration-300"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch pt-10 border-t border-neutral-200 dark:border-neutral-900 transition-colors duration-300"
               >
                 
-                {/* LEFT COLUMN: Feature Card */}
-                <div className="lg:col-span-5 bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between min-h-[520px] transition-colors duration-300">
+                {/* LEFT COLUMN: Larger Edge-to-Edge Feature Card */}
+                <div className="bg-neutral-50 dark:bg-black border border-neutral-200 dark:border-neutral-800/80 rounded-3xl overflow-hidden flex flex-col justify-between min-h-[640px] transition-colors duration-300 shadow-sm">
                   
-                  {/* Preview Image */}
-                  <div className="relative w-full h-64 rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800/60 mb-6 transition-colors duration-300">
+                  {/* Taller Edge-to-Edge Image */}
+                  <div className="relative w-full h-80 sm:h-96 bg-neutral-100 dark:bg-neutral-900 overflow-hidden transition-colors duration-300">
                     <img
                       src={activeSubService ? activeSubService.image : category.cardImage}
                       alt={activeSubService ? activeSubService.title : category.cardTitle}
@@ -342,35 +343,39 @@ export default function Services() {
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-50 via-transparent to-transparent dark:from-neutral-950 transition-colors duration-300" />
                   </div>
 
-                  {/* Card Info */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 flex items-center justify-center text-[#00c29e] transition-colors duration-300">
-                        <Grid className="w-5 h-5" />
+                  {/* Card Content with Generous Spacing */}
+                  <div className="p-8 sm:p-12 flex flex-col flex-grow justify-between">
+                    <div>
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 flex items-center justify-center text-[#00c29e] transition-colors duration-300">
+                          <Grid className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-medium tracking-tight text-black dark:text-white transition-colors duration-300">
+                          {activeSubService ? activeSubService.title : category.cardTitle}
+                        </h3>
                       </div>
-                      <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-black dark:text-white transition-colors duration-300">
-                        {activeSubService ? activeSubService.title : category.cardTitle}
-                      </h3>
+
+                      <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8 transition-colors duration-300 max-w-2xl">
+                        {activeSubService ? activeSubService.description : category.cardDescription}
+                      </p>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 transition-colors duration-300">
-                      {activeSubService ? activeSubService.description : category.cardDescription}
-                    </p>
-
                     {/* CTA Button */}
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#00c29e] hover:bg-[#00a889] text-white dark:text-black font-semibold text-xs tracking-wide transition-all hover:scale-105"
-                    >
-                      <span>Explore</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
+                    <div>
+                      <a
+                        href="#contact"
+                        className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#00c29e] hover:bg-[#00a889] text-white dark:text-black font-semibold text-sm tracking-wide transition-all hover:scale-105"
+                      >
+                        <span>Explore</span>
+                        <ArrowUpRight className="w-5 h-5" />
+                      </a>
+                    </div>
                   </div>
 
                 </div>
 
-                {/* RIGHT COLUMN: Service Items */}
-                <div className="lg:col-span-7 flex flex-col">
+                {/* RIGHT COLUMN: Service Items Grid */}
+                <div className="flex flex-col justify-center">
                   {category.services.map((service) => {
                     const isSelected = activeSubService?.id === service.id;
 
@@ -378,7 +383,7 @@ export default function Services() {
                       <div
                         key={service.id}
                         onClick={() => handleSelectSubService(category.id, service)}
-                        className={`group cursor-pointer border-b py-5 transition-all duration-200 ${
+                        className={`group cursor-pointer border-b py-6 sm:py-7 transition-all duration-200 ${
                           isSelected
                             ? 'border-[#00c29e]'
                             : 'border-neutral-200 dark:border-neutral-800/80 hover:border-neutral-400 dark:hover:border-neutral-700'
@@ -386,7 +391,7 @@ export default function Services() {
                       >
                         <div className="flex items-center justify-between">
                           <h4
-                            className={`text-lg sm:text-2xl font-normal tracking-tight transition-all duration-200 ${
+                            className={`text-xl sm:text-3xl font-normal tracking-tight transition-all duration-200 ${
                               isSelected
                                 ? 'text-[#00c29e] font-medium translate-x-1'
                                 : 'text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white'
@@ -396,7 +401,7 @@ export default function Services() {
                           </h4>
                           
                           <ArrowUpRight
-                            className={`w-5 h-5 transition-all duration-200 ${
+                            className={`w-6 h-6 transition-all duration-200 ${
                               isSelected
                                 ? 'text-[#00c29e] opacity-100 translate-x-0'
                                 : 'text-neutral-400 dark:text-neutral-600 opacity-0 group-hover:opacity-100 group-hover:text-neutral-600 dark:group-hover:text-neutral-400'
@@ -405,7 +410,7 @@ export default function Services() {
                         </div>
 
                         {isSelected && (
-                          <p className="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pl-1 transition-colors duration-300">
+                          <p className="mt-3 text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed pl-1 transition-colors duration-300 max-w-2xl">
                             {service.description}
                           </p>
                         )}

@@ -67,7 +67,7 @@ export default function WhatWeDo() {
       ref={sectionRef}
       className="relative w-full h-screen bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300"
     >
-      <div className="relative z-10 max-w-7xl mx-auto h-full px-6 sm:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="relative z-10 max-w-full mx-auto h-full px-5 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* ------------------------------------------------------------------- */}
         {/* LEFT COLUMN: MAIN TITLE & DESCRIPTION ONLY */}

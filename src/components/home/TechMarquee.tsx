@@ -2,51 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 
+// Swapped to Simple Icons for clean, monochrome SVG paths
 const LOGOS = [
-  {
-    name: 'React',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-  },
-  {
-    name: 'Next.js',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-    invertInDark: true,
-  },
-  {
-    name: 'TypeScript',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-  },
-  {
-    name: 'JavaScript',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-  },
-  {
-    name: 'Vercel',
-    src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vercel.svg',
-    invertInDark: true,
-  },
-  {
-    name: 'Hostinger',
-    src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/hostinger.svg',
-    invertInDark: true,
-  },
-  {
-    name: 'Supabase',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',
-  },
-  {
-    name: 'Node.js',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-  },
-  {
-    name: 'MongoDB',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-  },
-  {
-    name: 'Express.js',
-    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
-    invertInDark: true,
-  },
+  { name: 'React', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/react.svg' },
+  { name: 'Next.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nextdotjs.svg' },
+  { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/typescript.svg' },
+  { name: 'JavaScript', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/javascript.svg' },
+  { name: 'Vercel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vercel.svg' },
+  { name: 'Hostinger', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/hostinger.svg' },
+  { name: 'Supabase', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/supabase.svg' },
+  { name: 'Node.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nodedotjs.svg' },
+  { name: 'MongoDB', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/mongodb.svg' },
+  { name: 'Express.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/express.svg' },
 ];
 
 export default function TechMarquee() {
@@ -76,18 +43,21 @@ export default function TechMarquee() {
             {LOGOS.map((logo, index) => (
               <div
                 key={`${setIndex}-${index}`}
-                className="relative flex items-center justify-center min-w-[70px] sm:min-w-[90px] transition-all duration-300 hover:scale-100 group cursor-pointer"
+                className="relative flex items-center justify-center min-w-[70px] sm:min-w-[90px] transition-all duration-300 hover:scale-105 group cursor-pointer"
                 title={logo.name}
               >
-                {/* White Glow Backdrop Effect (Active in Dark Mode) */}
+                {/* Glow Backdrop Effect (Dark Mode) */}
                 <div className="absolute inset-0 rounded-full bg-white/20 blur-xl opacity-0 dark:opacity-40 group-hover:dark:opacity-80 transition-opacity duration-300 pointer-events-none" />
 
+                {/* 
+                  Color transformation:
+                  1. grayscale brightness-0 turns all icon paths pure black in light mode.
+                  2. dark:invert flips black to pure white in dark mode.
+                */}
                 <img
                   src={logo.src}
                   alt={`${logo.name} logo`}
-                  className={`h-10 sm:h-12 md:h-14 w-auto object-contain relative z-10 transition-all duration-300 opacity-90 group-hover:opacity-100 ${
-                    logo.invertInDark ? 'dark:invert' : ''
-                  } dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]`}
+                  className="h-10 sm:h-12 md:h-14 w-auto object-contain relative z-10 opacity-80 group-hover:opacity-100 grayscale brightness-0 dark:invert transition-all duration-300 dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
                   loading="lazy"
                 />
               </div>
@@ -96,7 +66,7 @@ export default function TechMarquee() {
         ))}
       </div>
 
-      {/* Keyframe animation styling for Left-to-Right scroll */}
+      {/* Keyframe animation styling */}
       <style jsx>{`
         @keyframes marquee-ltr {
           0% {
