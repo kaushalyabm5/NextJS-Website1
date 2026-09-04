@@ -39,8 +39,8 @@ const categoriesData: Category[] = [
     services: [
       { id: 'wd-1', title: 'Framer Development' },
       { id: 'wd-2', title: 'Landing Page Design' },
-      { id: 'wd-3', title: 'Full Website Design (Multi-page)' },
-      { id: 'wd-4', title: 'Web Animations (Rive, Spline, Lottie)' },
+      { id: 'wd-3', title: 'Full Website Design' },
+      { id: 'wd-4', title: 'Web Animations' },
       { id: 'wd-5', title: '+ More' },
     ],
   },
@@ -49,11 +49,11 @@ const categoriesData: Category[] = [
     categoryName: 'UI/ UX Design',
     cardImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80',
     services: [
-      { id: 'ui-1', title: 'Web & Mobile Product UI' },
+      { id: 'ui-1', title: 'Web & Mobile UI' },
       { id: 'ui-2', title: 'User Flows' },
       { id: 'ui-3', title: 'Wireframes' },
-      { id: 'ui-4', title: 'Design Systems & Components' },
-      { id: 'ui-5', title: 'Prototyping (Figma)' },
+      { id: 'ui-4', title: 'Design Systems' },
+      { id: 'ui-5', title: 'Prototyping' },
       { id: 'ui-6', title: '+ More' },
     ],
   },
@@ -64,7 +64,7 @@ const categoriesData: Category[] = [
     services: [
       { id: 'dp-1', title: 'Fundraising Pitch Decks' },
       { id: 'dp-2', title: 'Business Presentations' },
-      { id: 'dp-3', title: 'Slide Redesign & Formatting' },
+      { id: 'dp-3', title: 'Slide Redesign' },
       { id: 'dp-4', title: '+ More' },
     ],
   },
@@ -92,7 +92,6 @@ export default function Services() {
 
       if (!pinElement || !scrollElement) return;
 
-      // Calculate total horizontal width minus viewport width + extra padding to show the last card completely
       const getScrollAmount = () => {
         return scrollElement.scrollWidth - window.innerWidth + 64;
       };
@@ -146,7 +145,7 @@ export default function Services() {
             {categoriesData.map((category) => (
               <div
                 key={category.id}
-                className="relative flex-shrink-0 w-[270px] sm:w-[320px] h-[440px] sm:h-[490px] rounded-2xl sm:rounded-3xl bg-neutral-900 border border-neutral-200 dark:border-neutral-800/80 overflow-hidden flex flex-col justify-between p-6 group shadow-xl"
+                className="relative flex-shrink-0 w-[300px] sm:w-[360px] h-[380px] sm:h-[430px] rounded-2xl sm:rounded-3xl bg-neutral-900 border border-neutral-200 dark:border-neutral-800/80 overflow-hidden flex flex-col justify-between p-6 group shadow-xl"
               >
                 {/* Image Background */}
                 <img
@@ -157,7 +156,7 @@ export default function Services() {
                 />
                 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/95 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/95 pointer-events-none" />
 
                 {/* Card Title */}
                 <div className="relative z-10">
@@ -167,11 +166,11 @@ export default function Services() {
                 </div>
 
                 {/* Service Tags */}
-                <div className="relative z-10 flex flex-wrap gap-2 pt-3">
+                <div className="relative z-10 flex flex-wrap gap-1.5 sm:gap-2 pt-3">
                   {category.services.map((service) => (
                     <span
                       key={service.id}
-                      className="px-3 py-1 rounded-full text-xs font-medium text-white/90 bg-black/50 backdrop-blur-md border border-white/20 hover:border-white/50 transition-colors duration-200"
+                      className="px-2.5 py-1 rounded-full text-xs font-medium text-white/90 bg-black/50 backdrop-blur-md border border-white/20 hover:border-white/50 transition-colors duration-200"
                     >
                       {service.title}
                     </span>

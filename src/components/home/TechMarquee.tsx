@@ -4,15 +4,15 @@ import React, { useState, useEffect } from 'react';
 
 const LOGOS = [
   { name: 'React', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/react.svg', color: '#61DAFB' },
-  { name: 'Next.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nextdotjs.svg', color: '#FFFFFF' },
+  { name: 'Next.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nextdotjs.svg', color: 'var(--logo-mono)' },
   { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/typescript.svg', color: '#3178C6' },
   { name: 'JavaScript', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/javascript.svg', color: '#F7DF1E' },
-  { name: 'Vercel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vercel.svg', color: '#FFFFFF' },
+  { name: 'Vercel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vercel.svg', color: 'var(--logo-mono)' },
   { name: 'Hostinger', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/hostinger.svg', color: '#673DE6' },
   { name: 'Supabase', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/supabase.svg', color: '#3FCF8E' },
   { name: 'Node.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nodedotjs.svg', color: '#5FA04E' },
   { name: 'MongoDB', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/mongodb.svg', color: '#47A248' },
-  { name: 'Express.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/express.svg', color: '#FFFFFF' },
+  { name: 'Express.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/express.svg', color: 'var(--logo-mono)' },
 ];
 
 export default function TechMarquee() {
@@ -29,9 +29,9 @@ export default function TechMarquee() {
   }
 
   return (
-    <div className="w-full bg-white dark:bg-black py-8 border-y border-neutral-200 dark:border-neutral-800 overflow-hidden relative transition-colors duration-300">
+    <div className="w-full bg-white dark:bg-black py-8 border-y border-neutral-200 dark:border-neutral-800 overflow-hidden relative transition-colors duration-300 [--logo-mono:#000000] dark:[--logo-mono:#ffffff]">
       
-      {/* Edge Blur / Fade Masks */}
+      {/* Edge Fade Masks */}
       <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-48 z-10 bg-gradient-to-r from-white dark:from-black to-transparent pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-48 z-10 bg-gradient-to-l from-white dark:from-black to-transparent pointer-events-none" />
 
@@ -45,18 +45,18 @@ export default function TechMarquee() {
                 className="relative flex items-center justify-center min-w-[70px] sm:min-w-[90px] h-10 sm:h-12 md:h-14 transition-all duration-300 hover:scale-105 group cursor-pointer"
                 title={logo.name}
               >
-                {/* Fixed Constant White Glow Backdrop */}
-                <div className="absolute inset-0 rounded-full bg-white/20 blur-xl opacity-0 dark:opacity-40 group-hover:dark:opacity-40 transition-opacity duration-300 pointer-events-none" />
+                {/* Dynamic Glow - Subtle black glow in light mode, soft white in dark mode 
+                <div className="absolute inset-0 rounded-full bg-black/5 dark:bg-white/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />*/}
 
-                {/* Default State: Pure White Icon */}
+                {/* Pure Solid Black (Light Mode) / Pure Solid White (Dark Mode) */}
                 <img
                   src={logo.src}
                   alt={`${logo.name} logo`}
-                  className="h-full w-auto object-contain relative z-10 opacity-80 group-hover:opacity-0 brightness-0 invert transition-all duration-300 drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
+                  className="h-full w-auto object-contain relative z-10 opacity-100 group-hover:opacity-0 brightness-0 contrast-200 dark:invert transition-all duration-300"
                   loading="lazy"
                 />
 
-                {/* Hover State: Pure Brand Color Only */}
+                {/* Hover Mask Color: Brand Color or Dynamic Black/White for Mono Logos */}
                 <div
                   className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
@@ -77,7 +77,7 @@ export default function TechMarquee() {
         ))}
       </div>
 
-      {/* Keyframe animation styling */}
+      {/* Animation Keyframes */}
       <style jsx>{`
         @keyframes marquee-ltr {
           0% {
