@@ -121,7 +121,7 @@ export default function ElephantCrewStorySection() {
   return (
     <section
       ref={containerRef}
-      className="w-full h-screen bg-white dark:bg-black text-black dark:text-white relative overflow-hidden flex items-center justify-center font-sans border-y border-neutral-200 dark:border-neutral-900 transition-colors duration-300"
+      className="w-full h-screen bg-white dark:bg-black text-black dark:text-white relative overflow-hidden flex items-center justify-center border-y border-neutral-200 dark:border-neutral-900 transition-colors duration-300"
     >
       <div className="max-w-[1340px] w-full h-full mx-auto px-6 lg:px-12 pt-20 pb-12 relative flex items-center justify-between">
         
@@ -129,7 +129,7 @@ export default function ElephantCrewStorySection() {
         <div className="w-full lg:w-[50%] z-30 flex flex-col justify-center space-y-6">
           <h2
             ref={leftTitleRef}
-            className="text-4xl sm:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.08] text-black dark:text-white transition-colors duration-300"
+            className="text-4xl sm:text-5xl lg:text-[52px] font-normal tracking-tight leading-[1.08] text-black dark:text-white transition-colors duration-300"
           >
             The Premier Full-Service Digital Agency in North England & the UK
           </h2>

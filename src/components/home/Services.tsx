@@ -1,8 +1,20 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
+import Image, { StaticImageData } from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+// Static Imports from src/assets/services-img/
+import img1 from '@/assets/services-img/1.jpg';
+import img2 from '@/assets/services-img/2.jpg';
+import img3 from '@/assets/services-img/3.jpg';
+import img4 from '@/assets/services-img/4.jpg';
+import img5 from '@/assets/services-img/5.jpg';
+import img6 from '@/assets/services-img/6.jpg';
+import img7 from '@/assets/services-img/7.jpg';
+import img8 from '@/assets/services-img/8.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +26,7 @@ interface SubService {
 interface Category {
   id: string;
   categoryName: string;
-  cardImage: string;
+  cardImage: StaticImageData;
   services: SubService[];
 }
 
@@ -22,7 +34,7 @@ const categoriesData: Category[] = [
   {
     id: 'brand-identity',
     categoryName: 'Brand Identity',
-    cardImage: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80',
+    cardImage: img1,
     services: [
       { id: 'bi-1', title: 'Logo Design' },
       { id: 'bi-2', title: 'Brand Guidelines' },
@@ -35,7 +47,7 @@ const categoriesData: Category[] = [
   {
     id: 'web-design-dev',
     categoryName: 'Web Design & Development',
-    cardImage: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80',
+    cardImage: img2,
     services: [
       { id: 'wd-1', title: 'Framer Development' },
       { id: 'wd-2', title: 'Landing Page Design' },
@@ -47,7 +59,7 @@ const categoriesData: Category[] = [
   {
     id: 'ui-ux-design',
     categoryName: 'UI/ UX Design',
-    cardImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80',
+    cardImage: img3,
     services: [
       { id: 'ui-1', title: 'Web & Mobile UI' },
       { id: 'ui-2', title: 'User Flows' },
@@ -60,7 +72,7 @@ const categoriesData: Category[] = [
   {
     id: 'deck-presentation',
     categoryName: 'Deck & Presentation',
-    cardImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    cardImage: img4,
     services: [
       { id: 'dp-1', title: 'Fundraising Pitch Decks' },
       { id: 'dp-2', title: 'Business Presentations' },
@@ -71,7 +83,40 @@ const categoriesData: Category[] = [
   {
     id: 'product-engineering',
     categoryName: 'Product Engineering',
-    cardImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
+    cardImage: img5,
+    services: [
+      { id: 'pe-1', title: 'Product Strategy' },
+      { id: 'pe-2', title: 'Full-Stack Build' },
+      { id: 'pe-3', title: 'Cloud Deployment' },
+      { id: 'pe-4', title: '+ More' },
+    ],
+  },
+  {
+    id: 'product-engineering1',
+    categoryName: 'Product Engineering 2',
+    cardImage: img6,
+    services: [
+      { id: 'pe-1', title: 'Product Strategy' },
+      { id: 'pe-2', title: 'Full-Stack Build' },
+      { id: 'pe-3', title: 'Cloud Deployment' },
+      { id: 'pe-4', title: '+ More' },
+    ],
+  },
+  {
+    id: 'product-engineering2',
+    categoryName: 'Product Engineering 3',
+    cardImage: img7,
+    services: [
+      { id: 'pe-1', title: 'Product Strategy' },
+      { id: 'pe-2', title: 'Full-Stack Build' },
+      { id: 'pe-3', title: 'Cloud Deployment' },
+      { id: 'pe-4', title: '+ More' },
+    ],
+  },
+  {
+    id: 'product-engineering3',
+    categoryName: 'Product Engineering 4',
+    cardImage: img8,
     services: [
       { id: 'pe-1', title: 'Product Strategy' },
       { id: 'pe-2', title: 'Full-Stack Build' },
@@ -82,18 +127,18 @@ const categoriesData: Category[] = [
 ];
 
 export default function Services() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const pinElement = triggerRef.current;
-      const scrollElement = sectionRef.current;
+  useGSAP(
+    () => {
+      const pinElement = containerRef.current;
+      const scrollElement = trackRef.current;
 
       if (!pinElement || !scrollElement) return;
 
       const getScrollAmount = () => {
-        return scrollElement.scrollWidth - window.innerWidth + 64;
+        return scrollElement.getBoundingClientRect().width - window.innerWidth;
       };
 
       gsap.to(scrollElement, {
@@ -103,32 +148,24 @@ export default function Services() {
           trigger: pinElement,
           pin: true,
           pinSpacing: true,
-          anticipatePin: 1,
           scrub: 1,
           start: 'top top',
           end: () => `+=${getScrollAmount()}`,
           invalidateOnRefresh: true,
-          fastScrollEnd: true,
+          anticipatePin: 1,
         },
       });
-    });
-
-    const handleResize = () => ScrollTrigger.refresh();
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      ctx.revert();
-    };
-  }, []);
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <div ref={triggerRef} className="relative overflow-hidden bg-white dark:bg-black">
-      <section className="min-h-screen w-full flex flex-col justify-between py-12 text-black dark:text-white font-sans">
+    <div ref={containerRef} className="relative overflow-hidden bg-white dark:bg-black">
+      <section className="min-h-screen w-full flex flex-col pt-5 justify-between text-black dark:text-white">
         
         {/* Header Title */}
-        <div className="w-full px-6 sm:px-12 lg:px-16 flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 flex-shrink-0">
-          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
+        <div className="w-full px-6 sm:px-12 lg:px-16 flex flex-col md:flex-row md:items-end justify-between gap-4 flex-shrink-0">
+          <h2 className="text-4xl sm:text-5xl font-normal tracking-tight">
             We Cover Them All!
           </h2>
           <p className="text-base sm:text-xl text-neutral-500 dark:text-neutral-400 font-medium">
@@ -137,9 +174,9 @@ export default function Services() {
         </div>
 
         {/* Horizontal Track Container */}
-        <div className="w-full overflow-hidden flex-grow flex items-center py-6">
+        <div className="w-full overflow-hidden flex-grow flex items-center">
           <div
-            ref={sectionRef}
+            ref={trackRef}
             className="flex gap-6 px-6 sm:px-12 lg:px-16 w-max will-change-transform"
           >
             {categoriesData.map((category) => (
@@ -148,15 +185,17 @@ export default function Services() {
                 className="relative flex-shrink-0 w-[300px] sm:w-[360px] h-[380px] sm:h-[430px] rounded-2xl sm:rounded-3xl bg-neutral-900 border border-neutral-200 dark:border-neutral-800/80 overflow-hidden flex flex-col justify-between p-6 group shadow-xl"
               >
                 {/* Image Background */}
-                <img
+                <Image
                   src={category.cardImage}
                   alt={category.categoryName}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
-                  onLoad={() => ScrollTrigger.refresh()}
+                  fill
+                  sizes="(max-width: 640px) 300px, 360px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-100 opacity-100"
+                  priority={category.id === 'brand-identity'}
                 />
                 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/95 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/50 pointer-events-none" />
 
                 {/* Card Title */}
                 <div className="relative z-10">
@@ -170,7 +209,7 @@ export default function Services() {
                   {category.services.map((service) => (
                     <span
                       key={service.id}
-                      className="px-2.5 py-1 rounded-full text-xs font-medium text-white/90 bg-black/50 backdrop-blur-md border border-white/20 hover:border-white/50 transition-colors duration-200"
+                      className="px-3 py-1 rounded-full text-xs font-medium text-white/90 bg-black/50 backdrop-blur-md border border-white/20 hover:border-white/50 transition-colors duration-200"
                     >
                       {service.title}
                     </span>

@@ -59,7 +59,7 @@ const row2Testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="relative w-full py-24 sm:py-32 bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden">
+    <section className="relative w-full py-15 bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden">
       
       {/* HEADER SECTION */}
       <div className="text-center max-w-3xl mx-auto space-y-4 px-6 mb-16">
@@ -67,11 +67,9 @@ export default function Testimonials() {
           <span>[ TESTIMONIALS ]</span>
         </div>
 
-        <h2 className="text-4xl sm:text-7xl font-normal tracking-tight leading-tight text-neutral-900 dark:text-white">
-          What Our{' '}
-          <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:from-white dark:via-neutral-300 dark:to-neutral-500">
-            Clients Say
-          </span>
+        <h2 className="text-[3.5rem] font-normal tracking-tight leading-tight text-neutral-900 dark:text-white">
+          What Our Clients Say
+         
         </h2>
 
         <p className="text-neutral-600 dark:text-neutral-400 text-base sm:text-xl font-normal tracking-wide">
@@ -134,7 +132,7 @@ export default function Testimonials() {
 // SINGLE TESTIMONIAL CARD
 function TestimonialCard({ item }: { item: typeof row1Testimonials[0] }) {
   return (
-    <div className="w-[320px] sm:w-[400px] mx-3 shrink-0 rounded-2xl bg-neutral-100/90 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 p-6 flex flex-col justify-between shadow-lg backdrop-blur-md transition-all duration-300 hover:border-neutral-400 dark:hover:border-neutral-700">
+    <div className="w-[320px] sm:w-[400px] mx-3 shrink-0 rounded-2xl bg-neutral-100/90 dark:bg-black border border-neutral-200 dark:border-neutral-800 p-6 flex flex-col justify-between shadow-lg backdrop-blur-md transition-all duration-300 hover:border-neutral-400 dark:hover:border-neutral-700">
       <div>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-1">

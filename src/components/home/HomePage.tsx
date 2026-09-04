@@ -1,7 +1,7 @@
 import React from 'react'
 import HomeHero from './HomeHero'
 import WhatWeDo from './WhatWeDo'
-import Services from './Services'
+
 import OurEdge from './OurEdge'
 import MetricsSection from './MetricsSection'
 import Process from './Process'
@@ -13,6 +13,7 @@ import ProjectsAndCTA from './ProjectsAndCTA'
 import TechMarquee from './TechMarquee'
 import BusinessImpactSection from './BusinessImpactSection'
 import ElephantCrewStorySection from './ElephantCrewStorySection'
+import Services from './Services'
 
 const HomePage = () => {
   return (

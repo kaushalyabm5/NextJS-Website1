@@ -25,9 +25,9 @@ const edges = [
     subtitle: 'Growth-Focused Architecture',
     description: 'Strategic planning and smart decision making to build solutions that support long term business growth.',
     icon: Compass,
-    accent: 'text-amber-500',
-    glowBg: 'bg-amber-500',
-    borderColor: 'border-amber-500/30',
+    accent: 'text-[#5dc192]',
+    glowBg: 'bg-[#5dc192]',
+    borderColor: 'border-[#5dc192]/30',
     widget: {
       metric: '+140%',
       label: 'Trajectory Growth',
@@ -41,9 +41,9 @@ const edges = [
     subtitle: 'Modern Technical Stack',
     description: 'Deep technical knowledge and modern development tools used to create reliable and scalable digital solutions.',
     icon: Cpu,
-    accent: 'text-blue-500',
-    glowBg: 'bg-blue-500',
-    borderColor: 'border-blue-500/30',
+    accent: 'text-[#5dc192]',
+    glowBg: 'bg-[#5dc192]',
+    borderColor: 'border-[#5dc192]/30',
     widget: {
       metric: '99.99%',
       label: 'System Reliability',
@@ -57,9 +57,9 @@ const edges = [
     subtitle: 'Tailored Execution',
     description: 'We prioritize understanding client needs to deliver solutions that align perfectly with their goals.',
     icon: Target,
-    accent: 'text-emerald-500',
-    glowBg: 'bg-emerald-500',
-    borderColor: 'border-emerald-500/30',
+    accent: 'text-[#5dc192]',
+    glowBg: 'bg-[#5dc192]',
+    borderColor: 'border-[#5dc192]/30',
     widget: {
       metric: '100%',
       label: 'Goal Alignment',
@@ -73,9 +73,9 @@ const edges = [
     subtitle: 'Always-On Assistance',
     description: 'Complete support throughout the entire process with reliable assistance available whenever you need it.',
     icon: Headphones,
-    accent: 'text-rose-500',
-    glowBg: 'bg-rose-500',
-    borderColor: 'border-rose-500/30',
+    accent: 'text-[#5dc192]',
+    glowBg: 'bg-[#5dc192]',
+    borderColor: 'border-[#5dc192]/30',
     widget: {
       metric: '24/7/365',
       label: 'Uptime & Response',
@@ -171,20 +171,20 @@ export default function OurEdge() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full py-36 bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300 overflow-hidden"
+      className="relative w-full bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
         
         {/* Section Header */}
         <div ref={headerRef} className="max-w-3xl mb-24 opacity-0">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 font-mono text-xs uppercase tracking-widest rounded-full shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-neutral-900 dark:text-white animate-spin" style={{ animationDuration: '6s' }} />
+            <Sparkles className="w-3.5 h-3.5 text-[#5dc192] animate-spin" style={{ animationDuration: '6s' }} />
             <span>[ OUR EDGE ]</span>
           </div>
 
           <h2 className="text-4xl sm:text-6xl font-normal tracking-tight leading-[1.05] mb-6 text-neutral-900 dark:text-white">
             The Axstar{' '}
-            <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:from-white dark:via-neutral-300 dark:to-neutral-500">
+            <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#5dc192] via-[#5dc192]/80 to-[#5dc192]/50">
               Advantage.
             </span>
           </h2>
@@ -203,7 +203,7 @@ export default function OurEdge() {
           {/* Animated Glowing Laser Fill Line */}
           <div 
             ref={progressBarRef}
-            className="absolute left-2.5 sm:left-4 top-4 w-0.5 bg-gradient-to-b from-amber-500 via-blue-500 to-rose-500 shadow-[0_0_12px_rgba(59,130,246,0.8)] pointer-events-none origin-top"
+            className="absolute left-2.5 sm:left-4 top-4 w-0.5 bg-[#5dc192] shadow-[0_0_12px_rgba(93,193,146,0.8)] pointer-events-none origin-top"
           />
 
           {/* Timeline Items */}
@@ -222,7 +222,7 @@ export default function OurEdge() {
                   <div className="edge-node absolute -left-[30px] sm:-left-[54px] top-1.5 z-20 flex items-center justify-center">
                     <span className="relative flex h-5 w-5 items-center justify-center">
                       <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${edge.glowBg}`} style={{ animationDuration: '3s' }} />
-                      <span className={`relative inline-flex rounded-full h-3.5 w-3.5 ${edge.glowBg} ring-4 ring-white dark:ring-black shadow-[0_0_15px_rgba(255,255,255,0.6)]`} />
+                      <span className={`relative inline-flex rounded-full h-3.5 w-3.5 ${edge.glowBg} ring-4 ring-white dark:ring-black shadow-[0_0_15px_rgba(93,193,146,0.6)]`} />
                     </span>
                   </div>
 
@@ -240,7 +240,7 @@ export default function OurEdge() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white shadow-sm`}>
+                      <div className="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white shadow-sm">
                         <Icon className={`w-6 h-6 ${edge.accent}`} />
                       </div>
                       <h3 className="text-2xl sm:text-4xl font-medium tracking-tight text-neutral-900 dark:text-white">
@@ -266,7 +266,7 @@ export default function OurEdge() {
                           {edge.widget.label}
                         </span>
                         <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-mono text-[10px] uppercase bg-neutral-200/50 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+                          <CheckCircle2 className="w-3 h-3 text-[#5dc192]" />
                           Verified
                         </span>
                       </div>
