@@ -2,19 +2,11 @@
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FolderX } from 'lucide-react';
 import gsap from 'gsap';
 import { Flip } from 'gsap/Flip';
-
-type Category = 'All' | 'Branding' | 'Web Design' | 'Product Design' | 'Launch Videos' | 'Pitch/Sales Decks';
-
-interface Project {
-  id: string;
-  title: string;
-  category: Category[];
-  tags: string[];
-  image: string;
-}
+import { projects, Category } from '@/data/projects';
 
 const filterCategories: Category[] = [
   'All',
@@ -25,71 +17,15 @@ const filterCategories: Category[] = [
   'Pitch/Sales Decks',
 ];
 
-const projects: Project[] = [
-  {
-    id: '01',
-    title: 'Ground - Landing page',
-    category: ['Web Design', 'Product Design'],
-    tags: ['AI', 'SaaS', 'Web Design'],
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: '02',
-    title: 'Intrepid Labs - Web Design',
-    category: ['Web Design'],
-    tags: ['Biotech', 'AI', 'Web Design'],
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: '03',
-    title: 'Metal - Website Design',
-    category: ['Web Design', 'Product Design'],
-    tags: ['B2B', 'SaaS', 'Web Design'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: '04',
-    title: 'Archil - Branding',
-    category: ['Branding'],
-    tags: ['Dev Tools', 'AI', 'Branding'],
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: '05',
-    title: 'Hemut - Landing Page',
-    category: ['Web Design'],
-    tags: ['Logistics & Transportation', 'AI', 'Web Design'],
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: '06',
-    title: 'Remedy - Landing Page',
-    category: ['Web Design', 'Product Design'],
-    tags: ['Healthcare', 'AI', 'Web Design'],
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: '07',
-    title: 'Hemut Diesel',
-    category: ['Web Design', 'Branding'],
-    tags: ['Logistics', 'B2B', 'Web Design'],
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: '08',
-    title: 'LineSight - AI Platform',
-    category: ['Web Design', 'Product Design'],
-    tags: ['Industrial AI', 'Product Design'],
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop',
-  },
-];
-
 export default function PortfolioShowcase() {
   const [activeTab, setActiveTab] = useState<Category>('All');
   const [isMounted, setIsMounted] = useState(false);
+  
+  const containerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const emptyStateRef = useRef<HTMLDivElement>(null);
 
+  // Set mounted state on initial client load
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -98,50 +34,56 @@ export default function PortfolioShowcase() {
     activeTab === 'All' ? true : project.category.includes(activeTab)
   );
 
+  // Handle GSAP Flip animations smoothly inside a context
   useLayoutEffect(() => {
     if (!isMounted) return;
 
     gsap.registerPlugin(Flip);
 
-    if (gridRef.current && filteredProjects.length > 0) {
-      const cards = gsap.utils.toArray<HTMLElement>('.portfolio-card');
-      const state = Flip.getState(cards);
+    const ctx = gsap.context(() => {
+      if (gridRef.current && filteredProjects.length > 0) {
+        const cards = gsap.utils.toArray<HTMLElement>('.portfolio-card');
+        const state = Flip.getState(cards);
 
-      Flip.from(state, {
-        duration: 0.45,
-        ease: 'power3.inOut',
-        stagger: 0.03,
-        scale: true,
-        absoluteOnLeave: true,
-        onEnter: (elements) =>
-          gsap.fromTo(
-            elements,
-            { opacity: 0, scale: 0.96, y: 15 },
-            { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: 'power2.out' }
-          ),
-        onLeave: (elements) =>
-          gsap.to(elements, { opacity: 0, scale: 0.96, duration: 0.25 }),
-      });
-    }
+        Flip.from(state, {
+          duration: 0.45,
+          ease: 'power3.inOut',
+          stagger: 0.03,
+          scale: true,
+          absoluteOnLeave: true,
+          onEnter: (elements) =>
+            gsap.fromTo(
+              elements,
+              { opacity: 0, scale: 0.96, y: 15 },
+              { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: 'power2.out' }
+            ),
+          onLeave: (elements) =>
+            gsap.to(elements, { opacity: 0, scale: 0.96, duration: 0.25 }),
+        });
+      }
 
-    if (filteredProjects.length === 0 && emptyStateRef.current) {
-      gsap.fromTo(
-        emptyStateRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
-      );
-    }
-  }, [activeTab, isMounted]);
+      if (filteredProjects.length === 0 && emptyStateRef.current) {
+        gsap.fromTo(
+          emptyStateRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
+        );
+      }
+    }, containerRef);
 
-  if (!isMounted) return null;
+    return () => ctx.revert();
+  }, [activeTab, isMounted, filteredProjects.length]);
 
   return (
-    <section className="w-full bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300 py-12 sm:py-20 px-4 sm:px-8 lg:px-12">
+    <section 
+      ref={containerRef}
+      className="w-full bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300 py-12 sm:py-20 px-4 sm:px-8 lg:px-12 min-h-screen"
+    >
       <div className="max-w-[1400px] mx-auto">
         
         {/* Top Badge */}
         <div className="mb-6">
-          <span className="px-3 py-1 text-xs font-normal rounded-md bg-neutral-100 dark:bg-black text-neutral-700 dark:text-neutral-300 border border-neutral-200/80 dark:border-neutral-800">
+          <span className="px-3 py-1 text-xs font-normal rounded-md bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200/80 dark:border-neutral-800">
             Portfolio
           </span>
         </div>
@@ -149,16 +91,16 @@ export default function PortfolioShowcase() {
         {/* Header Block */}
         <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-4 mb-14">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-950 dark:text-white">
-            Work we're proud of
+            Work we&apos;re proud of
           </h1>
           <p className="text-base sm:text-lg text-neutral-500 dark:text-neutral-400 font-normal">
-            Some of the work we're proud of
+            Some of the work we&apos;re proud of
           </p>
         </div>
 
-        {/* Centered Filter Tab Container */}
+        {/* Filter Tab Container */}
         <div className="flex justify-center mb-16">
-          <div className="inline-flex items-center gap-1.5 p-1.5 rounded-lg bg-neutral-100/80 dark:bg-black border border-neutral-200/80 dark:border-neutral-800/80 max-w-full overflow-x-auto no-scrollbar">
+          <div className="inline-flex items-center gap-1.5 p-1.5 rounded-lg bg-neutral-100/80 dark:bg-neutral-900/80 border border-neutral-200/80 dark:border-neutral-800/80 max-w-full overflow-x-auto no-scrollbar">
             {filterCategories.map((category) => {
               const isActive = activeTab === category;
               return (
@@ -178,18 +120,20 @@ export default function PortfolioShowcase() {
           </div>
         </div>
 
-        {/* Large Full-Bleed Grid Layout */}
+        {/* Portfolio Grid Layout */}
         {filteredProjects.length > 0 ? (
           <div
             ref={gridRef}
             className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12"
           >
             {filteredProjects.map((project) => (
-              <div
+              <Link
                 key={project.id}
+                href={`/Portfolio/${project.id}`}
+                scroll={true}
                 className="portfolio-card group cursor-pointer flex flex-col rounded-2xl overflow-hidden bg-neutral-50/60 dark:bg-neutral-900/30 border border-neutral-200/80 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300"
               >
-                {/* Zero Padding Full-Bleed Image Preview */}
+                {/* Full-Bleed Image Preview */}
                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-neutral-100 dark:bg-neutral-900">
                   <Image
                     src={project.image}
@@ -218,7 +162,7 @@ export default function PortfolioShowcase() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         ) : (
@@ -236,7 +180,7 @@ export default function PortfolioShowcase() {
             </h3>
 
             <p className="text-sm text-neutral-500 dark:text-neutral-400 max-w-sm mb-6">
-              There are currently no listed items under "{activeTab}". Select another filter option above.
+              There are currently no listed items under &quot;{activeTab}&quot;. Select another filter option above.
             </p>
 
             <button

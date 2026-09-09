@@ -7,13 +7,13 @@ import MetricsSection from './MetricsSection'
 import Process from './Process'
 import TechStack from './TechStack'
 import Testimonials from './Testimonials'
-import ProjectShowcase from './ProjectShowcase'
 import CTASection from './CTASection'
 import ProjectsAndCTA from './ProjectsAndCTA'
 import TechMarquee from './TechMarquee'
 import BusinessImpactSection from './BusinessImpactSection'
 import ElephantCrewStorySection from './ElephantCrewStorySection'
 import Services from './Services'
+import ProjectGrid from './ProjectGrid'
 
 const HomePage = () => {
   return (
@@ -29,7 +29,8 @@ const HomePage = () => {
         <Process />
         <TechStack />
         <Testimonials />
-        <ProjectShowcase />
+      
+        <ProjectGrid />
         <CTASection />
       
     </div>

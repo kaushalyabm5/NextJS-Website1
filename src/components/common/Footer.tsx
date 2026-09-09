@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useLayoutEffect, useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Send, Droplets } from 'lucide-react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const footerLinks = {
   navigation: [
@@ -28,192 +26,9 @@ const footerLinks = {
 };
 
 export default function Footer() {
-  const footerRef = useRef<HTMLElement>(null);
-  const dropRef = useRef<HTMLDivElement>(null);
-  const ripple1Ref = useRef<HTMLDivElement>(null);
-  const ripple2Ref = useRef<HTMLDivElement>(null);
-  const ripple3Ref = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  // GSAP Water Drop & Unfurl Animation
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const footer = footerRef.current;
-    const drop = dropRef.current;
-    const ripple1 = ripple1Ref.current;
-    const ripple2 = ripple2Ref.current;
-    const ripple3 = ripple3Ref.current;
-    const content = contentRef.current;
-
-    if (!footer || !drop || !ripple1 || !ripple2 || !ripple3 || !content) return;
-
-    const ctx = gsap.context(() => {
-      const links = gsap.utils.toArray<HTMLElement>('.footer-anim-item');
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: footer,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-
-      // 1. Water Drop Falls from Top
-      tl.fromTo(
-        drop,
-        {
-          y: -250,
-          scaleY: 1.8,
-          scaleX: 0.6,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          scaleY: 0.4,
-          scaleX: 1.6,
-          opacity: 1,
-          duration: 0.7,
-          ease: 'power4.in',
-        }
-      )
-      // 2. Squash Drop into Impact Point
-      .to(drop, {
-        scale: 0,
-        opacity: 0,
-        duration: 0.25,
-        ease: 'power2.out',
-      })
-      // 3. Concentric Ripples Expand Outward
-      .fromTo(
-        [ripple1, ripple2, ripple3],
-        {
-          scale: 0,
-          opacity: 0.8,
-        },
-        {
-          scale: 3.5,
-          opacity: 0,
-          duration: 1.4,
-          stagger: 0.18,
-          ease: 'power2.out',
-        },
-        '-=0.1'
-      )
-      // 4. Content Unfurls from Impact Point
-      .fromTo(
-        content,
-        {
-          opacity: 0,
-          scale: 0.94,
-          filter: 'blur(10px)',
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          filter: 'blur(0px)',
-          duration: 0.8,
-          ease: 'power3.out',
-        },
-        '-=1.2'
-      )
-      // 5. Staggered Link Items Float Up
-      .fromTo(
-        links,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.05,
-          ease: 'power2.out',
-        },
-        '-=0.6'
-      );
-    }, footer);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Interactive Click Canvas Ripple Effect
-  const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    let radius = 0;
-    const maxRadius = 180;
-
-    const animateRipple = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(255, 255, 255, ${1 - radius / maxRadius})`;
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      radius += 4;
-      if (radius < maxRadius) {
-        requestAnimationFrame(animateRipple);
-      } else {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
-    };
-
-    animateRipple();
-  };
-
   return (
-    <footer
-      ref={footerRef}
-      className="relative w-full bg-white dark:bg-black text-neutral-900 dark:text-white border-t border-neutral-200 dark:border-neutral-900 overflow-hidden py-20 sm:py-28"
-    >
-      {/* INTERACTIVE WATER RIPPLE CANVAS */}
-      <canvas
-        ref={canvasRef}
-        onClick={handleCanvasClick}
-        width={1920}
-        height={800}
-        className="absolute inset-0 w-full h-full z-10 pointer-events-auto cursor-crosshair opacity-40"
-      />
-
-      {/* WATER DROPLET & IMPACT RIPPLE ANIMATION OBJECTS */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-20">
-        {/* Falling Water Drop */}
-        <div
-          ref={dropRef}
-          className="w-8 h-8 rounded-full bg-neutral-900 dark:bg-white shadow-[0_0_30px_rgba(255,255,255,0.8)]"
-        />
-
-        {/* Concentric Water Impact Rings */}
-        <div
-          ref={ripple1Ref}
-          className="absolute w-64 h-64 rounded-full border border-neutral-400 dark:border-neutral-600 opacity-0"
-        />
-        <div
-          ref={ripple2Ref}
-          className="absolute w-64 h-64 rounded-full border border-neutral-300 dark:border-neutral-700 opacity-0"
-        />
-        <div
-          ref={ripple3Ref}
-          className="absolute w-64 h-64 rounded-full border border-neutral-200 dark:border-neutral-800 opacity-0"
-        />
-      </div>
-
-      {/* FOOTER MAIN CONTENT */}
-      <div
-        ref={contentRef}
-        className="relative z-20 max-w-7xl mx-auto px-6 sm:px-12 pointer-events-auto"
-      >
+    <footer className="relative w-full bg-white dark:bg-black text-neutral-900 dark:text-white border-t border-neutral-200 dark:border-neutral-900 transition-colors duration-300 py-16 sm:py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-neutral-200 dark:border-neutral-900">
           
           {/* BRAND COLUMN */}
@@ -254,7 +69,7 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 {footerLinks.navigation.map((item, idx) => (
-                  <li key={idx} className="footer-anim-item">
+                  <li key={idx}>
                     <Link
                       href={item.href}
                       className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
@@ -273,7 +88,7 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 {footerLinks.services.map((item, idx) => (
-                  <li key={idx} className="footer-anim-item">
+                  <li key={idx}>
                     <Link
                       href={item.href}
                       className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
@@ -292,7 +107,7 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 {footerLinks.socials.map((item, idx) => (
-                  <li key={idx} className="footer-anim-item">
+                  <li key={idx}>
                     <a
                       href={item.href}
                       className="inline-flex items-center gap-1 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors group"
