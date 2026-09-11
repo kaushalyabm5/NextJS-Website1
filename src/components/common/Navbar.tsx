@@ -1,8 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { Sun, Moon, LogIn, Mail, Cpu, Menu, X } from 'lucide-react';
+import { Sun, Moon, LogIn, Mail, Menu, X } from 'lucide-react';
+
+// Import your logo here:
+import logo from '@/assets/logo/logo.webp';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,26 +43,26 @@ export default function Navbar() {
       <div className="relative max-w-full mx-auto px-6 flex items-center justify-between">
         {/* Left: Logo */}
         <a href="#" className="flex items-center gap-2.5 group z-10">
-          <div className="w-9 h-9 bg-[#5dc192] dark:bg-[#5dc192] text-[white] dark:text-black flex items-center justify-center rounded-xl font-bold shadow-md transition-transform group-hover:scale-105">
-            <Cpu className="w-5 h-5" />
-          </div>
-          <span className="text-lg font-bold tracking-tight text-[#5dc192] dark:text-[#5dc192]">
-            AXSTAR<span className="text-neutral-400 dark:text-neutral-500"></span>
-          </span>
+          <Image
+            src={logo}
+            alt="Logo"
+            className="h-6 w-auto object-contain transition-transform group-hover:scale-100"
+            priority
+          />
         </a>
 
-     {/* Center: Nav Links */}
-<nav className="hidden md:flex items-center gap-4 absolute left-1/2 -translate-x-1/2 bg-transparent px-4 py-1.5 z-10">
-  {navLinks.map((link) => (
-    <a
-      key={link.name}
-      href={link.href}
-      className="px-4 py-1.5 text-[.9rem] font-medium text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-    >
-      {link.name}
-    </a>
-  ))}
-</nav>
+        {/* Center: Nav Links */}
+        <nav className="hidden md:flex items-center gap-4 absolute left-1/2 -translate-x-1/2 bg-transparent px-4 py-1.5 z-10">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="px-4 py-1.5 text-[.9rem] font-medium text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
 
         {/* Right: Actions */}
         <div className="hidden md:flex items-center gap-3 z-10">
@@ -72,15 +76,6 @@ export default function Navbar() {
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
           )}
-
-          {/* Login Button 
-          <a
-            href="#login"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-700 rounded-xl transition-all"
-          >
-            <LogIn className="w-3.5 h-3.5" />
-            <span>Login</span>
-          </a>*/}
 
           {/* Contact Us Button */}
           <a

@@ -1,12 +1,16 @@
 'use client';
 
 import React, { useLayoutEffect, useRef } from 'react';
-import { Cpu, Layers } from 'lucide-react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import imgOne from '@/assets/what-to-do/1.png';
+import imgTwo from '@/assets/what-to-do/2.png';
+
 export default function WhatWeDo() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const leftContentRef = useRef<HTMLDivElement>(null);
   const imageOneRef = useRef<HTMLDivElement>(null);
   const imageTwoRef = useRef<HTMLDivElement>(null);
 
@@ -14,12 +18,16 @@ export default function WhatWeDo() {
     gsap.registerPlugin(ScrollTrigger);
 
     const section = sectionRef.current;
+    const leftContent = leftContentRef.current;
     const img1 = imageOneRef.current;
     const img2 = imageTwoRef.current;
 
-    if (!section || !img1 || !img2) return;
+    if (!section || !leftContent || !img1 || !img2) return;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    // DESKTOP ANIMATION (lg screens and above)
+    mm.add('(min-width: 1024px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -31,21 +39,35 @@ export default function WhatWeDo() {
         },
       });
 
-      // 1. Image 1 animates in from off-screen bottom as you scroll
+      // 1. Left side content animates in
       tl.fromTo(
+        leftContent.children,
+        { opacity: 0, y: 60, filter: 'blur(10px)' },
+        { 
+          opacity: 1, 
+          y: 0, 
+          filter: 'blur(0px)', 
+          duration: 1.5, 
+          stagger: 0.3, 
+          ease: 'power2.out' 
+        },
+        'enter'
+      )
+      // 2. Image 1 animates in from bottom
+      .fromTo(
         img1,
         { opacity: 0, y: '120%', rotateX: 20, rotateZ: -6, scale: 0.85 },
         { opacity: 1, y: '0%', rotateX: 0, rotateZ: -2, scale: 1, duration: 2, ease: 'power2.out' },
         'enter'
       )
-      // 2. Image 2 animates in simultaneously with counter-rotation
+      // 3. Image 2 animates in simultaneously with counter-rotation
       .fromTo(
         img2,
         { opacity: 0, y: '-120%', rotateX: -20, rotateZ: 8, scale: 0.85 },
         { opacity: 1, y: '0%', rotateX: 0, rotateZ: 3, scale: 1, duration: 2, ease: 'power2.out' },
         'enter'
       )
-      // 3. Deeper scroll phase offset
+      // 4. Deeper scroll phase offset
       .to(
         img1,
         { y: '-8%', rotateZ: 0, duration: 1.5, ease: 'power1.inOut' },
@@ -56,87 +78,68 @@ export default function WhatWeDo() {
         { y: '8%', rotateZ: 0, duration: 1.5, ease: 'power1.inOut' },
         'phase2'
       );
+    });
 
-    }, section);
-
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300"
+      className="relative w-full min-h-screen lg:h-screen bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300 flex items-center py-12 lg:py-0"
     >
-      <div className="relative z-10 max-w-full mx-auto h-full px-5 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="relative z-10 max-w-full w-full mx-auto h-full px-5 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center content-center">
         
-        {/* ------------------------------------------------------------------- */}
-        {/* LEFT COLUMN: MAIN TITLE & DESCRIPTION ONLY */}
-        {/* ------------------------------------------------------------------- */}
-        <div className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-8 z-20">
-          {/* Main Title */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.08] mb-6 text-neutral-900 dark:text-white">
+        {/* LEFT COLUMN: MAIN TITLE & DESCRIPTION */}
+        <div 
+          ref={leftContentRef} 
+          className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-8 z-20 will-change-transform"
+        >
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 text-neutral-900 dark:text-white">
             Turning intent into{' '}
-            <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:text-[white]">
+            <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:text-white">
               impact.
             </span>
           </h2>
 
-          {/* Description */}
-          <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-thin max-w-lg">
+          <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal lg:font-thin max-w-lg">
             We eliminate structural complexity to build low-latency, resilient digital systems engineered to scale alongside your strategic ambition.
           </p>
         </div>
 
-        {/* ------------------------------------------------------------------- */}
-        {/* RIGHT COLUMN: 2 SCROLL-ANIMATED SPEC IMAGES */}
-        {/* ------------------------------------------------------------------- */}
+        {/* RIGHT COLUMN: SINGLE STATIC IMAGE ON MOBILE, DUAL ANIMATED IMAGES ON DESKTOP */}
         <div 
-          className="lg:col-span-6 relative h-[500px] sm:h-[580px] w-full flex items-center justify-center gap-6"
+          className="lg:col-span-6 relative w-full flex items-center justify-center gap-6"
           style={{ perspective: '1200px' }}
         >
-          {/* IMAGE 1: FRONT/LEFT SPEC PANEL */}
+          {/* IMAGE 1 (STATIC UNDER TEXT ON MOBILE, ANIMATED ON DESKTOP) */}
           <div
             ref={imageOneRef}
-            className="w-1/2 h-[380px] sm:h-[440px] relative rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-900 shadow-2xl overflow-hidden will-change-transform group"
+            className="w-full lg:w-1/2 h-[320px] sm:h-[420px] lg:h-[440px] relative rounded-2xl lg:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-900 shadow-2xl overflow-hidden will-change-transform group"
           >
-            <img
-              src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=800&q=80"
+            <Image
+              src={imgOne}
               alt="System Architecture"
-              className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+              fill
+              priority
+              className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none" />
-            
-            <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
-              <div className="flex items-center justify-between">
-        
-              </div>
-              <div>
-              
-              </div>
-            </div>
           </div>
 
-          {/* IMAGE 2: BACK/RIGHT SPEC PANEL */}
+          {/* IMAGE 2 (HIDDEN ON MOBILE) */}
           <div
             ref={imageTwoRef}
-            className="w-1/2 h-[380px] sm:h-[440px] relative rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-900 shadow-2xl overflow-hidden will-change-transform group"
+            className="hidden lg:block w-1/2 h-[440px] relative rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-900 shadow-2xl overflow-hidden will-change-transform group"
           >
-            <img
-              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
+            <Image
+              src={imgTwo}
               alt="Execution Framework"
-              className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+              fill
+              priority
+              className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none" />
-
-            <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
-              <div className="flex items-center justify-between">
-               
-              
-              </div>
-              <div>
-               
-              </div>
-            </div>
           </div>
 
         </div>
