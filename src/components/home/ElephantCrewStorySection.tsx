@@ -139,7 +139,7 @@ export default function ElephantCrewStorySection() {
             ref={leftTitleRef}
             className="text-3xl sm:text-5xl lg:text-[52px] font-normal tracking-tight leading-[1.1] text-black dark:text-white transition-colors duration-300"
           >
-            The Premier Full-Service Digital Agency in North England & the UK
+            A Full-Service Technology & Marketing Company in Sri Lanka 
           </h2>
 
           <div
@@ -147,14 +147,14 @@ export default function ElephantCrewStorySection() {
             className="space-y-4 text-neutral-600 dark:text-neutral-400 text-sm sm:text-[15px] leading-relaxed font-normal max-w-2xl transition-colors duration-300"
           >
             <p>
-              Elephant Crew is a leading Digital Experience Partner based in
-              Newcastle, with over 10 years&apos; experience supporting SMEs
-              and large enterprises. We specialise in Digital Product
-              Engineering.
+              Axstar is a leading technology and marketing partner based in Sri Lanka, helping SMEs and
+large enterprises grow through smart engineering and results-driven marketing. We
+combine digital product engineering with marketing expertise to deliver solutions that work
+end to end. 
             </p>
             <p>
-              We work with a select number of clients, giving every project
-              focused attention, hands-on leadership, and exceptional quality.
+              We work with a select number of clients, giving every project focused attention,
+hands-on leadership, and exceptional quality.
             </p>
           </div>
 

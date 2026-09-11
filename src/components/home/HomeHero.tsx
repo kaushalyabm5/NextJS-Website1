@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Activity, ShieldCheck, Zap } from 'lucide-react';
+import Link from 'next/link';
 
 export default function HomeHero() {
   const [isMounted, setIsMounted] = useState(false);
@@ -123,7 +124,7 @@ export default function HomeHero() {
       {/* ------------------------------------------------------------------- */}
       {/* MAIN HERO CONTENT */}
       {/* ------------------------------------------------------------------- */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto text-center flex flex-col items-center">
         
         {/* TRUSTED PARTNERS PILL (ABOVE TITLE) */}
         <div 
@@ -150,7 +151,7 @@ export default function HomeHero() {
         </div>
 
         {/* Main Title */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6">
+        <h1 className="text-4xl sm:text-6xl md:text-[5rem] font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6">
           Architecting the future of <br className="hidden sm:inline" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:from-white dark:via-neutral-300 dark:to-neutral-500">
             autonomous systems.
@@ -158,27 +159,30 @@ export default function HomeHero() {
         </h1>
 
         {/* Small Description */}
-        <p className="max-w-2xl text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal mb-10 transition-colors duration-300">
-          We engineer high-performance digital platforms and enterprise-grade software engines designed for scale, speed, and absolute reliability.
+        <p className="max-w-4xl text-[.9rem] text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal mb-10 transition-colors duration-300">
+          Transforming Ideas Into Scalable Digital Solutions Axstar drives business growth through
+smart technology, strategic consulting, and digital transformation. We deliver scalable,
+high-performance solutions that align technology with your business goals from strategy to
+full deployment.
         </p>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           {/* Primary CTA */}
-          <a
-            href="#explore"
+          <Link
+            href="/Portfolio"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#5dc192] hover:bg-neutral-800 dark:bg-[#5dc192] dark:hover:bg-neutral-200 text-white dark:text-black font-semibold text-sm tracking-wide transition-all active:scale-95 rounded-xl shadow-lg"
           >
-            <span>Explore Platform</span>
+            <span>Explore Portfolio</span>
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
 
           {/* Secondary CTA */}
           <a
             href="#documentation"
             className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white font-medium text-sm tracking-wide transition-all hover:bg-neutral-200 dark:hover:bg-neutral-900 hover:border-neutral-300 dark:hover:border-neutral-700 active:scale-95 rounded-xl"
           >
-            Documentation
+            About Us
           </a>
         </div>
 

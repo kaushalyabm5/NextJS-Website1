@@ -96,14 +96,18 @@ export default function WhatWeDo() {
           className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-8 z-20 will-change-transform"
         >
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 text-neutral-900 dark:text-white">
-            Turning intent into{' '}
+            The convergence of technology {' '}
             <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:text-white">
-              impact.
+              and growth.
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal lg:font-thin max-w-lg">
-            We eliminate structural complexity to build low-latency, resilient digital systems engineered to scale alongside your strategic ambition.
+          <p className="text-[1rem] text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal lg:font-thin max-w-lg">
+           At Axstar, we bring engineering precision and marketing strategy under one roof. We
+architect low-latency, resilient systems built to scale alongside your ambition, then amplify
+them with data-driven campaigns that convert reach into results. The outcome is a digital
+presence that performs technically and delivers commercially.
+
           </p>
         </div>
 
