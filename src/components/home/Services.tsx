@@ -15,6 +15,8 @@ import img5 from '@/assets/services-img/5.jpg';
 import img6 from '@/assets/services-img/6.jpg';
 import img7 from '@/assets/services-img/7.jpg';
 import img8 from '@/assets/services-img/8.jpg';
+import img9 from '@/assets/services-img/9.jpg';
+import img10 from '@/assets/services-img/11.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,96 +34,125 @@ interface Category {
 
 const categoriesData: Category[] = [
   {
-    id: 'brand-identity',
-    categoryName: 'Brand Identity',
+    id: 'web-development',
+    categoryName: 'Web Development',
     cardImage: img1,
     services: [
-      { id: 'bi-1', title: 'Logo Design' },
-      { id: 'bi-2', title: 'Brand Guidelines' },
-      { id: 'bi-3', title: 'Visual Brand Systems' },
-      { id: 'bi-4', title: 'Rebranding' },
-      { id: 'bi-5', title: 'Brand Collateral' },
-      { id: 'bi-6', title: '+ More' },
+      { id: 'wd-1', title: 'Full-Stack Web Apps' },
+      { id: 'wd-2', title: 'Frontend Engineering' },
+      { id: 'wd-3', title: 'Performance Optimization' },
+      { id: 'wd-4', title: 'CMS Development' },
+      { id: 'wd-5', title: 'PWA Solutions' },
+      { id: 'wd-6', title: '+ More' },
     ],
   },
   {
-    id: 'web-design-dev',
-    categoryName: 'Web Design & Development',
+    id: 'mobile-app-development',
+    categoryName: 'Mobile App Development',
+    cardImage: img3,
+    services: [
+      { id: 'mad-1', title: 'iOS & Android Development' },
+      { id: 'mad-2', title: 'Cross-Platform Apps' },
+      { id: 'mad-3', title: 'Native Performance' },
+      { id: 'mad-4', title: 'App Store Deployment' },
+      { id: 'mad-5', title: '+ More' },
+    ],
+  },
+  {
+    id: 'product-mvp-development',
+    categoryName: 'Product MVP Development',
     cardImage: img2,
     services: [
-      { id: 'wd-1', title: 'Framer Development' },
-      { id: 'wd-2', title: 'Landing Page Design' },
-      { id: 'wd-3', title: 'Full Website Design' },
-      { id: 'wd-4', title: 'Web Animations' },
-      { id: 'wd-5', title: '+ More' },
+      { id: 'mvp-1', title: 'Rapid Prototyping' },
+      { id: 'mvp-2', title: 'Core Architecture' },
+      { id: 'mvp-3', title: 'Investor Pitch Readiness' },
+      { id: 'mvp-4', title: 'Scalable Infrastructure' },
+      { id: 'mvp-5', title: '+ More' },
     ],
   },
   {
     id: 'ui-ux-design',
-    categoryName: 'UI/ UX Design',
-    cardImage: img3,
-    services: [
-      { id: 'ui-1', title: 'Web & Mobile UI' },
-      { id: 'ui-2', title: 'User Flows' },
-      { id: 'ui-3', title: 'Wireframes' },
-      { id: 'ui-4', title: 'Design Systems' },
-      { id: 'ui-5', title: 'Prototyping' },
-      { id: 'ui-6', title: '+ More' },
-    ],
-  },
-  {
-    id: 'deck-presentation',
-    categoryName: 'Deck & Presentation',
+    categoryName: 'UI/UX Design',
     cardImage: img4,
     services: [
-      { id: 'dp-1', title: 'Fundraising Pitch Decks' },
-      { id: 'dp-2', title: 'Business Presentations' },
-      { id: 'dp-3', title: 'Slide Redesign' },
-      { id: 'dp-4', title: '+ More' },
+      { id: 'ui-1', title: 'User Research & Wireframing' },
+      { id: 'ui-2', title: 'Design Systems' },
+      { id: 'ui-3', title: 'Interactive Prototypes' },
+      { id: 'ui-4', title: 'Product Interface Design' },
+      { id: 'ui-5', title: '+ More' },
     ],
   },
   {
-    id: 'product-engineering',
-    categoryName: 'Product Engineering',
+    id: 'custom-software-development',
+    categoryName: 'Custom Software Development',
     cardImage: img5,
     services: [
-      { id: 'pe-1', title: 'Product Strategy' },
-      { id: 'pe-2', title: 'Full-Stack Build' },
-      { id: 'pe-3', title: 'Cloud Deployment' },
-      { id: 'pe-4', title: '+ More' },
+      { id: 'csd-1', title: 'Enterprise Architecture' },
+      { id: 'csd-2', title: 'Cloud-Native Solutions' },
+      { id: 'csd-3', title: 'Microservices Design' },
+      { id: 'csd-4', title: 'Legacy Modernization' },
+      { id: 'csd-5', title: '+ More' },
     ],
   },
   {
-    id: 'product-engineering1',
-    categoryName: 'Product Engineering 2',
+    id: 'ai-automation-solutions',
+    categoryName: 'AI & Automation Solutions',
     cardImage: img6,
     services: [
-      { id: 'pe-1', title: 'Product Strategy' },
-      { id: 'pe-2', title: 'Full-Stack Build' },
-      { id: 'pe-3', title: 'Cloud Deployment' },
-      { id: 'pe-4', title: '+ More' },
+      { id: 'ai-1', title: 'Custom LLM Integration' },
+      { id: 'ai-2', title: 'Workflow Automation' },
+      { id: 'ai-3', title: 'Predictive Analytics' },
+      { id: 'ai-4', title: 'AI Agent Workflows' },
+      { id: 'ai-5', title: '+ More' },
     ],
   },
   {
-    id: 'product-engineering2',
-    categoryName: 'Product Engineering 3',
+    id: 'api-development-integration',
+    categoryName: 'API Development & Integration',
     cardImage: img7,
     services: [
-      { id: 'pe-1', title: 'Product Strategy' },
-      { id: 'pe-2', title: 'Full-Stack Build' },
-      { id: 'pe-3', title: 'Cloud Deployment' },
-      { id: 'pe-4', title: '+ More' },
+      { id: 'api-1', title: 'REST & GraphQL APIs' },
+      { id: 'api-2', title: 'Third-Party Integrations' },
+      { id: 'api-3', title: 'Secure Gateway Setup' },
+      { id: 'api-4', title: 'Real-Time Webhooks' },
+      { id: 'api-5', title: '+ More' },
     ],
   },
   {
-    id: 'product-engineering3',
-    categoryName: 'Product Engineering 4',
+    id: 'ecommerce-platforms-solutions',
+    categoryName: 'E-commerce Platforms & Solutions',
     cardImage: img8,
     services: [
-      { id: 'pe-1', title: 'Product Strategy' },
-      { id: 'pe-2', title: 'Full-Stack Build' },
-      { id: 'pe-3', title: 'Cloud Deployment' },
-      { id: 'pe-4', title: '+ More' },
+      { id: 'ecom-1', title: 'Headless Commerce' },
+      { id: 'ecom-2', title: 'Custom Payment Systems' },
+      { id: 'ecom-3', title: 'Storefront Optimization' },
+      { id: 'ecom-4', title: 'Inventory Integrations' },
+      { id: 'ecom-5', title: '+ More' },
+    ],
+  },
+  {
+    id: 'digital-growth-marketing',
+    categoryName: 'Digital Growth & Marketing',
+    cardImage: img9,
+    services: [
+      { id: 'dgm-1', title: 'Social Media Management' },
+      { id: 'dgm-2', title: 'Search Engine Optimization (SEO)' },
+      { id: 'dgm-3', title: 'Product Strategy & Digital Transformation' },
+      { id: 'dgm-4', title: 'Data Analytics & Performance Optimization' },
+      { id: 'dgm-5', title: 'Digital Presence Setup' },
+    ],
+  },
+  {
+    id: 'business-strategy-consulting',
+    categoryName: 'Business Strategy & Consulting',
+    cardImage: img10,
+    services: [
+      { id: 'bsc-1', title: 'Business Model & Growth Strategy' },
+      { id: 'bsc-2', title: 'Digital Transformation Consulting' },
+      { id: 'bsc-3', title: 'Go-To-Market (GTM) Strategy' },
+      { id: 'bsc-4', title: 'Data & Technology Consulting' },
+      { id: 'bsc-5', title: 'Startup Advisory' },
+      { id: 'bsc-6', title: 'Business Process & Documentation' },
     ],
   },
 ];
@@ -169,7 +200,7 @@ export default function Services() {
             We Cover Them All!
           </h2>
           <p className="text-base sm:text-xl text-neutral-500 dark:text-neutral-400 font-medium">
-            Graphics, Videos, Web & Marketing.
+            Engineering, Product, AI & Business Consulting.
           </p>
         </div>
 
@@ -182,7 +213,7 @@ export default function Services() {
             {categoriesData.map((category) => (
               <div
                 key={category.id}
-                className="relative flex-shrink-0 w-[300px] sm:w-[360px] h-[380px] sm:h-[430px] rounded-2xl sm:rounded-3xl bg-neutral-900 border border-neutral-200 dark:border-neutral-800/80 overflow-hidden flex flex-col justify-between p-6 group shadow-xl"
+                className="relative flex-shrink-0 w-[300px] sm:w-[360px] h-[380px] sm:h-[430px] bg-neutral-900 border border-neutral-200 dark:border-neutral-800/80 rounded-2xl overflow-hidden flex flex-col justify-between p-6 group shadow-xl"
               >
                 {/* Image Background */}
                 <Image
@@ -191,11 +222,11 @@ export default function Services() {
                   fill
                   sizes="(max-width: 640px) 300px, 360px"
                   className="object-cover transition-transform duration-700 group-hover:scale-100 opacity-100"
-                  priority={category.id === 'brand-identity'}
+                  priority={category.id === 'web-development'}
                 />
                 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/50 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/40 pointer-events-none" />
 
                 {/* Card Title */}
                 <div className="relative z-10">
@@ -209,7 +240,7 @@ export default function Services() {
                   {category.services.map((service) => (
                     <span
                       key={service.id}
-                      className="px-3 py-1 rounded-full text-xs font-medium text-white/90 bg-black/50 backdrop-blur-md border border-white/20 hover:border-white/50 transition-colors duration-200"
+                      className="px-3 py-1 text-xs font-medium text-white/90 bg-black/60 backdrop-blur-md border border-white/20 rounded-full hover:border-white/50 transition-colors duration-200"
                     >
                       {service.title}
                     </span>
