@@ -10,7 +10,8 @@ const processSteps = [
     stepNumber: '01',
     title: 'Understand, Analysis & Explore',
     category: 'DISCOVERY',
-    description: 'We begin by thoroughly understanding your business, target audience, and project requirements. This ensures every decision aligns with your goals and sets a solid foundation for success.',
+    description:
+      'We begin by thoroughly understanding your business, target audience, and project requirements. This ensures every decision aligns with your goals and sets a solid foundation for success.',
     icon: Search,
     side: 'left',
     accent: 'from-amber-500 to-amber-300',
@@ -20,7 +21,8 @@ const processSteps = [
     stepNumber: '02',
     title: 'Plan & Strategize',
     category: 'STRATEGY',
-    description: 'Using insights from the discovery phase, we develop a clear roadmap and plan, focusing on the most effective approach to achieve your objectives efficiently.',
+    description:
+      'Using insights from the discovery phase, we develop a clear roadmap and plan, focusing on the most effective approach to achieve your objectives efficiently.',
     icon: Compass,
     side: 'right',
     accent: 'from-blue-500 to-sky-300',
@@ -30,7 +32,8 @@ const processSteps = [
     stepNumber: '03',
     title: 'Development & Progress Updates',
     category: 'EXECUTION',
-    description: 'Our team builds your solution using the latest technologies, while providing regular progress updates to keep you informed at every stage.',
+    description:
+      'Our team builds your solution using the latest technologies, while providing regular progress updates to keep you informed at every stage.',
     icon: Code2,
     side: 'left',
     accent: 'from-emerald-500 to-teal-300',
@@ -40,7 +43,8 @@ const processSteps = [
     stepNumber: '04',
     title: 'Launch & Support 🚀',
     category: 'DEPLOYMENT',
-    description: 'Your solution is ready to go live! We ensure a smooth launch and continued support for your long term success.',
+    description:
+      'Your solution is ready to go live! We ensure a smooth launch and continued support for your long term success.',
     icon: Rocket,
     side: 'right',
     accent: 'from-rose-500 to-pink-300',
@@ -70,22 +74,42 @@ export default function ProcessSection() {
           trigger: section,
           pin: true,
           start: 'top top',
-          end: '+=800%',
-          scrub: 2, // Smooth, liquid scrub matching Lenis physics
+          end: '+=900%',
+          scrub: 2, // Smooth scrub effect
           invalidateOnRefresh: true,
         },
       });
 
-      // 1. INTRO STEP: Smooth fade out & scale away
+      // 0. SET INITIAL STATES FOR INTRO TEXT
+      gsap.set(intro.children, {
+        opacity: 0,
+        y: 50,
+        filter: 'blur(10px)',
+      });
+
+      // 1. INTRO ENTRANCE ANIMATION (Fades in & glides up on scroll into section)
+      masterTl.to(intro.children, {
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        duration: 2,
+        stagger: 0.3,
+        ease: 'power2.out',
+      });
+
+      // Hold Intro Text Brief Moment
+      masterTl.to({}, { duration: 1 });
+
+      // 2. INTRO EXIT ANIMATION (Fades & blurs out to make room for step 1)
       masterTl.to(intro, {
         opacity: 0,
         scale: 0.9,
         filter: 'blur(16px)',
-        duration: 3,
+        duration: 2.5,
         ease: 'power1.inOut',
       });
 
-      // 2. STEP TIMELINE LOOP
+      // 3. STEP TIMELINE LOOP
       stepElements.forEach((stepEl, i) => {
         const card = stepEl.querySelector('.step-card');
         const textSide = stepEl.querySelector('.step-desc-side');
@@ -102,34 +126,34 @@ export default function ProcessSection() {
           // CARD: Centered scale & blur reveal
           .fromTo(
             card,
-            { 
-              opacity: 0, 
-              scale: 0.88, 
-              filter: 'blur(12px)'
+            {
+              opacity: 0,
+              scale: 0.88,
+              filter: 'blur(12px)',
             },
-            { 
-              opacity: 1, 
-              scale: 1, 
+            {
+              opacity: 1,
+              scale: 1,
               filter: 'blur(0px)',
-              duration: 3.5, 
-              ease: 'power2.out' 
+              duration: 3.5,
+              ease: 'power2.out',
             },
             `step-${i}`
           )
           // TEXT: Glides in from its respective side (Left or Right)
           .fromTo(
             textSide,
-            { 
-              opacity: 0, 
+            {
+              opacity: 0,
               x: isLeft ? -70 : 70,
-              filter: 'blur(8px)'
+              filter: 'blur(8px)',
             },
-            { 
-              opacity: 1, 
-              x: 0, 
+            {
+              opacity: 1,
+              x: 0,
               filter: 'blur(0px)',
-              duration: 3.2, 
-              ease: 'power2.out' 
+              duration: 3.2,
+              ease: 'power2.out',
             },
             `step-${i}+=0.3`
           );
@@ -177,7 +201,6 @@ export default function ProcessSection() {
             );
         }
       });
-
     }, section);
 
     return () => ctx.revert();
@@ -189,7 +212,6 @@ export default function ProcessSection() {
       className="relative w-full h-screen bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300 perspective-1000"
     >
       <div className="relative z-10 max-w-7xl mx-auto h-full px-6 sm:px-12 flex items-center justify-center">
-        
         {/* CENTERED INTRO TITLE & DESCRIPTION */}
         <div
           ref={introRef}
@@ -200,7 +222,10 @@ export default function ProcessSection() {
           </div>
 
           <h2 className="text-4xl sm:text-7xl font-normal tracking-tight leading-tight text-neutral-900 dark:text-white mb-6">
-            How We <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:from-white dark:via-neutral-300 dark:to-neutral-500">Do It</span>
+            How We{' '}
+            <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:from-white dark:via-neutral-300 dark:to-neutral-500">
+              Do It
+            </span>
           </h2>
 
           <p className="text-neutral-600 dark:text-neutral-400 text-base sm:text-xl font-normal leading-relaxed max-w-2xl">
@@ -209,7 +234,7 @@ export default function ProcessSection() {
         </div>
 
         {/* STEP CARDS CONTAINER */}
-        <div 
+        <div
           ref={stepsContainerRef}
           className="relative w-full h-full flex items-center justify-center z-20"
         >
@@ -223,12 +248,11 @@ export default function ProcessSection() {
                 className="process-step-item absolute inset-0 w-full h-full flex items-center justify-center opacity-0 pointer-events-none"
               >
                 <div className="w-full relative flex items-center justify-center min-h-[500px]">
-                  
-                  {/* SIDE DESCRIPTION BLOCK (Alternates Left / Right in Absolute Position) */}
-                  <div 
+                  {/* SIDE DESCRIPTION BLOCK */}
+                  <div
                     className={`step-desc-side absolute top-1/2 -translate-y-1/2 w-full max-w-xs sm:max-w-sm space-y-5 z-20 ${
-                      isLeft 
-                        ? 'left-0 sm:left-4 text-left' 
+                      isLeft
+                        ? 'left-0 sm:left-4 text-left'
                         : 'right-0 sm:right-4 text-left sm:text-right'
                     }`}
                   >
@@ -253,8 +277,6 @@ export default function ProcessSection() {
 
                   {/* CENTERED MAIN STEP ANIMATED CARD */}
                   <div className="step-card relative z-10 w-full max-w-md sm:max-w-lg aspect-[4/3] sm:aspect-[16/11] rounded-3xl bg-neutral-100/90 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 p-6 sm:p-8 flex flex-col justify-between shadow-2xl backdrop-blur-xl overflow-hidden group">
-                    
-                    {/* Top Header inside Card */}
                     <div className="flex items-center justify-between z-10">
                       <div className="p-3 rounded-2xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 shadow-md">
                         <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-900 dark:text-white" />
@@ -264,7 +286,6 @@ export default function ProcessSection() {
                       </span>
                     </div>
 
-                    {/* Animated Inside Visual Showcase */}
                     <div className="relative my-auto py-4 flex items-center justify-center z-10">
                       <div className="card-internal-pulse relative flex items-center justify-center">
                         <div className={`absolute w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-tr ${step.accent} opacity-20 blur-2xl animate-pulse`} />
@@ -275,7 +296,6 @@ export default function ProcessSection() {
                       </div>
                     </div>
 
-                    {/* Card Footer Tag */}
                     <div className="flex items-center justify-between pt-4 border-t border-neutral-200/60 dark:border-neutral-800/60 z-10">
                       <span className="font-mono text-[10px] sm:text-xs uppercase text-neutral-500 tracking-wider">
                         Axstar Execution Pipeline
@@ -283,19 +303,15 @@ export default function ProcessSection() {
                       <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors" />
                     </div>
 
-                    {/* Ambient Card Glow */}
                     <div className={`absolute -bottom-20 -right-20 w-56 h-56 rounded-full bg-gradient-to-br ${step.accent} opacity-10 blur-3xl pointer-events-none`} />
                   </div>
-
                 </div>
               </div>
             );
           })}
         </div>
-
       </div>
 
-      {/* Subtle Grid Background Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#121212_1px,transparent_1px),linear-gradient(to_bottom,#121212_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none opacity-30 dark:opacity-20" />
     </section>
   );

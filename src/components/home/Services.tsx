@@ -43,7 +43,7 @@ const categoriesData: Category[] = [
       { id: 'wd-3', title: 'Performance Optimization' },
       { id: 'wd-4', title: 'CMS Development' },
       { id: 'wd-5', title: 'PWA Solutions' },
-      { id: 'wd-6', title: '+ More' },
+    
     ],
   },
   {
@@ -55,7 +55,7 @@ const categoriesData: Category[] = [
       { id: 'mad-2', title: 'Cross-Platform Apps' },
       { id: 'mad-3', title: 'Native Performance' },
       { id: 'mad-4', title: 'App Store Deployment' },
-      { id: 'mad-5', title: '+ More' },
+    
     ],
   },
   {
@@ -67,7 +67,7 @@ const categoriesData: Category[] = [
       { id: 'mvp-2', title: 'Core Architecture' },
       { id: 'mvp-3', title: 'Investor Pitch Readiness' },
       { id: 'mvp-4', title: 'Scalable Infrastructure' },
-      { id: 'mvp-5', title: '+ More' },
+
     ],
   },
   {
@@ -79,7 +79,7 @@ const categoriesData: Category[] = [
       { id: 'ui-2', title: 'Design Systems' },
       { id: 'ui-3', title: 'Interactive Prototypes' },
       { id: 'ui-4', title: 'Product Interface Design' },
-      { id: 'ui-5', title: '+ More' },
+  
     ],
   },
   {
@@ -91,7 +91,7 @@ const categoriesData: Category[] = [
       { id: 'csd-2', title: 'Cloud-Native Solutions' },
       { id: 'csd-3', title: 'Microservices Design' },
       { id: 'csd-4', title: 'Legacy Modernization' },
-      { id: 'csd-5', title: '+ More' },
+      
     ],
   },
   {
@@ -103,7 +103,7 @@ const categoriesData: Category[] = [
       { id: 'ai-2', title: 'Workflow Automation' },
       { id: 'ai-3', title: 'Predictive Analytics' },
       { id: 'ai-4', title: 'AI Agent Workflows' },
-      { id: 'ai-5', title: '+ More' },
+     
     ],
   },
   {
@@ -115,7 +115,7 @@ const categoriesData: Category[] = [
       { id: 'api-2', title: 'Third-Party Integrations' },
       { id: 'api-3', title: 'Secure Gateway Setup' },
       { id: 'api-4', title: 'Real-Time Webhooks' },
-      { id: 'api-5', title: '+ More' },
+     
     ],
   },
   {
@@ -127,7 +127,7 @@ const categoriesData: Category[] = [
       { id: 'ecom-2', title: 'Custom Payment Systems' },
       { id: 'ecom-3', title: 'Storefront Optimization' },
       { id: 'ecom-4', title: 'Inventory Integrations' },
-      { id: 'ecom-5', title: '+ More' },
+      
     ],
   },
   {

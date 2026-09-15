@@ -14,6 +14,7 @@ import BusinessImpactSection from './BusinessImpactSection'
 import ElephantCrewStorySection from './ElephantCrewStorySection'
 import Services from './Services'
 import ProjectGrid from './ProjectGrid'
+import Sectors from './Sectors'
 
 const HomePage = () => {
   return (
@@ -25,6 +26,7 @@ const HomePage = () => {
         <ElephantCrewStorySection />
         <Services />
         <OurEdge />
+        <Sectors />
         <MetricsSection />
         <Process />
         <TechStack />
