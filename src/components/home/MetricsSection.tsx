@@ -200,7 +200,7 @@ export default function MetricsSection() {
       ref={containerRef}
       className="relative w-full py-24 sm:py-32 bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300 overflow-hidden perspective-1000"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
+      <div className="max-w-full mx-auto px-6 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">

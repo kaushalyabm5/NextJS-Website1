@@ -173,7 +173,7 @@ export default function OurEdge() {
       ref={containerRef}
       className="relative w-full bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
+      <div className="max-w-full mx-auto px-6 relative z-10">
         
         {/* Section Header */}
         <div ref={headerRef} className="max-w-3xl mb-24 opacity-0">
