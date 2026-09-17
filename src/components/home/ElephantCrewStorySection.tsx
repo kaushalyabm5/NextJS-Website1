@@ -192,7 +192,7 @@ hands-on leadership, and exceptional quality.
               className="inline-flex items-center gap-1.5 text-[#5dc192] hover:text-[#5dc192] font-normal text-sm transition-colors duration-200 group"
             >
               <span className="underline underline-offset-4 decoration-[#5dc192] group-hover:decoration-[#5dc192]">
-                Learn About Elephant Crew
+                Learn About Axstar
               </span>
               <span className="text-xs transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 ↗
@@ -210,7 +210,7 @@ hands-on leadership, and exceptional quality.
             className="flex items-center justify-center lg:justify-end w-full lg:w-auto divide-x divide-neutral-300 dark:divide-neutral-800 transition-colors duration-300"
           >
             <div className="px-3 sm:px-5 lg:pl-0 lg:pr-5 text-center lg:text-right">
-              <div className="text-3xl sm:text-5xl font-light tracking-tight text-black dark:text-white font-sans transition-colors duration-300">
+              <div className="text-[4rem] font-normal tracking-tight text-black dark:text-white font-sans transition-colors duration-300">
                 {stat1}%
               </div>
               <div className="text-[11px] sm:text-xs text-neutral-600 dark:text-neutral-400 mt-1 sm:mt-2 font-normal">
@@ -218,7 +218,7 @@ hands-on leadership, and exceptional quality.
               </div>
             </div>
             <div className="px-3 sm:px-5 text-center lg:text-right">
-              <div className="text-3xl sm:text-5xl font-light tracking-tight text-black dark:text-white font-sans transition-colors duration-300">
+              <div className="text-[4rem] font-normal tracking-tight text-black dark:text-white font-sans transition-colors duration-300">
                 {stat2}+
               </div>
               <div className="text-[11px] sm:text-xs text-neutral-600 dark:text-neutral-400 mt-1 sm:mt-2 font-normal">
@@ -226,7 +226,7 @@ hands-on leadership, and exceptional quality.
               </div>
             </div>
             <div className="px-3 sm:px-5 lg:pl-5 lg:pr-0 text-center lg:text-right">
-              <div className="text-3xl sm:text-5xl font-light tracking-tight text-black dark:text-white font-sans transition-colors duration-300">
+              <div className="text-[4rem] font-normal tracking-tight text-black dark:text-white font-sans transition-colors duration-300">
                 {stat3}+
               </div>
               <div className="text-[11px] sm:text-xs text-neutral-600 dark:text-neutral-400 mt-1 sm:mt-2 font-normal">
@@ -258,12 +258,10 @@ hands-on leadership, and exceptional quality.
           className="absolute inset-0 flex flex-col items-center justify-center text-center max-w-3xl mx-auto px-6 z-40 pointer-events-none"
         >
           <h1 className="text-3xl sm:text-6xl font-medium tracking-tight mb-4 sm:mb-6 leading-[1.12] text-black dark:text-white transition-colors duration-300">
-            A Single Partner for a Unified Digital Vision.
+            A Strategic Partner for Digital Transformation.
           </h1>
           <p className="text-sm sm:text-lg text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed max-w-xl transition-colors duration-300">
-            At Elephant Crew, we bring insights, creativity, strategy,
-            innovation and technical expertise to help brands transform their
-            digital ecosystem into a connected and seamless experience.
+            At Axstar, we combine technology, digital marketing, strategy, and creative expertise to help businesses build stronger digital ecosystems, engage their audiences, and achieve sustainable growth.
           </p>
         </div>
 

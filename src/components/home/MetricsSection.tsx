@@ -13,11 +13,11 @@ const metricsData = [
     suffix: "+",
     description: "Completed a wide range of successful projects.",
     type: "bar",
-    accent: "text-amber-500 dark:text-amber-400",
-    gradient: "from-amber-500 via-amber-400 to-amber-200",
+    accent: "text-[#5dc192] dark:text-[#5dc192]",
+    barColor: "bg-[#5dc192]",
     arcId: "arcGradient1",
-    stopColor1: "#f59e0b",
-    stopColor2: "#fbbf24",
+    stopColor1: "#5dc192",
+    stopColor2: "#5dc192",
     staggerClass: "lg:translate-y-0",
   },
   {
@@ -27,11 +27,11 @@ const metricsData = [
     suffix: "+",
     description: "Trusted by clients across multiple countries.",
     type: "arc",
-    accent: "text-blue-500 dark:text-blue-400",
-    gradient: "from-blue-500 via-blue-400 to-sky-300",
+    accent: "text-[#5dc192] dark:text-[#5dc192]",
+    barColor: "bg-[#5dc192]",
     arcId: "arcGradient2",
-    stopColor1: "#3b82f6",
-    stopColor2: "#60a5fa",
+    stopColor1: "#5dc192",
+    stopColor2: "#5dc192",
     staggerClass: "lg:translate-y-6",
   },
   {
@@ -41,11 +41,11 @@ const metricsData = [
     suffix: "+",
     description: "Years of industry expertise and knowledge.",
     type: "bar",
-    accent: "text-emerald-500 dark:text-emerald-400",
-    gradient: "from-emerald-500 via-emerald-400 to-teal-300",
+    accent: "text-[#5dc192] dark:text-[#5dc192]",
+    barColor: "bg-[#5dc192]",
     arcId: "arcGradient3",
-    stopColor1: "#10b981",
-    stopColor2: "#34d399",
+    stopColor1: "#5dc192",
+    stopColor2: "#5dc192",
     staggerClass: "lg:translate-y-12",
   },
   {
@@ -55,11 +55,11 @@ const metricsData = [
     suffix: "%",
     description: "Consistently delivering results that satisfy clients.",
     type: "arc",
-    accent: "text-rose-500 dark:text-rose-400",
-    gradient: "from-rose-500 via-rose-400 to-pink-300",
+    accent: "text-[#5dc192] dark:text-[#5dc192]",
+    barColor: "bg-[#5dc192]",
     arcId: "arcGradient4",
-    stopColor1: "#f43f5e",
-    stopColor2: "#fb7185",
+    stopColor1: "#5dc192",
+    stopColor2: "#5dc192",
     staggerClass: "lg:translate-y-18",
   },
 ];
@@ -207,7 +207,7 @@ export default function MetricsSection() {
           <div className="metrics-header-text space-y-5 max-w-4xl">
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-[1.15] text-neutral-900 dark:text-white">
               We Turn Ideas into{' '}
-              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:from-white dark:via-neutral-300 dark:to-neutral-500">
+              <span className="font-semibold text-[#5dc192]">
                 Visual Masterpieces
               </span>
             </h2>
@@ -261,7 +261,7 @@ export default function MetricsSection() {
                 {/* Progress Visual */}
                 {item.type === 'bar' ? (
                   <div className="w-full h-1.5 rounded-full bg-neutral-200 dark:bg-neutral-800 relative overflow-hidden">
-                    <div className={`progress-fill absolute top-0 left-0 bottom-0 rounded-full bg-gradient-to-r ${item.gradient}`} />
+                    <div className={`progress-fill absolute top-0 left-0 bottom-0 rounded-full ${item.barColor}`} />
                   </div>
                 ) : (
                   <div className="w-full pt-2 flex justify-center">
@@ -295,7 +295,7 @@ export default function MetricsSection() {
               </div>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-normal leading-relaxed">
                 {item.description}
               </p>
             </div>
@@ -303,9 +303,6 @@ export default function MetricsSection() {
         </div>
 
       </div>
-
-      {/* Grid Background Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#121212_1px,transparent_1px),linear-gradient(to_bottom,#121212_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none opacity-30 dark:opacity-20" />
     </section>
   );
 }

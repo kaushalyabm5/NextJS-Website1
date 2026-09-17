@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-sans: var(--font-roboto), system-ui, sans-serif;
 }
 
 /* ==========================================================================
