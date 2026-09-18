@@ -11,7 +11,7 @@ import CTASection from './CTASection'
 import ProjectsAndCTA from './ProjectsAndCTA'
 import TechMarquee from './TechMarquee'
 import BusinessImpactSection from './BusinessImpactSection'
-import ElephantCrewStorySection from './ElephantCrewStorySection'
+
 import Services from './Services'
 import ProjectGrid from './ProjectGrid'
 import Sectors from './Sectors'
@@ -23,13 +23,13 @@ const HomePage = () => {
         <TechMarquee />
         <WhatWeDo />
         <BusinessImpactSection />
-        <ElephantCrewStorySection />
+     
         <Services />
         <OurEdge />
         <Sectors />
-        <MetricsSection />
-        <Process />
-        <TechStack />
+        {/* <MetricsSection />*/}
+         {/*<Process />*/}
+        {/*<TechStack />*/}
         <Testimonials />
       
         <ProjectGrid />

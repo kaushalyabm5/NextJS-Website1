@@ -43,7 +43,6 @@ const categoriesData: Category[] = [
       { id: 'wd-3', title: 'Performance Optimization' },
       { id: 'wd-4', title: 'CMS Development' },
       { id: 'wd-5', title: 'PWA Solutions' },
-    
     ],
   },
   {
@@ -55,7 +54,6 @@ const categoriesData: Category[] = [
       { id: 'mad-2', title: 'Cross-Platform Apps' },
       { id: 'mad-3', title: 'Native Performance' },
       { id: 'mad-4', title: 'App Store Deployment' },
-    
     ],
   },
   {
@@ -67,7 +65,6 @@ const categoriesData: Category[] = [
       { id: 'mvp-2', title: 'Core Architecture' },
       { id: 'mvp-3', title: 'Investor Pitch Readiness' },
       { id: 'mvp-4', title: 'Scalable Infrastructure' },
-
     ],
   },
   {
@@ -79,7 +76,6 @@ const categoriesData: Category[] = [
       { id: 'ui-2', title: 'Design Systems' },
       { id: 'ui-3', title: 'Interactive Prototypes' },
       { id: 'ui-4', title: 'Product Interface Design' },
-  
     ],
   },
   {
@@ -91,7 +87,6 @@ const categoriesData: Category[] = [
       { id: 'csd-2', title: 'Cloud-Native Solutions' },
       { id: 'csd-3', title: 'Microservices Design' },
       { id: 'csd-4', title: 'Legacy Modernization' },
-      
     ],
   },
   {
@@ -103,7 +98,6 @@ const categoriesData: Category[] = [
       { id: 'ai-2', title: 'Workflow Automation' },
       { id: 'ai-3', title: 'Predictive Analytics' },
       { id: 'ai-4', title: 'AI Agent Workflows' },
-     
     ],
   },
   {
@@ -115,7 +109,6 @@ const categoriesData: Category[] = [
       { id: 'api-2', title: 'Third-Party Integrations' },
       { id: 'api-3', title: 'Secure Gateway Setup' },
       { id: 'api-4', title: 'Real-Time Webhooks' },
-     
     ],
   },
   {
@@ -127,7 +120,6 @@ const categoriesData: Category[] = [
       { id: 'ecom-2', title: 'Custom Payment Systems' },
       { id: 'ecom-3', title: 'Storefront Optimization' },
       { id: 'ecom-4', title: 'Inventory Integrations' },
-      
     ],
   },
   {
@@ -137,8 +129,8 @@ const categoriesData: Category[] = [
     services: [
       { id: 'dgm-1', title: 'Social Media Management' },
       { id: 'dgm-2', title: 'Search Engine Optimization (SEO)' },
-      { id: 'dgm-3', title: 'Product Strategy & Digital Transformation' },
-      { id: 'dgm-4', title: 'Data Analytics & Performance Optimization' },
+      { id: 'dgm-3', title: 'Product Strategy & Transformation' },
+      { id: 'dgm-4', title: 'Data Analytics & Optimization' },
       { id: 'dgm-5', title: 'Digital Presence Setup' },
     ],
   },
@@ -191,56 +183,61 @@ export default function Services() {
   );
 
   return (
-    <div ref={containerRef} className="relative overflow-hidden bg-white dark:bg-black">
-      <section className="min-h-screen w-full flex flex-col pt-5 justify-between text-black dark:text-white">
+    <div ref={containerRef} className="relative overflow-hidden bg-black text-white">
+      <section className="h-screen w-full flex flex-col justify-between pt-2 pb-10">
         
-        {/* Header Title */}
-        <div className="w-full px-6 sm:px-12 lg:px-16 flex flex-col md:flex-row md:items-end justify-between gap-4 flex-shrink-0">
-          <h2 className="text-4xl sm:text-5xl font-normal tracking-tight">
-            We Cover Them All!
-          </h2>
-          <p className="text-base sm:text-xl text-neutral-500 dark:text-neutral-400 font-medium">
-            Engineering, Product, AI & Business Consulting.
+        {/* Header Title Section - Max Width 7xl */}
+        <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row md:items-end justify-between gap-3 flex-shrink-0">
+          <div>
+            <span className="text-[#5dc192] text-xs uppercase tracking-widest font-semibold block mb-1.5">
+              Capabilities
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight">
+              We Cover Them All
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base text-neutral-400 max-w-md font-normal">
+            Engineering, Product, AI & Business Consulting built for scale.
           </p>
         </div>
 
         {/* Horizontal Track Container */}
-        <div className="w-full overflow-hidden flex-grow flex items-center">
+        <div className="w-full overflow-hidden flex-grow flex items-center my-auto">
           <div
             ref={trackRef}
-            className="flex gap-6 px-6 sm:px-12 lg:px-16 w-max will-change-transform"
+            className="flex gap-5 px-6 sm:px-12 lg:px-16 w-max will-change-transform"
           >
             {categoriesData.map((category) => (
               <div
                 key={category.id}
-                className="relative flex-shrink-0 w-[300px] sm:w-[360px] h-[380px] sm:h-[430px] bg-neutral-900 border border-neutral-200 dark:border-neutral-800/80 rounded-2xl overflow-hidden flex flex-col justify-between p-6 group shadow-xl"
+                className="relative flex-shrink-0 w-[280px] sm:w-[320px] h-[340px] sm:h-[380px] bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-all duration-500 rounded-2xl overflow-hidden flex flex-col justify-between p-6 group cursor-pointer backdrop-blur-md shadow-xl"
               >
-                {/* Image Background */}
+                {/* Image Background with Dark Overlay */}
                 <Image
                   src={category.cardImage}
                   alt={category.categoryName}
                   fill
-                  sizes="(max-width: 640px) 300px, 360px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-100 opacity-100"
+                  sizes="(max-width: 640px) 280px, 320px"
+                  className="object-cover group-hover:opacity-40 group-hover:scale-100 transition-all duration-700"
                   priority={category.id === 'web-development'}
                 />
                 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/40 pointer-events-none" />
+                {/* Dark Vignette Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent pointer-events-none" />
 
-                {/* Card Title */}
-                <div className="relative z-10">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight leading-tight">
+                {/* Card Title Header */}
+                <div className="relative z-10 flex items-start justify-between">
+                  <h3 className="text-lg sm:text-xl font-medium text-white tracking-tight leading-snug group-hover:text-[#5dc192] transition-colors duration-300">
                     {category.categoryName}
                   </h3>
                 </div>
 
                 {/* Service Tags */}
-                <div className="relative z-10 flex flex-wrap gap-1.5 sm:gap-2 pt-3">
+                <div className="relative z-10 flex flex-wrap gap-1.5 pt-3">
                   {category.services.map((service) => (
                     <span
                       key={service.id}
-                      className="px-3 py-1 text-xs font-medium text-white/90 bg-black/60 backdrop-blur-md border border-white/20 rounded-full hover:border-white/50 transition-colors duration-200"
+                      className="px-2.5 py-1 text-[11px] font-normal text-neutral-300 bg-black/80 border border-neutral-800 backdrop-blur-md rounded-full hover:border-[#5dc192]/50 hover:text-white transition-all duration-300"
                     >
                       {service.title}
                     </span>

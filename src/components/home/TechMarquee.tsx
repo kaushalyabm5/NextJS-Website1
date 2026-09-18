@@ -4,15 +4,15 @@ import React, { useState, useEffect } from 'react';
 
 const LOGOS = [
   { name: 'React', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/react.svg', color: '#61DAFB' },
-  { name: 'Next.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nextdotjs.svg', color: 'var(--logo-mono)' },
+  { name: 'Next.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nextdotjs.svg', color: '#FFFFFF' },
   { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/typescript.svg', color: '#3178C6' },
   { name: 'JavaScript', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/javascript.svg', color: '#F7DF1E' },
-  { name: 'Vercel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vercel.svg', color: 'var(--logo-mono)' },
+  { name: 'Vercel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vercel.svg', color: '#FFFFFF' },
   { name: 'Hostinger', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/hostinger.svg', color: '#673DE6' },
   { name: 'Supabase', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/supabase.svg', color: '#3FCF8E' },
   { name: 'Node.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nodedotjs.svg', color: '#5FA04E' },
   { name: 'MongoDB', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/mongodb.svg', color: '#47A248' },
-  { name: 'Express.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/express.svg', color: 'var(--logo-mono)' },
+  { name: 'Express.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/express.svg', color: '#FFFFFF' },
 ];
 
 export default function TechMarquee() {
@@ -23,40 +23,34 @@ export default function TechMarquee() {
   }, []);
 
   if (!isMounted) {
-    return (
-      <div className="w-full h-32 bg-white dark:bg-black border-y border-neutral-200 dark:border-neutral-800" />
-    );
+    return <div className="w-full h-24 bg-black" />;
   }
 
   return (
-    <div className="w-full bg-white dark:bg-black py-8 border-y border-neutral-200 dark:border-neutral-800 overflow-hidden relative transition-colors duration-300 [--logo-mono:#000000] dark:[--logo-mono:#ffffff]">
-      
-      {/* Edge Fade Masks */}
-      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-48 z-10 bg-gradient-to-r from-white dark:from-black to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-48 z-10 bg-gradient-to-l from-white dark:from-black to-transparent pointer-events-none" />
+    <div className="w-full bg-black py-1 overflow-hidden relative cursor-pointer">
+      {/* Dynamic Gradient Mask for Smooth Edges */}
+      <div className="absolute left-0 top-0 bottom-0 w-32 md:w-56 z-10 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-32 md:w-56 z-10 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none" />
 
-      {/* Marquee Track Container */}
-      <div className="flex w-max items-center animate-marquee-left-to-right hover:[animation-play-state:paused]">
+      {/* Marquee Track */}
+      <div className="flex w-max items-center animate-marquee hover:[animation-play-state:paused]">
         {[...Array(2)].map((_, setIndex) => (
-          <div key={setIndex} className="flex items-center gap-20 sm:gap-32 pr-20 sm:pr-32">
+          <div key={setIndex} className="flex items-center gap-16 sm:gap-24 md:gap-32 pr-16 sm:pr-24 md:pr-32">
             {LOGOS.map((logo, index) => (
               <div
                 key={`${setIndex}-${index}`}
-                className="relative flex items-center justify-center min-w-[70px] sm:min-w-[90px] h-10 sm:h-12 md:h-14 transition-all duration-300 hover:scale-105 group cursor-pointer"
+                className="relative flex items-center justify-center h-8 sm:h-10 md:h-11 transition-all duration-300 hover:scale-110 cursor-pointer group"
                 title={logo.name}
               >
-                {/* Dynamic Glow - Subtle black glow in light mode, soft white in dark mode 
-                <div className="absolute inset-0 rounded-full bg-black/5 dark:bg-white/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />*/}
-
-                {/* Pure Solid Black (Light Mode) / Pure Solid White (Dark Mode) */}
+                {/* Default State: Monochromatic White/Gray */}
                 <img
                   src={logo.src}
                   alt={`${logo.name} logo`}
-                  className="h-full w-auto object-contain relative z-10 opacity-100 group-hover:opacity-0 brightness-0 contrast-200 dark:invert transition-all duration-300"
+                  className="h-full w-auto object-contain invert opacity-40 group-hover:opacity-0 transition-all duration-300 grayscale"
                   loading="lazy"
                 />
 
-                {/* Hover Mask Color: Brand Color or Dynamic Black/White for Mono Logos */}
+                {/* Hover State: Original Brand Color Mask */}
                 <div
                   className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
@@ -77,18 +71,18 @@ export default function TechMarquee() {
         ))}
       </div>
 
-      {/* Animation Keyframes */}
+      {/* Infinite Scroll Animation */}
       <style jsx>{`
-        @keyframes marquee-ltr {
+        @keyframes marquee {
           0% {
-            transform: translateX(-50%);
-          }
-          100% {
             transform: translateX(0%);
           }
+          100% {
+            transform: translateX(-50%);
+          }
         }
-        .animate-marquee-left-to-right {
-          animation: marquee-ltr 35s linear infinite;
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
         }
       `}</style>
     </div>

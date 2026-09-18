@@ -1,173 +1,63 @@
 'use client';
 
-import React, { useRef } from 'react';
-import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-
-import imgOne from '@/assets/what-to-do/1.png';
-import imgTwo from '@/assets/what-to-do/2.png';
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState, useEffect } from 'react';
+import { Layers, ShoppingBag, Cpu, ShieldCheck } from 'lucide-react';
 
 export default function WhatWeDo() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const leftContentRef = useRef<HTMLDivElement>(null);
-  const imageOneRef = useRef<HTMLDivElement>(null);
-  const imageTwoRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState(0);
 
-  useGSAP(
-    () => {
-      const section = sectionRef.current;
-      const leftContent = leftContentRef.current;
-      const img1 = imageOneRef.current;
-      const img2 = imageTwoRef.current;
+  const features = [
+    { label: 'Retail', icon: ShoppingBag, color: 'from-blue-600/40 via-purple-600/30 to-amber-500/40' },
+    { label: 'Enterprise', icon: Layers, color: 'from-cyan-600/40 via-indigo-600/30 to-rose-500/40' },
+    { label: 'AI Platform', icon: Cpu, color: 'from-emerald-600/40 via-blue-600/30 to-purple-500/40' },
+    { label: 'Security', icon: ShieldCheck, color: 'from-violet-600/40 via-fuchsia-600/30 to-amber-500/40' },
+  ];
 
-      if (!section || !leftContent || !img1 || !img2) return;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [features.length]);
 
-      const mm = gsap.matchMedia();
-
-      // DESKTOP ANIMATION (lg screens and above)
-      mm.add('(min-width: 1024px)', () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            pin: true,
-            start: 'top top', // Gap එක නැති කිරීමට 'top top' ලෙසම තබා ඇත
-            end: '+=120%',    // Scroll දුර අඩු කළ නිසා ඇනිමේෂන් එක ඉක්මනින් අවසන් වේ
-            scrub: 0.5,       // 0.5 ලබා දුන් විට ස්ක්‍රෝල් එකට ක්ෂණිකව ප්‍රතිචාර දක්වයි (Lag නොවේ)
-            invalidateOnRefresh: true,
-          },
-        });
-
-        // 1. Left side content animates in immediately at time 0
-        tl.fromTo(
-          leftContent.children,
-          { opacity: 0, y: 40, filter: 'blur(8px)' },
-          {
-            opacity: 1,
-            y: 0,
-            filter: 'blur(0px)',
-            duration: 1,
-            stagger: 0.15,
-            ease: 'power2.out',
-          },
-          0 // 0 වෙනි තත්පරයේදීම පටන් ගනී
-        )
-          // 2. Image 1 animates in simultaneously
-          .fromTo(
-            img1,
-            { opacity: 0, y: '80%', rotateX: 15, rotateZ: -6, scale: 0.9 },
-            {
-              opacity: 1,
-              y: '0%',
-              rotateX: 0,
-              rotateZ: -2,
-              scale: 1,
-              duration: 1.2,
-              ease: 'power2.out',
-            },
-            0 // Left content එකත් සමගම එකවර පටන් ගනී
-          )
-          // 3. Image 2 animates in simultaneously
-          .fromTo(
-            img2,
-            { opacity: 0, y: '-80%', rotateX: -15, rotateZ: 8, scale: 0.9 },
-            {
-              opacity: 1,
-              y: '0%',
-              rotateX: 0,
-              rotateZ: 3,
-              scale: 1,
-              duration: 1.2,
-              ease: 'power2.out',
-            },
-            0 // Left content එකත් සමගම එකවර පටන් ගනී
-          )
-          // 4. Phase 2 (Deeper scroll offset)
-          .to(
-            img1,
-            { y: '-8%', rotateZ: 0, duration: 0.8, ease: 'power1.inOut' },
-            '+=0.1'
-          )
-          .to(
-            img2,
-            { y: '8%', rotateZ: 0, duration: 0.8, ease: 'power1.inOut' },
-            '<' // Previous animation එක සමග එකවර සිදුවේ
-          );
-      });
-
-      return () => mm.revert();
-    },
-    { scope: sectionRef }
-  );
+  const CurrentIcon = features[activeTab].icon;
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full min-h-screen lg:h-screen bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300 flex items-center py-12 lg:py-0"
-    >
-      <div className="relative z-10 max-w-full w-full mx-auto h-full px-5 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center content-center">
-        {/* LEFT COLUMN: MAIN TITLE & DESCRIPTION */}
-        <div
-          ref={leftContentRef}
-          className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-8 z-20 will-change-transform"
-        >
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 text-neutral-900 dark:text-white">
-            The convergence of technology{' '}
-            <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 dark:text-white">
-              and growth.
-            </span>
+    <section className="w-full bg-black text-white py-20 px-6 md:px-12 lg:px-20">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        {/* Left Side: Exact Typography Matching Reference Image */}
+        <div className="lg:col-span-8 space-y-3">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.3rem] font-normal tracking-tight leading-[1.3] text-neutral-100 max-w-2xl">
+            We help enterprises reimagine business growth with our AI Platform, Work Solutions, and Intelligent Marketplace. Unlock efficiency, automation, and innovation across every workflow.
           </h2>
-
-          <p className="text-[.9rem] text-neutral-600 dark:text-white leading-relaxed font-light lg:font-thin max-w-lg">
-            At Axstar, we bring engineering precision and marketing strategy
-            under one roof. We architect low-latency, resilient systems built
-            to scale alongside your ambition, then amplify them with
-            data-driven campaigns that convert reach into results. The outcome is
-            a digital presence that performs technically and delivers
-            commercially.
-          </p>
-
-          
         </div>
 
-        {/* RIGHT COLUMN: SINGLE STATIC IMAGE ON MOBILE, DUAL ANIMATED IMAGES ON DESKTOP */}
-        <div
-          className="lg:col-span-6 relative w-full flex items-center justify-center gap-6"
-          style={{ perspective: '1200px' }}
-        >
-          {/* IMAGE 1 */}
-          <div
-            ref={imageOneRef}
-            className="w-full lg:w-1/2 h-[320px] sm:h-[420px] lg:h-[440px] relative rounded-2xl lg:rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-900 shadow-2xl overflow-hidden will-change-transform group"
-          >
-            <Image
-              src={imgOne}
-              alt="System Architecture"
-              fill
-              priority
-              className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none" />
-          </div>
+        {/* Right Side: 3D Orb Graphic */}
+        <div className="lg:col-span-4 flex justify-center lg:justify-end">
+          <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full flex items-center justify-center cursor-pointer group">
+            
+            {/* Outer Soft Glow */}
+            <div className={`absolute inset-0 rounded-full bg-gradient-to-tr ${features[activeTab].color} blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-700`} />
 
-          {/* IMAGE 2 */}
-          <div
-            ref={imageTwoRef}
-            className="hidden lg:block w-1/2 h-[440px] relative rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-900 shadow-2xl overflow-hidden will-change-transform group"
-          >
-            <Image
-              src={imgTwo}
-              alt="Execution Framework"
-              fill
-              priority
-              className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none" />
+            {/* Glass Orb Shell */}
+            <div className="relative w-full h-full rounded-full bg-gradient-to-br from-white/20 via-white/5 to-transparent backdrop-blur-3xl border border-white/20 shadow-2xl flex flex-col items-center justify-center overflow-hidden transition-all duration-700 group-hover:scale-105">
+              
+              {/* Inner Radial Highlight */}
+              <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent rounded-t-full pointer-events-none" />
+              <div className={`absolute inset-0 bg-gradient-to-tr ${features[activeTab].color} opacity-40 mix-blend-screen transition-all duration-700`} />
+
+              {/* Center Icon & Dynamic Label */}
+              <div className="relative z-10 flex flex-col items-center gap-2 transition-all duration-500 transform group-hover:scale-110">
+                <CurrentIcon className="w-10 h-10 md:w-12 md:h-12 text-white drop-shadow-md transition-all duration-500" />
+                <span className="text-base md:text-lg font-normal tracking-wide text-white/90 drop-shadow-sm">
+                  {features[activeTab].label}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );

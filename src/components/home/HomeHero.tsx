@@ -4,7 +4,7 @@ import heroImg from "@/assets/home-hero/hero-img.png";
 
 export default function HomeHero() {
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center overflow-hidden pt-24 pb-16 px-4">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center overflow-hidden pt-24 pb-10 px-4">
       {/* Background Image Layer */}
       <div className="absolute inset-0 -z-10 w-full h-full">
         <Image
@@ -22,7 +22,7 @@ export default function HomeHero() {
       <div className="max-w-4xl mx-auto flex flex-col items-center z-10 space-y-6">
         {/* Top Badge */}
         <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm text-white/90 font-normal shadow-inner">
-          Beta Version is launching on 12th September
+          Jezzy AI Beta Version is launching on 23rd September
         </div>
 
         {/* Main Heading */}
@@ -33,8 +33,8 @@ export default function HomeHero() {
 
         {/* Subtitle */}
         <p className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-2xl font-light leading-relaxed">
-          Accelerate the speed of business with the COSMOC Platform <br className="hidden sm:inline" />
-          and our AI solutions for work, service, and process.
+          Axstar turns ideas into scalable, high-performance digital solutions, <br className="hidden sm:inline" />
+          driving business growth from strategy to full deployment.
         </p>
 
         {/* Action Buttons */}
