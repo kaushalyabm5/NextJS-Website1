@@ -15,6 +15,8 @@ import BusinessImpactSection from './BusinessImpactSection'
 import Services from './Services'
 import ProjectGrid from './ProjectGrid'
 import Sectors from './Sectors'
+import ElephantCrewStorySection from './ElephantCrewStorySection'
+import Reviews from './Reviews'
 
 const HomePage = () => {
   return (
@@ -23,14 +25,17 @@ const HomePage = () => {
         <TechMarquee />
         <WhatWeDo />
         <BusinessImpactSection />
-     
+        <ElephantCrewStorySection />
         <Services />
         <OurEdge />
+        <TechStack />
+        <Reviews />
+        <Testimonials />
         <Sectors />
         {/* <MetricsSection />*/}
          {/*<Process />*/}
-        {/*<TechStack />*/}
-        <Testimonials />
+        
+        
       
         <ProjectGrid />
         <CTASection />

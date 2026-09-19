@@ -93,23 +93,23 @@ export default function Testimonials() {
   }, [isPaused]);
 
   return (
-    <section className="relative w-full py-28 bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300">
+    <section className="relative w-full pt-2 bg-white dark:bg-black text-neutral-900 dark:text-white overflow-hidden transition-colors duration-300">
       
       {/* AMBIENT SPOTLIGHT BACKGROUND */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#5dc192]/10 dark:bg-[#5dc192]/5 blur-[140px] rounded-full pointer-events-none" />
 
-      {/* HEADER SECTION */}
+      {/* HEADER SECTION 
       <div className="relative z-10 max-w-full mx-auto px-6 mb-3">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start justify-between">
           
-          {/* LEFT SIDE: MAIN TITLE */}
+          
           <div className="lg:col-span-7 text-left">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight leading-[1.15] text-black dark:text-white">
               Trusted by leaders shaping the <span className="font-normal text-black dark:text-white">future of digital platforms.</span>
             </h2>
           </div>
 
-          {/* RIGHT SIDE: DESCRIPTION RIGHT ALIGNED */}
+        
           <div className="lg:col-span-5 text-right">
             <p className="text-[.9rem] text-neutral-600 dark:text-white leading-relaxed font-thin text-right">
               We partner with forward-thinking enterprises and fast-growing platforms to design, engineer, and deploy digital products that deliver high business impact.
@@ -117,7 +117,7 @@ export default function Testimonials() {
           </div>
 
         </div>
-      </div>
+      </div>*/}
 
       {/* 3D SPOTLIGHT CAROUSEL CONTAINER */}
       <div 
