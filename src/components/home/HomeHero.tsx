@@ -12,6 +12,7 @@ export default function HomeHero() {
           alt="CosmoQ Background"
           fill
           priority
+          sizes="100vw"
           className="object-cover object-center"
         />
         {/* Dark overlay gradient for contrast */}

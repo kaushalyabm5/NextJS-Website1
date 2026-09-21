@@ -14,7 +14,7 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "CosmoQ — Recreated",
+  title: "Axstar",
   description: "Modern web platform",
 };
 
