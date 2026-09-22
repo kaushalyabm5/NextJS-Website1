@@ -5,46 +5,47 @@ import React from 'react';
 interface TechItem {
   name: string;
   logo: string;
+  invert?: boolean;
 }
 
 const row1Items: TechItem[] = [
-  { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { name: 'Azure', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
-  { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
-  { name: 'GCP', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg' },
-  { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-  { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-  { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { name: 'React', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg' },
+  { name: 'Azure', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg' },
+  { name: 'AWS', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg', invert: true },
+  { name: 'GCP', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/googlecloud/googlecloud-original.svg' },
+  { name: 'Next.js', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg', invert: true },
+  { name: 'TypeScript', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg' },
+  { name: 'JavaScript', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg' },
 ];
 
 const row2Items: TechItem[] = [
-  { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-  { name: 'TailwindCSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
-  { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-  { name: 'Supabase', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' },
-  { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-  { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
-  { name: 'Figma', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+  { name: 'Node.js', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg' },
+  { name: 'TailwindCSS', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg' },
+  { name: 'PostgreSQL', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg' },
+  { name: 'Supabase', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/supabase/supabase-original.svg' },
+  { name: 'Docker', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg' },
+  { name: 'Kubernetes', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg' },
+  { name: 'Figma', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg' },
 ];
 
 const row3Items: TechItem[] = [
-  { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  { name: 'GraphQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
-  { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-  { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-  { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-  { name: 'Flutter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
-  { name: 'Vue.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+  { name: 'Python', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
+  { name: 'GraphQL', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/graphql/graphql-plain.svg' },
+  { name: 'Redis', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original.svg' },
+  { name: 'MongoDB', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg' },
+  { name: 'Git', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg' },
+  { name: 'Flutter', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg' },
+  { name: 'Vue.js', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg' },
 ];
 
 const row4Items: TechItem[] = [
-  { name: 'Go', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg' },
-  { name: 'Rust', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg' },
-  { name: 'Firebase', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
-  { name: 'Sass', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
-  { name: 'Prisma', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg' },
-  { name: 'Webpack', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg' },
-  { name: 'Nginx', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg' },
+  { name: 'Go', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original-wordmark.svg' },
+  { name: 'Rust', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-original.svg', invert: true },
+  { name: 'Firebase', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg' },
+  { name: 'Sass', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg' },
+  { name: 'Prisma', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/prisma/prisma-original.svg', invert: true },
+  { name: 'Webpack', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/webpack/webpack-original.svg' },
+  { name: 'Nginx', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg' },
 ];
 
 export default function TechStack() {
@@ -114,7 +115,9 @@ export default function TechStack() {
                 <img
                   src={tech.logo}
                   alt={tech.name}
-                  className="w-16 h-16 sm:w-20 sm:h-20 object-contain opacity-90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
+                  className={`w-16 h-16 sm:w-20 sm:h-20 object-contain opacity-90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] ${
+                    tech.invert ? 'invert brightness-200' : ''
+                  }`}
                 />
               </div>
             ))}
@@ -132,7 +135,9 @@ export default function TechStack() {
                 <img
                   src={tech.logo}
                   alt={tech.name}
-                  className="w-16 h-16 sm:w-20 sm:h-20 object-contain opacity-90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
+                  className={`w-16 h-16 sm:w-20 sm:h-20 object-contain opacity-90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] ${
+                    tech.invert ? 'invert brightness-200' : ''
+                  }`}
                 />
               </div>
             ))}
@@ -150,7 +155,9 @@ export default function TechStack() {
                 <img
                   src={tech.logo}
                   alt={tech.name}
-                  className="w-16 h-16 sm:w-20 sm:h-20 object-contain opacity-90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
+                  className={`w-16 h-16 sm:w-20 sm:h-20 object-contain opacity-90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] ${
+                    tech.invert ? 'invert brightness-200' : ''
+                  }`}
                 />
               </div>
             ))}
@@ -168,7 +175,9 @@ export default function TechStack() {
                 <img
                   src={tech.logo}
                   alt={tech.name}
-                  className="w-16 h-16 sm:w-20 sm:h-20 object-contain opacity-90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
+                  className={`w-16 h-16 sm:w-20 sm:h-20 object-contain opacity-90 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] ${
+                    tech.invert ? 'invert brightness-200' : ''
+                  }`}
                 />
               </div>
             ))}
@@ -176,7 +185,7 @@ export default function TechStack() {
         </div>
       </div>
 
-      {/* Bottom Link */}
+      {/* Bottom Link 
       <div className="relative z-10 mt-12">
         <a
           href="#resources"
@@ -184,7 +193,7 @@ export default function TechStack() {
         >
           Developer resources &gt;
         </a>
-      </div>
+      </div>*/}
     </section>
   );
 }

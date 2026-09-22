@@ -91,7 +91,7 @@ export default function OurStory() {
             </div>
 
             {/* MAIN QUOTE */}
-            <h3 className="text-2xl sm:text-4xl font-normal tracking-tight text-white leading-[1.2]">
+            <h3 className="text-[2.3rem] font-medium tracking-tight mb-6 leading-[1.12] text-black dark:text-white transition-colors duration-300">
               At Axstar, innovation is more than a goal, it’s in our DNA. We build technology that empowers businesses to grow and thrive.
             </h3>
 

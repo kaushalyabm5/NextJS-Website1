@@ -144,18 +144,20 @@ export default function OurEdge() {
         {/* Header Section */}
         <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 opacity-0">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 mb-4 bg-neutral-900 border border-neutral-800 font-mono text-xs uppercase tracking-widest rounded-full text-[#5dc192]">
-              <Sparkles className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '6s' }} />
-              <span>[ OUR EDGE ]</span>
-            </div>
+          
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.08] text-white">
-              The Axstar{' '}
-              <span className="text-[#5dc192] font-medium">Advantage</span>
+                   {/* PILL BADGE WITH ICON */}
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-2 rounded-full bg-white/[0.06] border border-white/15 text-neutral-300 text-xs font-mono tracking-widest uppercase backdrop-blur-md shadow-2xl">
+                      <Sparkles className="w-3.5 h-3.5 text-neutral-300" />
+                      <span>Our Edge</span>
+                    </div>
+
+            <h2 className="text-3xl sm:text-5xl font-medium tracking-tight leading-[1.15] max-w-2xl text-white">
+              The Axstar Advantage
             </h2>
           </div>
 
-          <p className="text-base sm:text-lg text-neutral-400 max-w-sm font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-neutral-400 max-w-md font-normal">
             An architectural breakdown of our core engineering methodology and client support strategy.
           </p>
         </div>

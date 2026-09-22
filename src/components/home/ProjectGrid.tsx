@@ -12,13 +12,10 @@ export default function ProjectGrid() {
 
   return (
     <section className="relative w-full px-6 py-16 sm:py-24 bg-white dark:bg-black transition-colors duration-300">
-   
 
       {/* HEADER SECTION */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6 max-w-[1400px] mx-auto">
+      <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6 max-w-7xl mx-auto">
         <div className="space-y-4 max-w-2xl">
-         
-
           <h2 className="text-4xl sm:text-6xl font-semibold tracking-tight text-neutral-900 dark:text-white">
             Project Showcase
           </h2>
@@ -45,7 +42,7 @@ export default function ProjectGrid() {
       </div>
 
       {/* PROJECTS GRID */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {featuredProjects.map((project) => (
           <Link
             key={project.id}

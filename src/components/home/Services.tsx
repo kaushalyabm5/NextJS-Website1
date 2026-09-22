@@ -17,6 +17,7 @@ import img7 from '@/assets/services-img/7.jpg';
 import img8 from '@/assets/services-img/8.jpg';
 import img9 from '@/assets/services-img/9.jpg';
 import img10 from '@/assets/services-img/11.jpg';
+import { Zap } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -189,10 +190,14 @@ export default function Services() {
         {/* Header Title Section - Max Width 7xl */}
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row md:items-end justify-between gap-3 flex-shrink-0">
           <div>
-            <span className="text-[#5dc192] text-xs uppercase tracking-widest font-semibold block mb-1.5">
-              Capabilities
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight">
+          
+
+              {/* PILL BADGE WITH ICON */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-2 rounded-full bg-white/[0.06] border border-white/15 text-neutral-300 text-xs font-mono tracking-widest uppercase backdrop-blur-md shadow-2xl">
+          <Zap className="w-3.5 h-3.5 text-neutral-300" />
+          <span>Capabilities</span>
+        </div>
+            <h2 className="text-3xl sm:text-5xl font-medium tracking-tight leading-[1.15] max-w-2xl text-white">
               We Cover Them All
             </h2>
           </div>

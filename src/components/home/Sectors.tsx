@@ -18,7 +18,8 @@ import {
   HeartPulse, 
   Sprout, 
   Briefcase,
-  ArrowUpRight
+  ArrowUpRight,
+  LandmarkIcon
 } from 'lucide-react';
 
 // Static Imports for All 12 Sectors (3 Images Each - JPEG format)
@@ -271,17 +272,21 @@ export default function Sectors() {
   );
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-12 pb-24 transition-colors duration-300">
+    <section ref={sectionRef} className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-12 pb-5 transition-colors duration-300">
       {/* Strict 7xl Wrapper */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Header Section */}
         <div className="w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16 lg:mb-20">
           <div className="max-w-2xl">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#5dc192] mb-3 block">
-              [ ARCHITECTURAL CAPABILITIES ]
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-left">
+           
+
+            {/* PILL BADGE WITH ICON */}
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-2 rounded-full bg-white/[0.06] border border-white/15 text-neutral-300 text-xs font-mono tracking-widest uppercase backdrop-blur-md shadow-2xl">
+                      <LandmarkIcon className="w-3.5 h-3.5 text-neutral-300" />
+                      <span>ArchitecTural Capabilities</span>
+                    </div>
+            <h2 className="text-3xl sm:text-5xl font-medium tracking-tight leading-[1.15] max-w-2xl text-white">
               Architectural Solutions & Sector Expertise
             </h2>
           </div>

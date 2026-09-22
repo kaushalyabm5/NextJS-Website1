@@ -198,7 +198,7 @@ export default function Testimonials() {
         {/* LEFT / RIGHT NAVIGATION ARROWS */}
         <button
           onClick={handlePrev}
-          className="absolute left-2 sm:left-6 z-30 p-4 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md text-neutral-900 dark:text-white hover:border-[#5dc192] dark:hover:border-[#5dc192] hover:scale-105 transition-all duration-300 group shadow-xl"
+          className="absolute cursor-pointer left-2 sm:left-6 z-30 p-4 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md text-neutral-900 dark:text-white hover:border-[#5dc192] dark:hover:border-[#5dc192] hover:scale-105 transition-all duration-300 group shadow-xl"
           aria-label="Previous testimonial"
         >
           <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-0.5 text-neutral-800 dark:text-white" />
@@ -206,7 +206,7 @@ export default function Testimonials() {
 
         <button
           onClick={handleNext}
-          className="absolute right-2 sm:right-6 z-30 p-4 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md text-neutral-900 dark:text-white hover:border-[#5dc192] dark:hover:border-[#5dc192] hover:scale-105 transition-all duration-300 group shadow-xl"
+          className="absolute cursor-pointer right-2 sm:right-6 z-30 p-4 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md text-neutral-900 dark:text-white hover:border-[#5dc192] dark:hover:border-[#5dc192] hover:scale-105 transition-all duration-300 group shadow-xl"
           aria-label="Next testimonial"
         >
           <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-0.5 text-neutral-800 dark:text-white" />

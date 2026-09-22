@@ -5,9 +5,10 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { Rocket, Award, Trophy, HeartHandshake } from 'lucide-react';
+import { Rocket, Award, Trophy, HeartHandshake, Target } from 'lucide-react';
 
-import storyImage from '@/assets/third-section/1.png';
+
+import storyImage from '@/assets/third-section/5.jpg';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -128,7 +129,7 @@ export default function ElephantCrewStorySection() {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-white dark:bg-black text-black dark:text-white relative overflow-hidden flex items-center justify-center border-y border-neutral-200 dark:border-neutral-900 transition-colors duration-300 min-h-screen"
+      className="w-full bg-white dark:bg-black text-black dark:text-white relative overflow-hidden flex items-center justify-center dark:border-neutral-900 transition-colors duration-300 min-h-screen"
     >
       {/* Container restricted to 7XL layout */}
       <div className="max-w-7xl w-full mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20 relative flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-16">
@@ -232,7 +233,7 @@ export default function ElephantCrewStorySection() {
               src={storyImage}
               alt="Axstar Brand Story"
               fill
-              className="object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105"
+              className="object-cover rounded-3xl transition-transform duration-700 group-hover:scale-100"
               sizes="(max-width: 1024px) 100vw, 420px"
               priority
             />
@@ -245,9 +246,14 @@ export default function ElephantCrewStorySection() {
           ref={middleTextRef}
           className="absolute inset-0 flex flex-col items-center justify-center text-center max-w-3xl mx-auto px-6 z-40 pointer-events-none"
         >
-          <span className="font-mono text-xs uppercase tracking-widest text-[#5dc192] mb-4">
-            [ OUR VISION ]
-          </span>
+          
+
+
+          {/* PILL BADGE WITH ICON */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-neutral-300 text-xs font-mono tracking-widest uppercase backdrop-blur-md shadow-2xl">
+          <Target className="w-3.5 h-3.5 text-neutral-300" />
+          <span>OUR VISION</span>
+        </div>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight mb-6 leading-[1.12] text-black dark:text-white transition-colors duration-300">
             A Strategic Partner for Digital Transformation.
           </h1>

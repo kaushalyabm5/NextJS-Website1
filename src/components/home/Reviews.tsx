@@ -112,7 +112,7 @@ export default function Reviews() {
   if (!isMounted) return null;
 
   return (
-    <section className="w-full bg-black text-white pt-25 px-6 sm:px-8 lg:px-12 relative overflow-hidden">
+    <section className="w-full bg-black text-white pt-35 px-6 sm:px-8 lg:px-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Header Row 
@@ -132,14 +132,14 @@ export default function Reviews() {
           
           
           <div className="lg:col-span-7 text-left">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight leading-[1.15] text-black dark:text-white">
-              Trusted by leaders shaping the <span className="font-normal text-black dark:text-white">future of digital platforms.</span>
+            <h2 className="text-3xl sm:text-5xl font-medium tracking-tight leading-[1.15] max-w-2xl text-white">
+              Trusted by leaders shaping the <span className="text-3xl sm:text-5xl font-medium tracking-tight leading-[1.15] max-w-2xl text-white">future of digital platforms.</span>
             </h2>
           </div>
 
         
           <div className="lg:col-span-5 text-right">
-            <p className="text-[.9rem] text-neutral-600 dark:text-white leading-relaxed font-thin text-right">
+            <p className="text-sm sm:text-base text-neutral-400 max-w-md font-normal">
               We partner with forward-thinking enterprises and fast-growing platforms to design, engineer, and deploy digital products that deliver high business impact.
             </p>
           </div>
@@ -200,7 +200,7 @@ export default function Reviews() {
           <button
             onClick={handlePrev}
             aria-label="Previous testimonial"
-            className="w-11 h-11 border border-neutral-800 bg-black hover:bg-neutral-800 text-neutral-300 hover:text-[#5dc192] rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 shadow-md"
+            className="w-11 h-11 border border-neutral-800 bg-black hover:bg-neutral-800 text-neutral-300 hover:text-[#5dc192] rounded-full flex cursor-pointer items-center justify-center transition-all duration-200 active:scale-95 shadow-md"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -208,7 +208,7 @@ export default function Reviews() {
           <button
             onClick={handleNext}
             aria-label="Next testimonial"
-            className="w-11 h-11 border border-neutral-800 bg-black hover:bg-neutral-800 text-neutral-300 hover:text-[#5dc192] rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 shadow-md"
+            className="w-11 h-11 cursor-pointer border border-neutral-800 bg-black hover:bg-neutral-800 text-neutral-300 hover:text-[#5dc192] rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 shadow-md"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
