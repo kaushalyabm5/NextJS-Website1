@@ -1,8 +1,11 @@
 import React from 'react'
 import AboutHero from './AboutHero'
 import WhoWeAre from './WhoWeAre'
-import MissionVision from './MissionVision'
 import CoreValues from './CoreValues'
+import OurStory from './OurStory'
+import WhatWeDoAbout from './WhatWeDoAbout'
+import StandsOut from './StandsOut'
+import AboutBrands from './AboutBrands'
 
 
 const AboutPage = () => {
@@ -11,7 +14,11 @@ const AboutPage = () => {
         <AboutHero />
         <WhoWeAre />
     
-        {/*<CoreValues /> */}
+        <CoreValues />
+        <OurStory />
+        <WhatWeDoAbout />
+        <AboutBrands />
+        {/*<StandsOut /> */}
         {/*<MissionVision /> */}
         
     </div>
