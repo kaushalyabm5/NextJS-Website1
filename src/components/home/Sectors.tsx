@@ -271,7 +271,7 @@ export default function Sectors() {
   );
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-12 pb-24 transition-colors duration-300">
+    <section ref={sectionRef} className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-12 pb-10 transition-colors duration-300">
       {/* Strict 7xl Wrapper */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         

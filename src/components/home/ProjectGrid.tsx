@@ -11,7 +11,7 @@ export default function ProjectGrid() {
   const featuredProjects = projects.slice(0, 4);
 
   return (
-    <section className="relative w-full px-6 py-16 sm:py-24 bg-white dark:bg-black transition-colors duration-300">
+    <section className="relative w-full px-6 pt-10 pb-10 bg-white dark:bg-black transition-colors duration-300">
 
       {/* HEADER SECTION */}
       <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6 max-w-7xl mx-auto">
