@@ -1,28 +1,74 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { 
-  Compass, 
   Cpu, 
-  Target, 
-  Headphones, 
-  Stethoscope, 
-  Landmark, 
+  Plane, 
   ShoppingBag, 
-  ShieldCheck, 
+  Building2, 
   Factory, 
+  Landmark, 
+  Trophy, 
+  Truck, 
+  GraduationCap, 
+  HeartPulse, 
+  Sprout, 
+  Briefcase,
   ArrowUpRight
 } from 'lucide-react';
 
-// Static Imports
-import img1 from '@/assets/sector-img/1.png';
-import img2 from '@/assets/sector-img/2.png';
-import img3 from '@/assets/sector-img/3.png';
-import img4 from '@/assets/sector-img/4.png';
+// Static Imports for All 12 Sectors (3 Images Each - JPEG format)
+import it1 from '@/assets/sector-img/ITTechnology1.jpeg';
+import it2 from '@/assets/sector-img/ITTechnology2.jpeg';
+import it3 from '@/assets/sector-img/ITTechnology3.jpeg';
+
+import hosp1 from '@/assets/sector-img/Hospitality1.jpeg';
+import hosp2 from '@/assets/sector-img/Hospitality2.jpeg';
+import hosp3 from '@/assets/sector-img/Hospitality3.jpeg';
+
+import retail1 from '@/assets/sector-img/Retail1.jpeg';
+import retail2 from '@/assets/sector-img/Retail2.jpeg';
+import retail3 from '@/assets/sector-img/Retail3.jpeg';
+
+import realEstate1 from '@/assets/sector-img/RealEstate1.jpeg';
+import realEstate2 from '@/assets/sector-img/RealEstate2.jpeg';
+import realEstate3 from '@/assets/sector-img/RealEstate3.jpeg';
+
+import industrial1 from '@/assets/sector-img/Industrial1.jpeg';
+import industrial2 from '@/assets/sector-img/Industrial2.jpeg';
+import industrial3 from '@/assets/sector-img/Industrial3.jpeg';
+
+import banking1 from '@/assets/sector-img/BankingFinance1.jpeg';
+import banking2 from '@/assets/sector-img/BankingFinance2.jpeg';
+import banking3 from '@/assets/sector-img/BankingFinance3.jpeg';
+
+import sports1 from '@/assets/sector-img/Sports1.jpeg';
+import sports2 from '@/assets/sector-img/Sports2.jpeg';
+import sports3 from '@/assets/sector-img/Sports3.jpeg';
+
+import transport1 from '@/assets/sector-img/Transport1.jpeg';
+import transport2 from '@/assets/sector-img/Transport2.jpeg';
+import transport3 from '@/assets/sector-img/Transport3.jpeg';
+
+import edu1 from '@/assets/sector-img/Education1.jpeg';
+import edu2 from '@/assets/sector-img/Education2.jpeg';
+import edu3 from '@/assets/sector-img/Education3.jpeg';
+
+import health1 from '@/assets/sector-img/Healthcare1.jpeg';
+import health2 from '@/assets/sector-img/Healthcare2.jpeg';
+import health3 from '@/assets/sector-img/Healthcare3.jpeg';
+
+import agri1 from '@/assets/sector-img/Agriculture1.jpeg';
+import agri2 from '@/assets/sector-img/Agriculture2.jpeg';
+import agri3 from '@/assets/sector-img/Agriculture3.jpeg';
+
+import prof1 from '@/assets/sector-img/Professional1.jpeg';
+import prof2 from '@/assets/sector-img/Professional2.jpeg';
+import prof3 from '@/assets/sector-img/Professional3.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,121 +81,184 @@ interface CardItem {
   description: string;
   bulletTitle: string;
   bullets: string[];
-  bgImage: StaticImageData;
+  bgImages: StaticImageData[];
 }
 
 const cardsData: CardItem[] = [
   {
-    id: 'strategic-thinking',
-    badgeId: '01',
-    title: 'Strategic Thinking',
-    subtitle: 'Growth-Focused Architecture',
-    icon: Compass,
-    description: 'Strategic planning and smart decision making to build solutions that support long term business growth.',
-    bulletTitle: 'Key Focus Areas',
-    bullets: ['Market Position Analysis', 'Scalable Growth Roadmaps', 'Architecture Design', 'ROI Optimization'],
-    bgImage: img1,
-  },
-  {
-    id: 'technology-expertise',
-    badgeId: '02',
-    title: 'Technology Expertise',
-    subtitle: 'Modern Technical Stack',
-    icon: Cpu,
-    description: 'Deep technical knowledge and modern development tools used to create reliable and scalable digital solutions.',
-    bulletTitle: 'Technical Capabilities',
-    bullets: ['Next.js & WebGL Engines', 'Cloud System Architecture', 'Microservices & APIs', 'High-Performance UI/UX'],
-    bgImage: img2,
-  },
-  {
-    id: 'client-focus',
-    badgeId: '03',
-    title: 'Client Focus Approach',
-    subtitle: 'Tailored Execution',
-    icon: Target,
-    description: 'We prioritize understanding client needs to deliver solutions that align perfectly with their goals.',
-    bulletTitle: 'Client Engagement',
-    bullets: ['Dedicated Strategy Leads', 'Agile Delivery Sprints', 'Custom Solution Alignment', 'Transparent Workflows'],
-    bgImage: img3,
-  },
-  {
-    id: 'customer-support',
-    badgeId: '04',
-    title: '24/7 Customer Support',
-    subtitle: 'Always-On Assistance',
-    icon: Headphones,
-    description: 'Complete support throughout the entire process with reliable assistance available whenever you need it.',
-    bulletTitle: 'Support Offerings',
-    bullets: ['Real-Time System Monitoring', 'Rapid Incident Response', 'Continuous Upgrades', 'Dedicated Account Managers'],
-    bgImage: img4,
-  },
-  {
     id: 'it-technology',
-    badgeId: '05',
-    title: 'IT & Technology',
-    subtitle: 'SaaS & Infrastructure',
+    badgeId: '01',
+    title: 'IT Technology & Digital Businesses',
+    subtitle: 'SaaS & Modern Engineering',
     icon: Cpu,
-    description: 'Tech moves fast – but not every digital presence keeps up. We help IT and technology companies turn complex solutions into clear, user-focused digital experiences.',
-    bulletTitle: 'Businesses We Work With',
-    bullets: ['SaaS & Cloud Platforms', 'Cybersecurity Firms', 'AI & Machine Learning Startups', 'IT Infrastructure Providers'],
-    bgImage: img1,
+    description: 'Transforming complex technological products into sleek, accessible, high-performance digital platforms built for rapid scale.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['SaaS & Cloud Platforms', 'AI & ML Infrastructure', 'Cybersecurity Portals', 'Enterprise Software'],
+    bgImages: [it1, it2, it3],
   },
   {
-    id: 'healthcare-medtech',
-    badgeId: '06',
-    title: 'Healthcare & Life Sciences',
-    subtitle: 'Compliant & Secure Systems',
-    icon: Stethoscope,
-    description: 'In digital healthcare, trust, compliance, and clarity are non-negotiable. We craft HIPAA-compliant, user-friendly digital systems that connect providers smoothly.',
-    bulletTitle: 'Businesses We Work With',
-    bullets: ['Digital Health Apps', 'Medical Device Vendors', 'Pharma & Biotech Consultancies', 'Clinical Research Orgs'],
-    bgImage: img2,
+    id: 'hospitality-tourism',
+    badgeId: '02',
+    title: 'Hospitality & Tourism',
+    subtitle: 'Immersive Luxury Experiences',
+    icon: Plane,
+    description: 'Crafting high-touch booking ecosystems and digital brand narratives for luxury resorts, travel networks, and global hospitality leaders.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Luxury Hotel Booking Systems', 'Eco-Tourism Destinations', 'Travel Management Apps', 'VIP Concierge Portals'],
+    bgImages: [hosp1, hosp2, hosp3],
   },
   {
-    id: 'finance-fintech',
-    badgeId: '07',
-    title: 'Finance & Banking',
-    subtitle: 'Fintech & Security',
-    icon: Landmark,
-    description: 'Modern financial solutions require ironclad security paired with effortless user experience. We build robust fintech dashboards and secure portals designed for growth.',
-    bulletTitle: 'Businesses We Work With',
-    bullets: ['Fintech & Neo-Banks', 'Asset Management Firms', 'Payment Gateways', 'Insurance Providers'],
-    bgImage: img3,
-  },
-  {
-    id: 'ecommerce-retail',
-    badgeId: '08',
-    title: 'E-commerce & Retail',
+    id: 'retail-ecommerce',
+    badgeId: '03',
+    title: 'Retail & E-Commerce',
     subtitle: 'Conversion Commerce',
     icon: ShoppingBag,
-    description: 'Capture market share with ultra-fast, conversion-focused storefronts. We design bespoke shopping experiences that streamline checkout and scale globally.',
-    bulletTitle: 'Businesses We Work With',
-    bullets: ['D2C Luxury Brands', 'B2B Wholesale Platforms', 'Omnichannel Retailers', 'Subscription Marketplaces'],
-    bgImage: img4,
+    description: 'Ultra-fast storefronts and seamless checkout workflows engineered to maximize conversion rates and scale global operations.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Direct-to-Consumer Marketplaces', 'Headless Commerce Systems', 'Omnichannel Platforms', 'B2B Wholesale Hubs'],
+    bgImages: [retail1, retail2, retail3],
   },
   {
-    id: 'legal-cybersecurity',
-    badgeId: '09',
-    title: 'Legal & Professional Services',
-    subtitle: 'Corporate Advisory Ecosystems',
-    icon: ShieldCheck,
-    description: 'Authority and prestige must be felt in every digital touchpoint. We craft sophisticated web ecosystems and client portals tailored for corporate leaders.',
-    bulletTitle: 'Businesses We Work With',
-    bullets: ['Corporate Law Practice Groups', 'Management Consultancies', 'Audit & Tax Advisory', 'Risk Management Agencies'],
-    bgImage: img1,
+    id: 'real-estate-property',
+    badgeId: '04',
+    title: 'Real Estate & Property',
+    subtitle: 'Architectural Presentation',
+    icon: Building2,
+    description: 'Interactive property visualizers, tenant portals, and luxury real estate platforms designed for premium investment showcase.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Property Development Websites', 'Tenant Management Hubs', '3D Architectural Engines', 'Commercial Leasing Portals'],
+    bgImages: [realEstate1, realEstate2, realEstate3],
   },
   {
     id: 'manufacturing-industrial',
-    badgeId: '10',
+    badgeId: '05',
     title: 'Manufacturing & Industrial',
-    subtitle: 'Industry 4.0 Integration',
+    subtitle: 'Industry 4.0 Systems',
     icon: Factory,
-    description: 'Bridge traditional legacy operations with high-impact digital tools. We build intuitive product catalogs, partner portals, and supply chain visualizers.',
-    bulletTitle: 'Businesses We Work With',
-    bullets: ['Industrial Automation Experts', 'Supply Chain & Logistics', 'Aerospace Engineering', 'Energy & Utility Firms'],
-    bgImage: img2,
+    description: 'Bridging industrial hardware and legacy operations with intuitive, real-time digital dashboards and supply chain platforms.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Smart Factory Dashboards', 'B2B Equipment Catalogs', 'Supply Chain Analytics', 'Industrial IoT Control'],
+    bgImages: [industrial1, industrial2, industrial3],
+  },
+  {
+    id: 'banking-finance-insurance',
+    badgeId: '06',
+    title: 'Banking, Finance & Insurance',
+    subtitle: 'Fintech Security & Growth',
+    icon: Landmark,
+    description: 'Secure, compliant financial technology platforms, neobank portals, and wealth management UI engineered for maximum trust.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Fintech & Neo-Banking', 'Wealth & Asset Dashboards', 'Insurance Tech Applications', 'Payment Gateway Integration'],
+    bgImages: [banking1, banking2, banking3],
+  },
+  {
+    id: 'sports-fitness',
+    badgeId: '07',
+    title: 'Sports & Fitness',
+    subtitle: 'Performance & Engagement',
+    icon: Trophy,
+    description: 'Dynamic fitness portals, athlete analytics platforms, and sports management ecosystems built for high-energy user engagement.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Fitness App Infrastructure', 'Athlete Performance Engines', 'Sports Club Portals', 'Interactive Wellness Hubs'],
+    bgImages: [sports1, sports2, sports3],
+  },
+  {
+    id: 'transport-logistics-supply-chain',
+    badgeId: '08',
+    title: 'Transport, Logistics & Supply Chain',
+    subtitle: 'Real-Time Fleet & Freight',
+    icon: Truck,
+    description: 'End-to-end logistics tracking, automated dispatch software, and high-velocity freight management solutions.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Fleet Management Systems', 'Freight Tracking Interfaces', 'Warehouse Automation UI', 'Global Route Optimizers'],
+    bgImages: [transport1, transport2, transport3],
+  },
+  {
+    id: 'education',
+    badgeId: '09',
+    title: 'Education & EdTech',
+    subtitle: 'Scalable Learning Ecosystems',
+    icon: GraduationCap,
+    description: 'Modernizing learning experiences with high-engagement student portals, interactive LMS platforms, and institutional websites.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Learning Management Systems', 'University Portals', 'Virtual Classroom Tech', 'Skill Assessment Engines'],
+    bgImages: [edu1, edu2, edu3],
+  },
+  {
+    id: 'healthcare-lifesciences-wellness',
+    badgeId: '10',
+    title: 'Healthcare, Life Sciences & Wellness',
+    subtitle: 'Compliant Digital Health',
+    icon: HeartPulse,
+    description: 'HIPAA-compliant healthcare portals, clinical trial management, and digital wellness applications built on absolute data privacy.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Telehealth Ecosystems', 'Medical Device UI', 'Clinical Trial Analytics', 'Wellness Platform Design'],
+    bgImages: [health1, health2, health3],
+  },
+  {
+    id: 'agriculture-food-production',
+    badgeId: '11',
+    title: 'Agriculture & Food Production',
+    subtitle: 'Smart AgTech Solutions',
+    icon: Sprout,
+    description: 'Smart farming platforms, crop yield analytics, and food production supply chain trackers for modern agricultural enterprises.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['AgTech IoT Dashboards', 'Crop Yield Analytics', 'Food Safety Tracking', 'B2B Produce Marketplaces'],
+    bgImages: [agri1, agri2, agri3],
+  },
+  {
+    id: 'professional-corporate-services',
+    badgeId: '12',
+    title: 'Professional & Corporate Services',
+    subtitle: 'Executive Authority & Advisory',
+    icon: Briefcase,
+    description: 'Refined, high-prestige web portals and client workspaces designed for global legal, accounting, and advisory firms.',
+    bulletTitle: 'Key Specializations',
+    bullets: ['Corporate Advisory Portals', 'Legal Practice Management', 'Audit & Tax Platforms', 'Executive Client Workspaces'],
+    bgImages: [prof1, prof2, prof3],
   },
 ];
+
+// Inner Component for Slow Background Image Carousel
+function CardBackgroundCarousel({ images, title }: { images: StaticImageData[]; title: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    // Exact 6-second rotation interval
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {images.map((img, idx) => {
+        const isActive = idx === currentIndex;
+        return (
+          <div
+            key={idx}
+            className="absolute inset-0 transition-opacity duration-[2500ms] ease-in-out"
+            style={{
+              opacity: isActive ? 1 : 0,
+            }}
+          >
+            <Image
+              src={img}
+              alt={`${title} background ${idx + 1}`}
+              fill
+              className={`object-cover transition-transform duration-[6000ms] ease-out ${
+                isActive ? 'scale-105' : 'scale-100'
+              }`}
+              priority={idx === 0}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function Sectors() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -162,7 +271,7 @@ export default function Sectors() {
   );
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-5 pb-5 transition-colors duration-300">
+    <section ref={sectionRef} className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-12 pb-24 transition-colors duration-300">
       {/* Strict 7xl Wrapper */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         
@@ -192,18 +301,12 @@ export default function Sectors() {
                 style={{
                   top: `${10 + index * 1.5}vh`,
                 }}
-                className="sticky w-full max-w-7xl min-h-[460px] lg:min-h-[500px] rounded-[32px] overflow-hidden border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-neutral-950 p-8 sm:p-12 lg:p-16 flex flex-col justify-between shadow-xl transition-colors duration-300 mb-12"
+                className="sticky w-full max-w-7xl min-h-[460px] lg:min-h-[500px] rounded-[32px] overflow-hidden border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-neutral-950 p-8 sm:p-12 lg:p-16 flex flex-col justify-between shadow-2xl transition-colors duration-300 mb-12"
               >
-                {/* Card Background Image */}
-                <Image
-                  src={item.bgImage}
-                  alt={item.title}
-                  fill
-                  priority={index === 0}
-                  className="object-cover opacity-100 pointer-events-none"
-                />
+                {/* 6-Second Ultra-Smooth Rotating Background Carousel */}
+                <CardBackgroundCarousel images={item.bgImages} title={item.title} />
                 
-                {/* Left-Side Focal Overlay */}
+                {/* Left-Side Focal Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 via-60% to-transparent dark:from-black dark:via-black/95 dark:via-60% dark:to-transparent pointer-events-none w-full lg:w-[85%]" />
 
                 {/* Card Content Layout */}
@@ -216,9 +319,9 @@ export default function Sectors() {
                     </div>
 
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-2 font-mono text-xs">
-                       
-                      </div>
+                      <span className="font-mono text-xs text-[#5dc192] uppercase tracking-wider">
+                        SECTOR // {item.badgeId}
+                      </span>
                       <h3 className="text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-neutral-900 dark:text-white">
                         {item.title}
                       </h3>

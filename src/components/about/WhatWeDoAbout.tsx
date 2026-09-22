@@ -20,35 +20,21 @@ import {
 
 const SERVICES = [
   {
-    title: 'Web Development',
-    description: 'Engineering high-performance, scalable web platforms with ultra-fast responsiveness and cutting-edge interactive architecture.',
+    title: 'Engineering & Technology',
+    description: 'We build high-performance software, web & mobile applications, AI driven solutions, and custom platforms that solve complex business challenges.',
     previewType: 'web',
   },
   {
-    title: 'Mobile App Development',
-    description: 'Crafting intuitive, cross-platform native iOS and Android mobile experiences engineered for maximum user engagement.',
+    title: 'Digital & Marketing Solutions',
+    description: 'From digital transformation strategy to data driven marketing, we help businesses engage customers and achieve measurable results.',
     previewType: 'mobile',
   },
   {
-    title: 'AI Automation Solutions',
-    description: 'Deploying custom LLM integrations and workflow automation systems to optimize operational speed and accuracy.',
+    title: 'Business Strategy & Consulting',
+    description: 'We provide business model design, startup advisory, and go to market strategies to help companies scale sustainably.',
     previewType: 'ai',
   },
-  {
-    title: 'Digital Marketing',
-    description: 'Data-driven growth strategies, search visibility, and targeted performance marketing designed to scale brand reach.',
-    previewType: 'marketing',
-  },
-  {
-    title: 'UI/UX Design',
-    description: 'Designing dark luxury and minimalist digital interfaces with precise visual hierarchy and seamless user journeys.',
-    previewType: 'design',
-  },
-  {
-    title: 'Business Strategy & Consulting',
-    description: 'Providing strategic roadmaps, digital architecture advice, and market execution plans for enterprise expansion.',
-    previewType: 'strategy',
-  },
+  
 ];
 
 export default function WhatWeDoAbout() {
@@ -139,7 +125,7 @@ export default function WhatWeDoAbout() {
           {SERVICES.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-neutral-950/90 border border-white/10 rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:border-[#5dc192]/50 hover:shadow-[0_0_30px_rgba(93,193,146,0.1)] flex flex-col justify-between space-y-8 overflow-hidden cursor-pointer"
+              className="group relative bg-black border border-white/10 rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:border-[#5dc192]/50 hover:shadow-[0_0_30px_rgba(93,193,146,0.1)] flex flex-col justify-between space-y-8 overflow-hidden cursor-pointer"
             >
               {/* UI PREVIEW CONTAINER */}
               <div className="w-full h-44 rounded-2xl bg-black/60 border border-white/10 p-4 flex items-center justify-center relative overflow-hidden group-hover:border-white/20 transition-colors">

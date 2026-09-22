@@ -3,7 +3,7 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
 
-// Import local brand assets (1.png through 10.png)
+// Import local brand assets (1.png through 27.png)
 import brand1 from '@/assets/home-brands/1.png';
 import brand2 from '@/assets/home-brands/2.png';
 import brand3 from '@/assets/home-brands/3.png';
@@ -14,6 +14,23 @@ import brand7 from '@/assets/home-brands/7.png';
 import brand8 from '@/assets/home-brands/8.png';
 import brand9 from '@/assets/home-brands/9.png';
 import brand10 from '@/assets/home-brands/10.png';
+import brand11 from '@/assets/home-brands/11.png';
+import brand12 from '@/assets/home-brands/12.png';
+import brand13 from '@/assets/home-brands/13.png';
+import brand14 from '@/assets/home-brands/14.png';
+import brand15 from '@/assets/home-brands/15.png';
+import brand16 from '@/assets/home-brands/16.png';
+import brand17 from '@/assets/home-brands/17.png';
+import brand18 from '@/assets/home-brands/18.png';
+import brand19 from '@/assets/home-brands/19.png';
+import brand20 from '@/assets/home-brands/20.png';
+import brand21 from '@/assets/home-brands/21.png';
+import brand22 from '@/assets/home-brands/22.png';
+import brand23 from '@/assets/home-brands/23.png';
+import brand24 from '@/assets/home-brands/24.png';
+import brand25 from '@/assets/home-brands/25.png';
+import brand26 from '@/assets/home-brands/26.png';
+import brand27 from '@/assets/home-brands/27.png';
 
 interface Brand {
   id: number;
@@ -25,39 +42,47 @@ const BRANDS: Brand[] = [
   { id: 1, name: 'Partner Brand 1', src: brand1 },
   { id: 2, name: 'Partner Brand 2', src: brand2 },
   { id: 3, name: 'Partner Brand 3', src: brand3 },
-  { id: 4, name: 'Partner Brand 4', src: brand4 },
-  { id: 5, name: 'Partner Brand 5', src: brand5 },
   { id: 6, name: 'Partner Brand 6', src: brand6 },
-  { id: 7, name: 'Partner Brand 7', src: brand7 },
   { id: 8, name: 'Partner Brand 8', src: brand8 },
   { id: 9, name: 'Partner Brand 9', src: brand9 },
   { id: 10, name: 'Partner Brand 10', src: brand10 },
+  { id: 11, name: 'Partner Brand 11', src: brand11 },
+  { id: 13, name: 'Partner Brand 13', src: brand13 },
+  { id: 14, name: 'Partner Brand 14', src: brand14 },
+  { id: 15, name: 'Partner Brand 15', src: brand15 },
+  { id: 16, name: 'Partner Brand 16', src: brand16 },
+  { id: 19, name: 'Partner Brand 19', src: brand19 },
+  { id: 20, name: 'Partner Brand 20', src: brand20 },
+  { id: 23, name: 'Partner Brand 23', src: brand23 },
+  { id: 24, name: 'Partner Brand 24', src: brand24 },
+  { id: 25, name: 'Partner Brand 25', src: brand25 },
+  { id: 27, name: 'Partner Brand 27', src: brand27 },
 ];
 
 export default function AboutBrands() {
   return (
-    <section className="w-full bg-black text-white py-20 sm:py-28 px-6 sm:px-12 lg:px-20 border-t border-white/10">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <section className="w-full bg-black text-white py-16 sm:py-24 px-6 sm:px-12 lg:px-20">
+      <div className="max-w-7xl mx-auto space-y-12">
         
-        {/* SECTION HEADER */}
-        <div className="text-center space-y-3">
-          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">
+        {/* SECTION HEADER - Centered with mx-auto */}
+        <div className="flex flex-col items-center justify-center text-center space-y-3">
+          <h2 className="text-4xl sm:text-6xl font-medium tracking-tight text-white leading-[1.1] max-w-2xl mx-auto text-center">
             Brands That Have Placed Their Trust in Us
           </h2>
         </div>
 
-        {/* BRANDS GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-12 lg:gap-16 items-center justify-items-center pt-6">
+        {/* BRANDS GRID - 27 Logos, full color, large size, tight spacing */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 items-center justify-items-center pt-4">
           {BRANDS.map((brand) => (
             <div
               key={brand.id}
-              className="w-full h-16 sm:h-20 flex items-center justify-center p-2 group transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="w-full max-w-[180px] h-24 sm:h-28 lg:h-32 flex items-center justify-center p-2 group transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               <Image
                 src={brand.src}
                 alt={brand.name}
-                className="max-h-full w-auto object-contain opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                priority={brand.id <= 5}
+                className="max-h-full max-w-full w-auto h-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                priority={brand.id <= 10}
               />
             </div>
           ))}

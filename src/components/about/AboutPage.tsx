@@ -17,8 +17,9 @@ const AboutPage = () => {
         <CoreValues />
         <OurStory />
         <WhatWeDoAbout />
+        <StandsOut />
         <AboutBrands />
-        {/*<StandsOut /> */}
+        
         {/*<MissionVision /> */}
         
     </div>

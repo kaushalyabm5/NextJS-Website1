@@ -1,18 +1,62 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image, { StaticImageData } from 'next/image';
 
-const LOGOS = [
-  { name: 'React', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/react.svg', color: '#61DAFB' },
-  { name: 'Next.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nextdotjs.svg', color: '#FFFFFF' },
-  { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/typescript.svg', color: '#3178C6' },
-  { name: 'JavaScript', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/javascript.svg', color: '#F7DF1E' },
-  { name: 'Vercel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vercel.svg', color: '#FFFFFF' },
-  { name: 'Hostinger', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/hostinger.svg', color: '#673DE6' },
-  { name: 'Supabase', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/supabase.svg', color: '#3FCF8E' },
-  { name: 'Node.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/nodedotjs.svg', color: '#5FA04E' },
-  { name: 'MongoDB', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/mongodb.svg', color: '#47A248' },
-  { name: 'Express.js', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/express.svg', color: '#FFFFFF' },
+// Import local brand assets (1.png through 27.png)
+import brand1 from '@/assets/home-brands/1.png';
+import brand2 from '@/assets/home-brands/2.png';
+import brand3 from '@/assets/home-brands/3.png';
+import brand4 from '@/assets/home-brands/4.png';
+import brand5 from '@/assets/home-brands/5.png';
+import brand6 from '@/assets/home-brands/6.png';
+import brand7 from '@/assets/home-brands/7.png';
+import brand8 from '@/assets/home-brands/8.png';
+import brand9 from '@/assets/home-brands/9.png';
+import brand10 from '@/assets/home-brands/10.png';
+import brand11 from '@/assets/home-brands/11.png';
+import brand12 from '@/assets/home-brands/12.png';
+import brand13 from '@/assets/home-brands/13.png';
+import brand14 from '@/assets/home-brands/14.png';
+import brand15 from '@/assets/home-brands/15.png';
+import brand16 from '@/assets/home-brands/16.png';
+import brand17 from '@/assets/home-brands/17.png';
+import brand18 from '@/assets/home-brands/18.png';
+import brand19 from '@/assets/home-brands/19.png';
+import brand20 from '@/assets/home-brands/20.png';
+import brand21 from '@/assets/home-brands/21.png';
+import brand22 from '@/assets/home-brands/22.png';
+import brand23 from '@/assets/home-brands/23.png';
+import brand24 from '@/assets/home-brands/24.png';
+import brand25 from '@/assets/home-brands/25.png';
+import brand26 from '@/assets/home-brands/26.png';
+import brand27 from '@/assets/home-brands/27.png';
+
+interface Brand {
+  id: number;
+  name: string;
+  src: StaticImageData;
+}
+
+const BRANDS: Brand[] = [
+  { id: 1, name: 'Partner Brand 1', src: brand1 },
+  { id: 2, name: 'Partner Brand 2', src: brand2 },
+  { id: 3, name: 'Partner Brand 3', src: brand3 },
+  { id: 6, name: 'Partner Brand 6', src: brand6 },
+  { id: 8, name: 'Partner Brand 8', src: brand8 },
+  { id: 9, name: 'Partner Brand 9', src: brand9 },
+  { id: 10, name: 'Partner Brand 10', src: brand10 },
+  { id: 11, name: 'Partner Brand 11', src: brand11 },
+  { id: 13, name: 'Partner Brand 13', src: brand13 },
+  { id: 14, name: 'Partner Brand 14', src: brand14 },
+  { id: 15, name: 'Partner Brand 15', src: brand15 },
+  { id: 16, name: 'Partner Brand 16', src: brand16 },
+  { id: 19, name: 'Partner Brand 19', src: brand19 },
+  { id: 20, name: 'Partner Brand 20', src: brand20 },
+  { id: 23, name: 'Partner Brand 23', src: brand23 },
+  { id: 24, name: 'Partner Brand 24', src: brand24 },
+  { id: 25, name: 'Partner Brand 25', src: brand25 },
+  { id: 27, name: 'Partner Brand 27', src: brand27 },
 ];
 
 export default function TechMarquee() {
@@ -23,47 +67,30 @@ export default function TechMarquee() {
   }, []);
 
   if (!isMounted) {
-    return <div className="w-full h-24 bg-black" />;
+    return <div className="w-full h-32 bg-black" />;
   }
 
   return (
     <div className="w-full bg-black py-1 overflow-hidden relative cursor-pointer">
-      {/* Dynamic Gradient Mask for Smooth Edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 md:w-56 z-10 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 md:w-56 z-10 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none" />
+      {/* Side Fade Gradient Overlays */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-48 z-10 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-48 z-10 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none" />
 
       {/* Marquee Track */}
       <div className="flex w-max items-center animate-marquee hover:[animation-play-state:paused]">
         {[...Array(2)].map((_, setIndex) => (
-          <div key={setIndex} className="flex items-center gap-16 sm:gap-24 md:gap-32 pr-16 sm:pr-24 md:pr-32">
-            {LOGOS.map((logo, index) => (
+          <div key={setIndex} className="flex items-center gap-3 sm:gap-4 md:gap-5 pr-3 sm:pr-4 md:pr-5">
+            {BRANDS.map((brand, index) => (
               <div
                 key={`${setIndex}-${index}`}
-                className="relative flex items-center justify-center h-8 sm:h-10 md:h-11 transition-all duration-300 hover:scale-110 cursor-pointer group"
-                title={logo.name}
+                className="relative flex items-center justify-center h-20 sm:h-24 md:h-28 w-32 sm:w-40 md:w-44 p-2 transition-transform duration-300 hover:scale-105 cursor-pointer group"
+                title={brand.name}
               >
-                {/* Default State: Monochromatic White/Gray */}
-                <img
-                  src={logo.src}
-                  alt={`${logo.name} logo`}
-                  className="h-full w-auto object-contain invert opacity-40 group-hover:opacity-0 transition-all duration-300 grayscale"
-                  loading="lazy"
-                />
-
-                {/* Hover State: Original Brand Color Mask */}
-                <div
-                  className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    backgroundColor: logo.color,
-                    WebkitMaskImage: `url(${logo.src})`,
-                    maskImage: `url(${logo.src})`,
-                    WebkitMaskRepeat: 'no-repeat',
-                    maskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'center',
-                    maskPosition: 'center',
-                    WebkitMaskSize: 'contain',
-                    maskSize: 'contain',
-                  }}
+                <Image
+                  src={brand.src}
+                  alt={brand.name}
+                  className="max-h-full max-w-full w-auto h-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  priority={index <= 10}
                 />
               </div>
             ))}
@@ -82,7 +109,7 @@ export default function TechMarquee() {
           }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 45s linear infinite;
         }
       `}</style>
     </div>
