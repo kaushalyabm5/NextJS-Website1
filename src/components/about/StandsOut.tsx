@@ -59,7 +59,7 @@ export default function StandOut() {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-black text-white py-20 sm:py-28 px-6 sm:px-12 lg:px-20 relative font-sans border-t border-neutral-900"
+      className="w-full bg-black text-white pt-10 pb-15 px-6 sm:px-12 lg:px-20 relative"
     >
       <div className="max-w-7xl mx-auto space-y-12">
         
