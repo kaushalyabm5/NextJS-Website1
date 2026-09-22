@@ -31,6 +31,21 @@ import brand24 from '@/assets/home-brands/24.png';
 import brand25 from '@/assets/home-brands/25.png';
 import brand26 from '@/assets/home-brands/26.png';
 import brand27 from '@/assets/home-brands/27.png';
+import brand28 from '@/assets/home-brands/28.png';
+import brand29 from '@/assets/home-brands/29.png';
+import brand30 from '@/assets/home-brands/30.png';
+import brand31 from '@/assets/home-brands/31.png';
+import brand32 from '@/assets/home-brands/32.png';
+import brand33 from '@/assets/home-brands/33.png';
+import brand34 from '@/assets/home-brands/34.png';
+import brand35 from '@/assets/home-brands/35.png';
+import brand36 from '@/assets/home-brands/36.png';
+import brand37 from '@/assets/home-brands/37.png';
+import brand38 from '@/assets/home-brands/38.png';
+import brand39 from '@/assets/home-brands/39.png';
+import brand40 from '@/assets/home-brands/40.png';
+import brand41 from '@/assets/home-brands/41.png';
+import brand42 from '@/assets/home-brands/42.png';
 
 interface Brand {
   id: number;
@@ -57,6 +72,21 @@ const BRANDS: Brand[] = [
   { id: 24, name: 'Partner Brand 24', src: brand24 },
   { id: 25, name: 'Partner Brand 25', src: brand25 },
   { id: 27, name: 'Partner Brand 27', src: brand27 },
+   { id: 28, name: 'Partner Brand 28', src: brand28 },
+  { id: 29, name: 'Partner Brand 29', src: brand29 },
+  { id: 30, name: 'Partner Brand 30', src: brand30 },
+  { id: 31, name: 'Partner Brand 31', src: brand31 },
+  { id: 32, name: 'Partner Brand 32', src: brand32 },
+  { id: 33, name: 'Partner Brand 33', src: brand33 },
+ 
+  { id: 35, name: 'Partner Brand 35', src: brand35 },
+
+  { id: 37, name: 'Partner Brand 37', src: brand37 },
+  { id: 38, name: 'Partner Brand 38', src: brand38 },
+  { id: 39, name: 'Partner Brand 39', src: brand39 },
+  { id: 40, name: 'Partner Brand 40', src: brand40 },
+  { id: 41, name: 'Partner Brand 41', src: brand41 },
+  { id: 42, name: 'Partner Brand 42', src: brand42 },
 ];
 
 export default function TechMarquee() {

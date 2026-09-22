@@ -22,7 +22,7 @@ import {
   LandmarkIcon
 } from 'lucide-react';
 
-// Static Imports for All 12 Sectors (3 Images Each - JPEG format)
+// Static Imports for All 12 Sectors
 import it1 from '@/assets/sector-img/ITTechnology1.jpeg';
 import it2 from '@/assets/sector-img/ITTechnology2.jpeg';
 import it3 from '@/assets/sector-img/ITTechnology3.jpeg';
@@ -225,7 +225,6 @@ function CardBackgroundCarousel({ images, title }: { images: StaticImageData[]; 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // Exact 6-second rotation interval
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, 6000);
@@ -272,20 +271,18 @@ export default function Sectors() {
   );
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-12 pb-5 transition-colors duration-300">
+    <section ref={sectionRef} className="relative w-full bg-white dark:bg-black text-black dark:text-white pt-12 pb-24 transition-colors duration-300">
       {/* Strict 7xl Wrapper */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Header Section */}
         <div className="w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16 lg:mb-20">
           <div className="max-w-2xl">
-           
-
             {/* PILL BADGE WITH ICON */}
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-2 rounded-full bg-white/[0.06] border border-white/15 text-neutral-300 text-xs font-mono tracking-widest uppercase backdrop-blur-md shadow-2xl">
-                      <LandmarkIcon className="w-3.5 h-3.5 text-neutral-300" />
-                      <span>ArchitecTural Capabilities</span>
-                    </div>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-2 rounded-full bg-white/[0.06] border border-white/15 text-neutral-300 text-xs font-mono tracking-widest uppercase backdrop-blur-md shadow-2xl">
+              <LandmarkIcon className="w-3.5 h-3.5 text-neutral-300" />
+              <span>Architectural Capabilities</span>
+            </div>
             <h2 className="text-3xl sm:text-5xl font-medium tracking-tight leading-[1.15] max-w-2xl text-white">
               Architectural Solutions & Sector Expertise
             </h2>
@@ -304,15 +301,16 @@ export default function Sectors() {
               <div
                 key={item.id}
                 style={{
-                  top: `${10 + index * 1.5}vh`,
+                  top: '10vh',
+                  zIndex: index + 1,
                 }}
-                className="sticky w-full max-w-7xl min-h-[460px] lg:min-h-[500px] rounded-[32px] overflow-hidden border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-neutral-950 p-8 sm:p-12 lg:p-16 flex flex-col justify-between shadow-2xl transition-colors duration-300 mb-12"
+                className="sticky w-full max-w-7xl min-h-[460px] lg:min-h-[500px] rounded-[32px] overflow-hidden border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-black p-8 sm:p-12 lg:p-16 flex flex-col justify-between shadow-2xl transition-colors duration-300 mb-12"
               >
                 {/* 6-Second Ultra-Smooth Rotating Background Carousel */}
                 <CardBackgroundCarousel images={item.bgImages} title={item.title} />
                 
-                {/* Left-Side Focal Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 via-60% to-transparent dark:from-black dark:via-black/95 dark:via-60% dark:to-transparent pointer-events-none w-full lg:w-[85%]" />
+                {/* Left Corner Solid Black to Smooth Center Dissolve Gradient */}
+                <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 bg-gradient-to-r from-black via-black/85 via-black/80 to-transparent pointer-events-none" />
 
                 {/* Card Content Layout */}
                 <div className="relative z-10 w-full max-w-3xl flex flex-col gap-6 text-left">
@@ -355,9 +353,9 @@ export default function Sectors() {
 
                   {/* Primary CTA Button */}
                   <div className="pt-4">
-                    <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#5dc192] hover:bg-[#5dc192]/90 border border-neutral-300 dark:border-neutral-800 text-sm font-medium text-black transition-all duration-300 group shadow-sm">
+                    <button className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3 text-sm font-semibold text-white bg-black/80 hover:bg-black rounded-full border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:scale-105 active:scale-95 backdrop-blur-md">
                       <span>Explore Details</span>
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-black" />
+                      <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-white" />
                     </button>
                   </div>
 
