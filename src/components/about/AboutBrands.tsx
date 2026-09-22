@@ -61,7 +61,7 @@ const BRANDS: Brand[] = [
 
 export default function AboutBrands() {
   return (
-    <section className="w-full bg-black text-white py-16 sm:py-24 px-6 sm:px-12 lg:px-20">
+    <section className="w-full bg-black text-white pt-10 pb-20 px-6 sm:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* SECTION HEADER - Centered with mx-auto */}
