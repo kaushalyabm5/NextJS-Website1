@@ -32,7 +32,7 @@ import brand25 from '@/assets/home-brands/25.png';
 import brand26 from '@/assets/home-brands/26.png';
 import brand27 from '@/assets/home-brands/27.png';
 import brand28 from '@/assets/home-brands/28.png';
-import brand29 from '@/assets/home-brands/29.png';
+
 import brand30 from '@/assets/home-brands/30.png';
 import brand31 from '@/assets/home-brands/31.png';
 import brand32 from '@/assets/home-brands/32.png';
@@ -73,7 +73,7 @@ const BRANDS: Brand[] = [
   { id: 25, name: 'Partner Brand 25', src: brand25 },
   { id: 27, name: 'Partner Brand 27', src: brand27 },
    { id: 28, name: 'Partner Brand 28', src: brand28 },
-  { id: 29, name: 'Partner Brand 29', src: brand29 },
+
   { id: 30, name: 'Partner Brand 30', src: brand30 },
   { id: 31, name: 'Partner Brand 31', src: brand31 },
   { id: 32, name: 'Partner Brand 32', src: brand32 },
