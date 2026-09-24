@@ -7,11 +7,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 // Static Imports from src/assets/services-img/
-import img1 from '@/assets/services-img/1.jpg';
-import img2 from '@/assets/services-img/2.jpg';
-import img3 from '@/assets/services-img/3.jpg';
-import img4 from '@/assets/services-img/4.jpg';
-import img5 from '@/assets/services-img/5.jpg';
+import img1 from '@/assets/services-img/web-dev.png';
+import img2 from '@/assets/services-img/mvp1.png';
+import img3 from '@/assets/services-img/mobile-app.png';
+import img4 from '@/assets/services-img/ui-ux.png';
+import img5 from '@/assets/services-img/software-dev.png';
 import img6 from '@/assets/services-img/6.jpg';
 import img7 from '@/assets/services-img/7.jpg';
 import img8 from '@/assets/services-img/8.jpg';
