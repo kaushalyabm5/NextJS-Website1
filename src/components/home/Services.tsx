@@ -215,7 +215,7 @@ export default function Services() {
             {categoriesData.map((category) => (
               <div
                 key={category.id}
-                className="relative flex-shrink-0 w-[280px] sm:w-[320px] h-[340px] sm:h-[380px] bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-all duration-500 rounded-2xl overflow-hidden flex flex-col justify-between p-6 group cursor-pointer backdrop-blur-md shadow-xl"
+                className="relative flex-shrink-0 w-[350px] h-[460px] bg-neutral-950 border border-neutral-800 hover:border-neutral-700 transition-all duration-500 rounded-2xl overflow-hidden flex flex-col justify-between p-6 group cursor-pointer backdrop-blur-md shadow-xl"
               >
                 {/* Image Background with Dark Overlay */}
                 <Image
@@ -223,7 +223,7 @@ export default function Services() {
                   alt={category.categoryName}
                   fill
                   sizes="(max-width: 640px) 280px, 320px"
-                  className="object-cover group-hover:opacity-40 group-hover:scale-100 transition-all duration-700"
+                  className="object-cover group-hover:scale-100 transition-all duration-700"
                   priority={category.id === 'web-development'}
                 />
                 
@@ -232,7 +232,7 @@ export default function Services() {
 
                 {/* Card Title Header */}
                 <div className="relative z-10 flex items-start justify-between">
-                  <h3 className="text-lg sm:text-xl font-medium text-white tracking-tight leading-snug group-hover:text-[#5dc192] transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-medium text-white tracking-tight leading-snug transition-colors duration-300">
                     {category.categoryName}
                   </h3>
                 </div>
@@ -242,7 +242,7 @@ export default function Services() {
                   {category.services.map((service) => (
                     <span
                       key={service.id}
-                      className="px-2.5 py-1 text-[11px] font-normal text-neutral-300 bg-black/80 border border-neutral-800 backdrop-blur-md rounded-full hover:border-[#5dc192]/50 hover:text-white transition-all duration-300"
+                      className="px-2.5 py-1 text-[11px] font-normal text-neutral-300 bg-black/10 border border-neutral-800 backdrop-blur-sm rounded-full hover:border-[#5dc192]/50 hover:text-white transition-all duration-300"
                     >
                       {service.title}
                     </span>
