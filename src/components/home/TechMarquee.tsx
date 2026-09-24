@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 
-// Import local brand assets (1.png through 27.png)
+// Import local brand assets
 import brand1 from '@/assets/home-brands/1.png';
 import brand2 from '@/assets/home-brands/2.png';
 import brand3 from '@/assets/home-brands/3.png';
@@ -32,7 +32,7 @@ import brand25 from '@/assets/home-brands/25.png';
 import brand26 from '@/assets/home-brands/26.png';
 import brand27 from '@/assets/home-brands/27.png';
 import brand28 from '@/assets/home-brands/28.png';
-
+import brand29 from '@/assets/home-brands/29.png';
 import brand30 from '@/assets/home-brands/30.png';
 import brand31 from '@/assets/home-brands/31.png';
 import brand32 from '@/assets/home-brands/32.png';
@@ -62,25 +62,26 @@ const BRANDS: Brand[] = [
   { id: 9, name: 'Partner Brand 9', src: brand9 },
   { id: 10, name: 'Partner Brand 10', src: brand10 },
   { id: 11, name: 'Partner Brand 11', src: brand11 },
+  { id: 12, name: 'Partner Brand 12', src: brand12 },
   { id: 13, name: 'Partner Brand 13', src: brand13 },
   { id: 14, name: 'Partner Brand 14', src: brand14 },
   { id: 15, name: 'Partner Brand 15', src: brand15 },
   { id: 16, name: 'Partner Brand 16', src: brand16 },
   { id: 19, name: 'Partner Brand 19', src: brand19 },
   { id: 20, name: 'Partner Brand 20', src: brand20 },
+  { id: 21, name: 'Partner Brand 21', src: brand21 },
   { id: 23, name: 'Partner Brand 23', src: brand23 },
   { id: 24, name: 'Partner Brand 24', src: brand24 },
   { id: 25, name: 'Partner Brand 25', src: brand25 },
+  { id: 26, name: 'Partner Brand 26', src: brand26 },
   { id: 27, name: 'Partner Brand 27', src: brand27 },
-   { id: 28, name: 'Partner Brand 28', src: brand28 },
-
+  { id: 28, name: 'Partner Brand 28', src: brand28 },
+  { id: 29, name: 'Partner Brand 29', src: brand29 },
   { id: 30, name: 'Partner Brand 30', src: brand30 },
   { id: 31, name: 'Partner Brand 31', src: brand31 },
   { id: 32, name: 'Partner Brand 32', src: brand32 },
   { id: 33, name: 'Partner Brand 33', src: brand33 },
- 
   { id: 35, name: 'Partner Brand 35', src: brand35 },
-
   { id: 37, name: 'Partner Brand 37', src: brand37 },
   { id: 38, name: 'Partner Brand 38', src: brand38 },
   { id: 39, name: 'Partner Brand 39', src: brand39 },
@@ -119,7 +120,9 @@ export default function TechMarquee() {
                 <Image
                   src={brand.src}
                   alt={brand.name}
-                  className="max-h-full max-w-full w-auto h-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  fill
+                  sizes="176px"
+                  className="object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                   priority={index <= 10}
                 />
               </div>
