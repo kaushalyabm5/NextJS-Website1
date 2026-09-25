@@ -6,6 +6,7 @@ import OurStory from './OurStory'
 import WhatWeDoAbout from './WhatWeDoAbout'
 import StandsOut from './StandsOut'
 import AboutBrands from './AboutBrands'
+import Team from './Team'
 
 
 const AboutPage = () => {
@@ -19,6 +20,7 @@ const AboutPage = () => {
         <WhatWeDoAbout />
         <StandsOut />
         <AboutBrands />
+        <Team />
         
         {/*<MissionVision /> */}
         

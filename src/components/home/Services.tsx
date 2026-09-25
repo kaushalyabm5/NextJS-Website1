@@ -12,11 +12,11 @@ import img2 from '@/assets/services-img/mvp1.png';
 import img3 from '@/assets/services-img/mobile-app.png';
 import img4 from '@/assets/services-img/ui-ux.png';
 import img5 from '@/assets/services-img/software-dev.png';
-import img6 from '@/assets/services-img/6.jpg';
-import img7 from '@/assets/services-img/7.jpg';
-import img8 from '@/assets/services-img/8.jpg';
-import img9 from '@/assets/services-img/9.jpg';
-import img10 from '@/assets/services-img/11.jpg';
+import img6 from '@/assets/services-img/ai.png';
+import img7 from '@/assets/services-img/api2.png';
+import img8 from '@/assets/services-img/ecom2.png';
+import img9 from '@/assets/services-img/digital.png';
+import img10 from '@/assets/services-img/business.png';
 import { Zap } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
