@@ -1,262 +1,393 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image, { StaticImageData } from 'next/image';
-import { 
-  ArrowUpRight, 
-  Clock, 
-  Calendar, 
-  User, 
-  Tag
-} from 'lucide-react';
-
-// Static Imports - Replace with your actual blog image assets
-import blog1 from '@/assets/sector-img/ITTechnology1.jpeg';
-import blog2 from '@/assets/sector-img/BankingFinance1.jpeg';
-import blog3 from '@/assets/sector-img/RealEstate1.jpeg';
-import blog4 from '@/assets/sector-img/Industrial1.jpeg';
-import blog5 from '@/assets/sector-img/Healthcare1.jpeg';
+import React, { useState, useMemo } from 'react';
+import Image from 'next/image';
 
 interface BlogPost {
-  id: string;
-  badgeId: string;
-  category: string;
+  id: number;
   title: string;
-  excerpt: string;
-  author: string;
-  date: string;
+  category: string;
   readTime: string;
+  date: string;
+  excerpt: string;
+  image: string;
+  author: {
+    name: string;
+    role: string;
+    avatar: string;
+  };
   featured?: boolean;
-  bgImage: StaticImageData;
-  tags: string[];
 }
 
-const blogsData: BlogPost[] = [
+const CATEGORIES = ['All', 'Architecture', 'Engineering', 'AI & Data', 'Strategy'];
+
+const BLOG_POSTS: BlogPost[] = [
   {
-    id: 'architectural-engineering-saas',
-    badgeId: '01',
+    id: 1,
+    title: 'Architecting High-Frequency Real-Time Systems for Enterprise Fintech',
     category: 'Engineering',
-    title: 'Architectural Systems in Modern SaaS Development',
-    excerpt: 'How high-performance systems and dark luxury UI frameworks are redefining enterprise web applications for global scale.',
-    author: 'Alexander Vance',
-    date: 'Sep 18, 2026',
     readTime: '6 min read',
+    date: 'Sep 24, 2026',
+    excerpt:
+      'An in-depth analysis of low-latency data structures, microservices orchestration, and edge deployment strategies.',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop',
+    author: {
+      name: 'Marcus Vance',
+      role: 'Principal Architect',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop',
+    },
     featured: true,
-    bgImage: blog1,
-    tags: ['Architecture', 'SaaS', 'UI/UX'],
   },
   {
-    id: 'fintech-security-ux',
-    badgeId: '02',
-    category: 'Fintech',
-    title: 'Designing Ultra-Secure Portals for Institutional Capital',
-    excerpt: 'Balancing zero-trust security architecture with fluid, high-converting digital financial portals.',
-    author: 'Elena Rostova',
-    date: 'Sep 12, 2026',
+    id: 2,
+    title: 'The Minimalist Paradigm in Dark Luxury Digital Design',
+    category: 'Architecture',
     readTime: '4 min read',
-    featured: false,
-    bgImage: blog2,
-    tags: ['Fintech', 'Security', 'Banking'],
+    date: 'Sep 21, 2026',
+    excerpt:
+      'Balancing dark aesthetic themes, high-contrast typography, and purposeful motion for modern interfaces.',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
+    author: {
+      name: 'Elena Rostova',
+      role: 'Head of Product Design',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop',
+    },
   },
   {
-    id: '3d-real-estate-visualizers',
-    badgeId: '03',
-    category: 'Real Estate',
-    title: 'The Next Generation of 3D Property Web Experience',
-    excerpt: 'Leveraging WebGL and Three.js to craft high-prestige architectural property engines for ultra-luxury developments.',
-    author: 'Marcus Chen',
-    date: 'Aug 29, 2026',
+    id: 3,
+    title: 'Proprietary ML Orchestration at Enterprise Scale',
+    category: 'AI & Data',
     readTime: '8 min read',
-    featured: false,
-    bgImage: blog3,
-    tags: ['3D Web', 'Real Estate', 'WebGL'],
+    date: 'Sep 18, 2026',
+    excerpt:
+      'How custom deep learning pipelines and real-time model evaluation transform predictive analytics.',
+    image: 'https://images.unsplash.com/photo-1618172193763-c511deb635ca?q=80&w=800&auto=format&fit=crop',
+    author: {
+      name: 'David Sterling',
+      role: 'Lead AI Engineer',
+      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop',
+    },
   },
   {
-    id: 'industry-40-dashboards',
-    badgeId: '04',
-    category: 'Industrial',
-    title: 'Industry 4.0: Modernizing Legacy IoT Control Hubs',
-    excerpt: 'Bridging physical manufacturing hardware with real-time responsive analytics and minimal dark aesthetics.',
-    author: 'David Wright',
-    date: 'Aug 15, 2026',
+    id: 4,
+    title: 'Strategic Capital Allocation in Tech Investment Pipelines',
+    category: 'Strategy',
     readTime: '5 min read',
-    featured: false,
-    bgImage: blog4,
-    tags: ['IoT', 'Industrial', 'Dashboards'],
+    date: 'Sep 15, 2026',
+    excerpt:
+      'Key frameworks for risk mitigation and capital distribution across rapid innovation portfolios.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop',
+    author: {
+      name: 'Alexander Wright',
+      role: 'Chief Executive Officer',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop',
+    },
   },
   {
-    id: 'digital-health-privacy',
-    badgeId: '05',
-    category: 'Healthcare',
-    title: 'HIPAA-Compliant Design Patterns in Digital Health',
-    excerpt: 'Prioritizing data privacy and user trust through transparent, high-accessibility interface architectures.',
-    author: 'Sarah Jenkins',
-    date: 'Jul 22, 2026',
+    id: 5,
+    title: 'Next-Gen Interactive 3D Interfaces for Modern Web Engines',
+    category: 'Engineering',
     readTime: '7 min read',
-    featured: false,
-    bgImage: blog5,
-    tags: ['Healthcare', 'Compliance', 'Privacy'],
+    date: 'Sep 10, 2026',
+    excerpt:
+      'Combining Three.js, WebGL, and custom shader pipelines for hardware-accelerated visual storytelling.',
+    image: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop',
+    author: {
+      name: 'Sophia Chen',
+      role: 'VP of Engineering',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop',
+    },
+  },
+  {
+    id: 6,
+    title: 'Building Unshakable Visual Identity in Ultra-Saturated Markets',
+    category: 'Architecture',
+    readTime: '5 min read',
+    date: 'Sep 05, 2026',
+    excerpt:
+      'Why minimalist branding systems command higher market trust and long-term valuation.',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
+    author: {
+      name: 'Isabella Mercer',
+      role: 'Creative Director',
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop',
+    },
   },
 ];
-
-const categories = ['All', 'Engineering', 'Fintech', 'Real Estate', 'Industrial', 'Healthcare'];
 
 export default function Blogs() {
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredBlogs = blogsData.filter((post) => {
-    return activeCategory === 'All' || post.category === activeCategory;
-  });
+  // Count items per category dynamically
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { All: BLOG_POSTS.length };
+    BLOG_POSTS.forEach((post) => {
+      counts[post.category] = (counts[post.category] || 0) + 1;
+    });
+    return counts;
+  }, []);
 
-  const featuredPost = blogsData.find((p) => p.featured) || blogsData[0];
-  const regularPosts = filteredBlogs.filter((p) => !p.featured || activeCategory !== 'All');
+  // Dynamically filter all posts based on active category selection
+  const filteredPosts = useMemo(() => {
+    if (activeCategory === 'All') return BLOG_POSTS;
+    return BLOG_POSTS.filter((post) => post.category === activeCategory);
+  }, [activeCategory]);
+
+  // Featured post matching category or fallback
+  const featuredPost = useMemo(() => {
+    return filteredPosts.find((post) => post.featured) || filteredPosts[0];
+  }, [filteredPosts]);
+
+  // Grid posts (excluding featured if available)
+  const gridPosts = useMemo(() => {
+    if (!featuredPost) return [];
+    return filteredPosts.filter((post) => post.id !== featuredPost.id);
+  }, [filteredPosts, featuredPost]);
+
+  // Latest subset derived dynamically
+  const latestPosts = useMemo(() => {
+    return filteredPosts.slice(1, 4);
+  }, [filteredPosts]);
 
   return (
-    <section className="relative w-full bg-black text-white pt-12 pb-24 transition-colors duration-300">
-      {/* Container */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="w-full bg-black text-white py-24 px-6 sm:px-12 lg:px-20 transition-all duration-500">
+      <div className="max-w-7xl mx-auto space-y-16">
+        
+        {/* HEADER & DYNAMIC CATEGORY BAR */}
+        <div className="flex flex-col items-center justify-center text-center space-y-8">
+          <div className="space-y-3">
+            <span className="text-xs uppercase tracking-[0.25em] text-neutral-400 font-semibold">
+              Perspectives & Intelligence
+            </span>
+            <h2 className="text-4xl sm:text-6xl font-medium tracking-tight text-white leading-[1.1] max-w-2xl mx-auto">
+              Insights & Innovations
+            </h2>
+          </div>
 
-        {/* Categories Filter Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-12 border-b border-neutral-800/80 scrollbar-none">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 text-[.8rem] tracking-wider transition-all duration-300 whitespace-nowrap rounded-full cursor-pointer ${
-                activeCategory === cat
-                  ? 'bg-white text-black font-semibold'
-                  : 'bg-black text-neutral-400 hover:text-white border border-neutral-800'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          {/* DYNAMIC CATEGORY FILTER BUTTONS WITH CURSOR-POINTER */}
+          <div className="p-1.5 bg-neutral-900/90 border border-neutral-800/90 rounded-full flex flex-wrap items-center justify-center gap-1 sm:gap-2 shadow-2xl backdrop-blur-xl">
+            {CATEGORIES.map((category) => {
+              const isActive = activeCategory === category;
+              const count = categoryCounts[category] || 0;
+
+              return (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`group relative cursor-pointer flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? 'bg-white text-black font-semibold shadow-[0_0_25px_rgba(255,255,255,0.25)] scale-105'
+                      : 'text-neutral-400 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <span>{category}</span>
+                  <span
+                    className={`text-[10px] px-2 py-0.5 rounded-full transition-all duration-300 font-mono cursor-pointer ${
+                      isActive
+                        ? 'bg-black text-white'
+                        : 'bg-neutral-800 text-neutral-400 group-hover:bg-neutral-700 group-hover:text-white'
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Featured Post */}
-        {activeCategory === 'All' && (
-          <div className="relative w-full min-h-[480px] lg:min-h-[520px] rounded-[32px] overflow-hidden border border-neutral-800 bg-black p-8 sm:p-12 lg:p-16 flex flex-col justify-between shadow-2xl mb-16 group cursor-pointer">
-            {/* Background Image with Zoom */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px]">
+        {/* 1. TOP FOCUS / FEATURED ARTICLE */}
+        {featuredPost && (
+          <div className="space-y-4 animate-fadeIn">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+                <h3 className="text-xs uppercase tracking-[0.2em] text-neutral-400 font-semibold">
+                  Featured Focus ({activeCategory})
+                </h3>
+              </div>
+            </div>
+
+            <div className="relative w-full min-h-[480px] sm:min-h-[520px] rounded-3xl overflow-hidden border border-neutral-800/80 group cursor-pointer flex items-end p-6 sm:p-12">
               <Image
-                src={featuredPost.bgImage}
+                src={featuredPost.image}
                 alt={featuredPost.title}
                 fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-60"
-                priority
+                unoptimized
+                sizes="100vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20 z-10 transition-opacity duration-300 group-hover:opacity-90" />
 
-            {/* Solid Left Black Fade Overlay */}
-            <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-black via-black/85 to-transparent pointer-events-none z-10" />
+              <div className="relative z-20 max-w-3xl space-y-4 sm:space-y-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                    {featuredPost.category}
+                  </span>
+                  <span className="text-xs text-neutral-300">{featuredPost.date}</span>
+                  <span className="text-xs text-neutral-400">•</span>
+                  <span className="text-xs text-neutral-300">{featuredPost.readTime}</span>
+                </div>
 
-            {/* Featured Badge Header */}
-            <div className="relative z-20 flex items-center justify-between">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#5dc192]/10 border border-[#5dc192]/30 text-[#5dc192] text-xs font-mono tracking-widest uppercase rounded-full">
-                <Tag className="w-3 h-3" />
-                Featured Publication
-              </span>
-              <span className="font-mono text-xs text-neutral-400">ARTICLE // {featuredPost.badgeId}</span>
-            </div>
+                <h3 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight leading-tight group-hover:text-neutral-200">
+                  {featuredPost.title}
+                </h3>
 
-            {/* Main Content */}
-            <div className="relative z-20 max-w-2xl flex flex-col gap-6 mt-12">
-              <div className="flex items-center gap-4 text-xs font-mono text-neutral-400">
-                <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#5dc192]" />{featuredPost.date}</span>
-                <span>•</span>
-                <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-[#5dc192]" />{featuredPost.readTime}</span>
-                <span>•</span>
-                <span className="flex items-center gap-1.5"><User className="w-3.5 h-3.5 text-[#5dc192]" />{featuredPost.author}</span>
-              </div>
+                <p className="text-sm sm:text-base text-neutral-300 line-clamp-2 leading-relaxed">
+                  {featuredPost.excerpt}
+                </p>
 
-              <h3 className="text-2xl sm:text-4xl font-normal tracking-tight text-white group-hover:text-[#5dc192] transition-colors duration-300">
-                {featuredPost.title}
-              </h3>
-
-              <p className="text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">
-                {featuredPost.excerpt}
-              </p>
-
-              <div className="pt-2">
-                <button className="inline-flex items-center gap-2 px-7 py-3 text-xs font-mono tracking-wider uppercase text-black bg-white hover:bg-neutral-200 transition-all duration-300 font-semibold rounded-full cursor-pointer">
-                  <span>Read Publication</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
+                <div className="flex items-center gap-3 pt-2">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20">
+                    <Image
+                      src={featuredPost.author.avatar}
+                      alt={featuredPost.author.name}
+                      fill
+                      unoptimized
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium text-white">{featuredPost.author.name}</h4>
+                    <p className="text-xs text-neutral-400">{featuredPost.author.role}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* Blog Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {regularPosts.map((post) => (
-            <article
-              key={post.id}
-              className="relative min-h-[420px] rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 p-6 sm:p-8 flex flex-col justify-between group transition-all duration-300 hover:border-neutral-700 shadow-xl cursor-pointer"
-            >
-              {/* Background Image */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl">
-                <Image
-                  src={post.bgImage}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-40"
-                />
-              </div>
+        {/* 2. CURATED INSIGHTS */}
+        <div className="space-y-6 pt-6">
+          <div className="flex items-center justify-between border-b border-neutral-800/80 pb-4">
+            <h3 className="text-xs uppercase tracking-[0.2em] text-neutral-400 font-semibold">
+              Curated Insights
+            </h3>
+            <span className="text-xs text-neutral-400">
+              Showing {filteredPosts.length} Articles
+            </span>
+          </div>
 
-              {/* Black Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/30 pointer-events-none z-10" />
+          {gridPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {gridPosts.map((post) => (
+                <div
+                  key={post.id}
+                  className="relative h-[420px] rounded-3xl overflow-hidden border border-neutral-800/80 group cursor-pointer flex items-end p-6 transition-all duration-500 hover:border-neutral-700 hover:shadow-2xl"
+                >
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent z-10 transition-opacity duration-300 group-hover:opacity-95" />
 
-              {/* Card Top Info */}
-              <div className="relative z-20 flex items-center justify-between">
-                <span className="font-mono text-xs text-[#5dc192] uppercase tracking-wider">
-                  {post.category}
-                </span>
-                <span className="font-mono text-xs text-neutral-500">// {post.badgeId}</span>
-              </div>
+                  <div className="relative z-20 space-y-3 w-full">
+                    <div className="flex items-center justify-between">
+                      <span className="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {post.category}
+                      </span>
+                      <span className="text-xs text-neutral-300">{post.readTime}</span>
+                    </div>
 
-              {/* Card Middle/Bottom Content */}
-              <div className="relative z-20 flex flex-col gap-4 mt-16">
-                <div className="flex items-center gap-3 text-xs font-mono text-neutral-400">
-                  <span className="flex items-center gap-1"><Calendar className="w-3 h-3 text-[#5dc192]" />{post.date}</span>
-                  <span>•</span>
-                  <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-[#5dc192]" />{post.readTime}</span>
+                    <h4 className="text-lg font-semibold text-white tracking-tight leading-snug group-hover:text-neutral-200 line-clamp-2">
+                      {post.title}
+                    </h4>
+
+                    <p className="text-xs text-neutral-300/90 line-clamp-2 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center gap-3 pt-3 border-t border-white/15">
+                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                        <Image
+                          src={post.author.avatar}
+                          alt={post.author.name}
+                          fill
+                          unoptimized
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h5 className="text-xs font-medium text-white">{post.author.name}</h5>
+                        <p className="text-[10px] text-neutral-400">{post.date}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-                <h4 className="text-xl font-normal text-white group-hover:text-[#5dc192] transition-colors duration-300 leading-snug">
-                  {post.title}
-                </h4>
-
-                <p className="text-xs text-neutral-400 font-normal leading-relaxed line-clamp-2">
-                  {post.excerpt}
-                </p>
-
-                {/* Tags */}
-                <div className="flex items-center gap-2 pt-2">
-                  {post.tags.map((tag, i) => (
-                    <span key={i} className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Read Link */}
-                <div className="pt-4 border-t border-neutral-800/80 flex items-center justify-between">
-                  <span className="text-xs font-mono text-neutral-400">By {post.author}</span>
-                  <button className="inline-flex items-center text-xs font-mono text-white group-hover:text-[#5dc192] transition-colors gap-1 cursor-pointer">
-                    <span>Read</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 border border-dashed border-neutral-800 rounded-3xl">
+              <p className="text-sm text-neutral-400">No additional articles in this category.</p>
+            </div>
+          )}
         </div>
 
-        {/* Empty State */}
-        {filteredBlogs.length === 0 && (
-          <div className="w-full py-24 text-center border border-dashed border-neutral-800 rounded-2xl">
-            <p className="text-neutral-500 font-mono text-sm">No publications matching your selected category.</p>
+        {/* 3. LATEST PUBLICATIONS */}
+        {latestPosts.length > 0 && (
+          <div className="space-y-6 pt-10">
+            <div className="flex items-center justify-between border-b border-neutral-800/80 pb-4">
+              <h3 className="text-xs uppercase tracking-[0.2em] text-neutral-400 font-semibold">
+                Latest Publications
+              </h3>
+              <span className="text-xs text-neutral-400 font-mono">Archive / 2026</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {latestPosts.map((post) => (
+                <div
+                  key={`latest-${post.id}`}
+                  className="relative h-[420px] rounded-3xl overflow-hidden border border-neutral-800/80 group cursor-pointer flex items-end p-6 transition-all duration-500 hover:border-neutral-700 hover:shadow-2xl"
+                >
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent z-10 transition-opacity duration-300 group-hover:opacity-95" />
+
+                  <div className="relative z-20 space-y-3 w-full">
+                    <div className="flex items-center justify-between">
+                      <span className="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {post.category}
+                      </span>
+                      <span className="text-xs text-neutral-300">{post.readTime}</span>
+                    </div>
+
+                    <h4 className="text-lg font-semibold text-white tracking-tight leading-snug group-hover:text-neutral-200 line-clamp-2">
+                      {post.title}
+                    </h4>
+
+                    <p className="text-xs text-neutral-300/90 line-clamp-2 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center gap-3 pt-3 border-t border-white/15">
+                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                        <Image
+                          src={post.author.avatar}
+                          alt={post.author.name}
+                          fill
+                          unoptimized
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h5 className="text-xs font-medium text-white">{post.author.name}</h5>
+                        <p className="text-[10px] text-neutral-400">{post.date}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
